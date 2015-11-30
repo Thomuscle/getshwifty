@@ -1,6 +1,6 @@
 ﻿namespace AspectUpdatesDummy
 {
-    partial class Form1
+    partial class MainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -61,8 +61,9 @@
             this.mainAddVersBtn.TabIndex = 2;
             this.mainAddVersBtn.Text = "Add Version";
             this.mainAddVersBtn.UseVisualStyleBackColor = true;
+            this.mainAddVersBtn.Click += new System.EventHandler(this.mainAddVersBtn_Click);
             // 
-            // Form1
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -70,8 +71,8 @@
             this.Controls.Add(this.mainAddVersBtn);
             this.Controls.Add(this.mainAddCustBtn);
             this.Controls.Add(this.mainMenuTitle);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainMenu";
+            this.Text = "Aspect PT Version Database";
             this.ResumeLayout(false);
             this.PerformLayout();
 
