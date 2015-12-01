@@ -19,6 +19,29 @@ namespace AspectUpdatesDummy
         {
             InitializeComponent();
             mainMenu = m;
+
+            versionGrid.Columns.Clear();
+            DataGridViewTextBoxColumn csPK = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csID = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csType = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csReleaseDate = new DataGridViewTextBoxColumn();
+
+            csID.DataPropertyName = "ID"; 
+            csID.HeaderText = "Version ID";
+            versionGrid.Columns.Add(csID);
+
+            csType.DataPropertyName = "Type";
+            csType.HeaderText = "Type";
+            versionGrid.Columns.Add(csType);
+
+            csReleaseDate.DataPropertyName = "ReleaseDate";
+            csReleaseDate.HeaderText = "Release Date";
+            versionGrid.Columns.Add(csReleaseDate);
+
+            csPK.DataPropertyName = "PK";
+            csPK.HeaderText = "PK";
+            versionGrid.Columns.Add(csPK);
+
         }
 
         private void mainMenuBtn1_Click(object sender, EventArgs e)
@@ -42,6 +65,11 @@ namespace AspectUpdatesDummy
             string details = descriptionTxtBx.Text;
             int versionPK = (int)versionGrid.SelectedCells[0].Value;
             Database.InsertCustomer(name, details, versionPK);
+        }
+
+        public DataGridView getVersionGrid()
+        {
+            return versionGrid;
         }
     }
 }

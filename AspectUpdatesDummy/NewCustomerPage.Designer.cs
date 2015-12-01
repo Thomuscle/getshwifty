@@ -44,12 +44,8 @@
             this.customerTableAdapter = new AspectUpdatesDummy.VersionDatabase1DataSet1TableAdapters.CustomerTableAdapter();
             this.versionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.versionTableAdapter = new AspectUpdatesDummy.VersionDatabase1DataSet1TableAdapters.VersionTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
             this.versionGrid = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.releaseDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isDeletedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.versionDatabase1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.versionDatabase1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.versionDatabase1DataSet1)).BeginInit();
@@ -102,7 +98,7 @@
             // idLbl
             // 
             this.idLbl.AutoSize = true;
-            this.idLbl.Location = new System.Drawing.Point(29, 85);
+            this.idLbl.Location = new System.Drawing.Point(29, 59);
             this.idLbl.Name = "idLbl";
             this.idLbl.Size = new System.Drawing.Size(107, 13);
             this.idLbl.TabIndex = 18;
@@ -110,7 +106,7 @@
             // 
             // nameTxtBx
             // 
-            this.nameTxtBx.Location = new System.Drawing.Point(32, 101);
+            this.nameTxtBx.Location = new System.Drawing.Point(32, 75);
             this.nameTxtBx.Name = "nameTxtBx";
             this.nameTxtBx.Size = new System.Drawing.Size(222, 20);
             this.nameTxtBx.TabIndex = 17;
@@ -118,7 +114,7 @@
             // detailsLbl
             // 
             this.detailsLbl.AutoSize = true;
-            this.detailsLbl.Location = new System.Drawing.Point(29, 164);
+            this.detailsLbl.Location = new System.Drawing.Point(29, 118);
             this.detailsLbl.Name = "detailsLbl";
             this.detailsLbl.Size = new System.Drawing.Size(87, 13);
             this.detailsLbl.TabIndex = 16;
@@ -126,10 +122,10 @@
             // 
             // descriptionTxtBx
             // 
-            this.descriptionTxtBx.Location = new System.Drawing.Point(32, 180);
+            this.descriptionTxtBx.Location = new System.Drawing.Point(32, 134);
             this.descriptionTxtBx.Multiline = true;
             this.descriptionTxtBx.Name = "descriptionTxtBx";
-            this.descriptionTxtBx.Size = new System.Drawing.Size(222, 114);
+            this.descriptionTxtBx.Size = new System.Drawing.Size(222, 160);
             this.descriptionTxtBx.TabIndex = 15;
             // 
             // versionDatabase1DataSet
@@ -165,19 +161,20 @@
             // 
             this.versionTableAdapter.ClearBeforeFill = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(279, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "New Customer Version";
+            // 
             // versionGrid
             // 
             this.versionGrid.AllowUserToAddRows = false;
             this.versionGrid.AllowUserToDeleteRows = false;
-            this.versionGrid.AutoGenerateColumns = false;
             this.versionGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.versionGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.iDDataGridViewTextBoxColumn,
-            this.typeDataGridViewTextBoxColumn,
-            this.releaseDateDataGridViewTextBoxColumn,
-            this.isDeletedDataGridViewCheckBoxColumn});
-            this.versionGrid.DataSource = this.versionBindingSource;
             this.versionGrid.Location = new System.Drawing.Point(282, 75);
             this.versionGrid.MultiSelect = false;
             this.versionGrid.Name = "versionGrid";
@@ -186,53 +183,12 @@
             this.versionGrid.Size = new System.Drawing.Size(334, 159);
             this.versionGrid.TabIndex = 19;
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "PK";
-            this.Column1.HeaderText = "PK";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 40;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.typeDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // releaseDateDataGridViewTextBoxColumn
-            // 
-            this.releaseDateDataGridViewTextBoxColumn.DataPropertyName = "Release_Date";
-            this.releaseDateDataGridViewTextBoxColumn.HeaderText = "Release_Date";
-            this.releaseDateDataGridViewTextBoxColumn.Name = "releaseDateDataGridViewTextBoxColumn";
-            this.releaseDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.releaseDateDataGridViewTextBoxColumn.Width = 91;
-            // 
-            // isDeletedDataGridViewCheckBoxColumn
-            // 
-            this.isDeletedDataGridViewCheckBoxColumn.DataPropertyName = "isDeleted";
-            this.isDeletedDataGridViewCheckBoxColumn.FalseValue = "0";
-            this.isDeletedDataGridViewCheckBoxColumn.HeaderText = "isDeleted";
-            this.isDeletedDataGridViewCheckBoxColumn.Name = "isDeletedDataGridViewCheckBoxColumn";
-            this.isDeletedDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.isDeletedDataGridViewCheckBoxColumn.TrueValue = "1";
-            this.isDeletedDataGridViewCheckBoxColumn.Width = 70;
-            // 
             // NewCustomerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.versionGrid);
             this.Controls.Add(this.idLbl);
             this.Controls.Add(this.nameTxtBx);
@@ -273,11 +229,7 @@
         private VersionDatabase1DataSet1TableAdapters.CustomerTableAdapter customerTableAdapter;
         private System.Windows.Forms.BindingSource versionBindingSource;
         private VersionDatabase1DataSet1TableAdapters.VersionTableAdapter versionTableAdapter;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView versionGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn releaseDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isDeletedDataGridViewCheckBoxColumn;
     }
 }
