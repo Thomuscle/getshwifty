@@ -59,7 +59,7 @@ namespace AspectUpdatesDummy
         public static List<Version> GetVersionList()
         {
             string selectStatement = "SELECT * FROM Version " +
-               "WHERE isDeleted=0 ";
+               "WHERE isDeleted=0 ORDER BY ID DESC";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
@@ -126,6 +126,43 @@ namespace AspectUpdatesDummy
             }
 
             return return_code;
+        }
+
+
+        public static List<Customer> GetCustomerList()
+        {
+            string selectStatement = "SELECT * FROM Customer " +
+              "WHERE isDeleted=0 ORDER BY Name ASC";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            List<Customer> customerList = new List<Customer>();
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    int pk = reader.GetInt32(0);
+                    String name = reader.GetString(1);
+                    String details = reader.GetString(2);
+                    int versionPK = reader.GetInt32(3);
+
+                    Customer cust = new Customer(pk, name, details, versionPK, false);
+                    customerList.Add(cust);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return customerList;
         }
     }
 }

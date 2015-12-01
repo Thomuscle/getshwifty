@@ -59,7 +59,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="ExistingCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExistingCustomers.Designer.cs">
+      <DependentUpon>ExistingCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExistingVersions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExistingVersions.Designer.cs">
+      <DependentUpon>ExistingVersions.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +104,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VersionDatabase1DataSet1.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ExistingCustomers.resx">
+      <DependentUpon>ExistingCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExistingVersions.resx">
+      <DependentUpon>ExistingVersions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
