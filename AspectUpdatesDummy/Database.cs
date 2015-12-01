@@ -54,5 +54,39 @@ namespace AspectUpdatesDummy
 
             return return_code;
         }
+
+        public static int InsertCustomer(string name, string details, int versionPK)
+        {
+            int return_code = 0;
+
+
+            string insertStatement = "INSERT INTO Customer " +
+                "(Name, Details, VersionPK) " +
+                "VALUES (@name, @details, @versionPK)";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.AddWithValue("@name", name);
+            insertCommand.Parameters.AddWithValue("@details", details);
+            insertCommand.Parameters.AddWithValue("@versionPK", versionPK);
+
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                return_code = 1;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return return_code;
+        }
     }
 }

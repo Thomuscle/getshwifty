@@ -26,5 +26,22 @@ namespace AspectUpdatesDummy
             this.Hide();
             mainMenu.Show();
         }
+
+        private void NewCustomerPage_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'versionDatabase1DataSet1.Version' table. You can move, or remove it, as needed.
+            this.versionTableAdapter.Fill(this.versionDatabase1DataSet1.Version);
+            // TODO: This line of code loads data into the 'versionDatabase1DataSet1.Customer' table. You can move, or remove it, as needed.
+            this.customerTableAdapter.Fill(this.versionDatabase1DataSet1.Customer);
+
+        }
+
+        private void submitBtn_Click(object sender, EventArgs e)
+        {
+            string name = nameTxtBx.Text;
+            string details = descriptionTxtBx.Text;
+            int versionPK = (int)versionGrid.SelectedCells[0].Value;
+            Database.InsertCustomer(name, details, versionPK);
+        }
     }
 }

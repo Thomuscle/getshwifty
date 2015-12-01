@@ -85,6 +85,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VersionDatabase1DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="VersionDatabase1DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VersionDatabase1DataSet1.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +127,17 @@
     </None>
     <None Include="VersionDatabase1DataSet.xss">
       <DependentUpon>VersionDatabase1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="VersionDatabase1DataSet1.xsc">
+      <DependentUpon>VersionDatabase1DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="VersionDatabase1DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VersionDatabase1DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="VersionDatabase1DataSet1.xss">
+      <DependentUpon>VersionDatabase1DataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
