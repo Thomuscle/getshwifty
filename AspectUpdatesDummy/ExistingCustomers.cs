@@ -24,6 +24,7 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csPK = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csName = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csVersionPK = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csVersionID = new DataGridViewTextBoxColumn();
 
             csName.DataPropertyName = "Name";
             csName.HeaderText = "Name";
@@ -36,6 +37,11 @@ namespace AspectUpdatesDummy
             csPK.DataPropertyName = "PK";
             csPK.HeaderText = "PK";
             CustomersGrid.Columns.Add(csPK);
+
+            csVersionID.DataPropertyName = "VersionID";
+            csVersionID.Visible = false;
+            CustomersGrid.Columns.Add(csVersionID);
+
         }
 
         private void mainMenuBtn3_Click(object sender, EventArgs e)

@@ -48,6 +48,7 @@
             this.CustomersGrid.AllowUserToAddRows = false;
             this.CustomersGrid.AllowUserToDeleteRows = false;
             this.CustomersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CustomersGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.CustomersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(this.CustomersGrid, "CustomersGrid");
             this.CustomersGrid.MultiSelect = false;
