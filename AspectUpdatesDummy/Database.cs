@@ -395,5 +395,63 @@ namespace AspectUpdatesDummy
 
             return updateList;
         }
+
+        public static void UpdateVersion(int pk, string id, string description, int type, DateTime releaseDate)
+        {
+            string updateStatement = "UPDATE Version SET ID= @id, Description= @description," + 
+                " Type= @type, Release_Date= @releaseDate WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@id", id);
+            updateCommand.Parameters.AddWithValue("@pk", pk);
+            updateCommand.Parameters.AddWithValue("@description", description);
+            updateCommand.Parameters.AddWithValue("@type", type);
+            updateCommand.Parameters.AddWithValue("@releaseDate", releaseDate);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+        public static void deleteVersion(int pk)
+        {
+            string updateStatement = "UPDATE Version SET isDeleted= @delete WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@pk", pk);
+
+            bool delete = true;
+            updateCommand.Parameters.AddWithValue("@delete", delete);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

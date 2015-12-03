@@ -49,5 +49,11 @@ namespace AspectUpdatesDummy
             get { return this.release_Date; }
             set { this.release_Date = value;  }
         }
+
+        public string Description
+        {
+            get { return this.description; }
+            set { this.description = value; }
+        }
     }
 }
