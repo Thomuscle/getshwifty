@@ -251,6 +251,32 @@ namespace AspectUpdatesDummy
             return pk;
         }
 
+        public static void UpdateCustomer(int customerPK, int versionPK)
+        {
+
+            string updateStatement = "UPDATE Customer SET VersionPK=" + versionPK + " WHERE PK=" + customerPK;
+            
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+        }
+
 
         public static int AddUpdate(int versionPK, int customerPK)
         {
@@ -284,13 +310,13 @@ namespace AspectUpdatesDummy
             return return_code;
         }
 
-        public static int AddUpdate(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate)
+        public static int AddUpdate(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate, string comment)
         {
             int return_code = 0;
 
             string insertStatement = "INSERT INTO [Update] " +
-                "(VersionPK, CustomerPK, Expected_Date, Actual_Date) " +
-                "VALUES (@versionPK, @customerPK, @expectedDate, @actualDate)";
+                "(VersionPK, CustomerPK, Expected_Date, Actual_Date, Comment) " +
+                "VALUES (@versionPK, @customerPK, @expectedDate, @actualDate, @comment)";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
@@ -298,7 +324,18 @@ namespace AspectUpdatesDummy
             insertCommand.Parameters.AddWithValue("@versionPK", versionPK);
             insertCommand.Parameters.AddWithValue("@customerPK", customerPK);
             insertCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
-            insertCommand.Parameters.AddWithValue("@actualDate", actualDate);
+            insertCommand.Parameters.AddWithValue("@comment", comment);
+
+
+            if (actualDate == null)
+            {
+                insertCommand.Parameters.AddWithValue("@actualDate", DBNull.Value);
+            }
+            else
+            {
+                insertCommand.Parameters.AddWithValue("@actualDate", actualDate);
+            }
+            
 
 
             try

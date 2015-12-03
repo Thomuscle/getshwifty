@@ -41,6 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.commentsTxtBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.versionGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +69,7 @@
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(331, 252);
+            this.submitBtn.Location = new System.Drawing.Point(335, 252);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(127, 42);
             this.submitBtn.TabIndex = 15;
@@ -88,7 +90,7 @@
             // expectedDatePicker
             // 
             this.expectedDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.expectedDatePicker.Location = new System.Drawing.Point(35, 111);
+            this.expectedDatePicker.Location = new System.Drawing.Point(35, 90);
             this.expectedDatePicker.Name = "expectedDatePicker";
             this.expectedDatePicker.Size = new System.Drawing.Size(150, 20);
             this.expectedDatePicker.TabIndex = 16;
@@ -96,7 +98,7 @@
             // expectedTimePicker
             // 
             this.expectedTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.expectedTimePicker.Location = new System.Drawing.Point(190, 111);
+            this.expectedTimePicker.Location = new System.Drawing.Point(190, 91);
             this.expectedTimePicker.Name = "expectedTimePicker";
             this.expectedTimePicker.ShowUpDown = true;
             this.expectedTimePicker.Size = new System.Drawing.Size(111, 20);
@@ -119,7 +121,7 @@
             // actualTimePicker
             // 
             this.actualTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.actualTimePicker.Location = new System.Drawing.Point(190, 192);
+            this.actualTimePicker.Location = new System.Drawing.Point(190, 149);
             this.actualTimePicker.Name = "actualTimePicker";
             this.actualTimePicker.ShowUpDown = true;
             this.actualTimePicker.Size = new System.Drawing.Size(111, 20);
@@ -128,7 +130,7 @@
             // actualDatePicker
             // 
             this.actualDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.actualDatePicker.Location = new System.Drawing.Point(35, 192);
+            this.actualDatePicker.Location = new System.Drawing.Point(35, 149);
             this.actualDatePicker.Name = "actualDatePicker";
             this.actualDatePicker.Size = new System.Drawing.Size(150, 20);
             this.actualDatePicker.TabIndex = 19;
@@ -136,7 +138,7 @@
             // useActual
             // 
             this.useActual.AutoSize = true;
-            this.useActual.Location = new System.Drawing.Point(35, 218);
+            this.useActual.Location = new System.Drawing.Point(35, 175);
             this.useActual.Name = "useActual";
             this.useActual.Size = new System.Drawing.Size(151, 17);
             this.useActual.TabIndex = 21;
@@ -146,7 +148,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 95);
+            this.label1.Location = new System.Drawing.Point(32, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 13);
             this.label1.TabIndex = 22;
@@ -155,7 +157,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 176);
+            this.label2.Location = new System.Drawing.Point(32, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(266, 13);
             this.label2.TabIndex = 23;
@@ -170,11 +172,30 @@
             this.label3.TabIndex = 24;
             this.label3.Text = "Version Being Updated To";
             // 
+            // commentsTxtBox
+            // 
+            this.commentsTxtBox.Location = new System.Drawing.Point(35, 229);
+            this.commentsTxtBox.Multiline = true;
+            this.commentsTxtBox.Name = "commentsTxtBox";
+            this.commentsTxtBox.Size = new System.Drawing.Size(262, 64);
+            this.commentsTxtBox.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(32, 216);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Comments (Optional)";
+            // 
             // NewUpdatePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.commentsTxtBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -211,5 +232,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox commentsTxtBox;
+        private System.Windows.Forms.Label label4;
     }
 }
