@@ -453,5 +453,42 @@ namespace AspectUpdatesDummy
                 connection.Close();
             }
         }
+
+        public static List<Customer> GetCustomersWithVersion(int vpk)
+        {
+            string selectStatement = "SELECT * FROM Customer WHERE VersionPK = @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@pk", vpk);
+
+            List<Customer> customerList = new List<Customer>();
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    int pk = reader.GetInt32(0);
+                    String name = reader.GetString(1);
+                    String details = reader.GetString(2);
+                    int versionPK = reader.GetInt32(3);
+
+                    Customer cust = new Customer(pk, name, details, versionPK, "", false);
+                    customerList.Add(cust);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return customerList;
+        }
     }
 }
