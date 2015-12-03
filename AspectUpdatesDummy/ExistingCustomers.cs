@@ -50,7 +50,7 @@ namespace AspectUpdatesDummy
             mainMenu.Show();
         }
 
-        public DataGridView getVersionGrid()
+        public DataGridView getCustomersGrid()
         {
             return CustomersGrid;
         }

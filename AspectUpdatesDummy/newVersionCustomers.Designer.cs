@@ -1,6 +1,6 @@
 ﻿namespace AspectUpdatesDummy
 {
-    partial class newVersionCustomers
+    partial class NewVersionCustomers
     {
         /// <summary>
         /// Required designer variable.

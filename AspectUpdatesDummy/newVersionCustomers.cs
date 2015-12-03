@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace AspectUpdatesDummy
 {
-    public partial class newVersionCustomers : Form
+    public partial class NewVersionCustomers : Form
     {
         MainMenu mainMenu;
         string versionID;
         int versionPK;
 
-        public newVersionCustomers(MainMenu m)
+        public NewVersionCustomers(MainMenu m)
         {
             InitializeComponent();
             mainMenu = m;
@@ -74,8 +74,8 @@ namespace AspectUpdatesDummy
                 {
                     if ((row.Cells[0].Value != null) && ((bool)((DataGridViewCheckBoxCell)row.Cells[0]).Value))
                     {
-                        System.Console.WriteLine(row.Cells["PK"].Value.ToString());
-                        Database.UpdateCustomer(Convert.ToInt32(row.Cells["PK"].Value.ToString()));
+                        int versionPK = Database.UpdateCustomer(Convert.ToInt32(row.Cells["PK"].Value.ToString()));
+                        Database.AddUpdate(versionPK, Convert.ToInt32(row.Cells["PK"].Value.ToString()));
                     }
                 }
             }catch(Exception ex){

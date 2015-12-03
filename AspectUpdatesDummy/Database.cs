@@ -203,7 +203,7 @@ namespace AspectUpdatesDummy
             return customerList;
         }
 
-        public static void UpdateCustomer(int customerPK)
+        public static int UpdateCustomer(int customerPK)
         {
             string versionPKStatement = "SELECT MAX(PK) FROM Version";
 
@@ -218,7 +218,6 @@ namespace AspectUpdatesDummy
                 while (reader.Read())
                 {
                     pk = reader.GetInt32(0);
-                    System.Console.WriteLine(pk);
                 }
             }
             catch (SqlException ex)
@@ -248,6 +247,81 @@ namespace AspectUpdatesDummy
             {
                 connection.Close();
             }
+
+            return pk;
+        }
+
+
+        public static int AddUpdate(int versionPK, int customerPK)
+        {
+            int return_code = 0;
+
+            string insertStatement = "INSERT INTO [Update] " +
+                "(VersionPK, CustomerPK) " +
+                "VALUES (@versionPK, @customerPK)";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+            
+            insertCommand.Parameters.AddWithValue("@versionPK", versionPK);
+            insertCommand.Parameters.AddWithValue("@customerPK", customerPK);
+
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                return_code = 1;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return return_code;
+        }
+
+
+        public static List<Update> GetUpdateList()
+        {
+            string selectStatement = "SELECT * FROM [Update] " +
+              "ORDER BY Expected_Date DESC";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            List<Update> updateList = new List<Update>();
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    int pk = reader.GetInt32(0);
+                    int versionPK = reader.GetInt32(1);
+                    int customerPK = reader.GetInt32(2);
+                    DateTime? expectedDate = reader[3] as DateTime?;
+                    DateTime? actualDate = reader[4] as DateTime?;
+                    String comment = Convert.ToString(reader.GetValue(5));
+                    bool isDeleted = reader.GetBoolean(6);
+
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted);
+                    updateList.Add(up);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return updateList;
         }
     }
 }

@@ -33,6 +33,8 @@
             this.mainAddVersBtn = new System.Windows.Forms.Button();
             this.customersBtn = new System.Windows.Forms.Button();
             this.versionsBtn = new System.Windows.Forms.Button();
+            this.mainUpdatesBtn = new System.Windows.Forms.Button();
+            this.mainAddUpdateBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainMenuTitle
@@ -47,7 +49,7 @@
             // 
             // mainAddCustBtn
             // 
-            this.mainAddCustBtn.Location = new System.Drawing.Point(53, 86);
+            this.mainAddCustBtn.Location = new System.Drawing.Point(53, 65);
             this.mainAddCustBtn.Name = "mainAddCustBtn";
             this.mainAddCustBtn.Size = new System.Drawing.Size(191, 46);
             this.mainAddCustBtn.TabIndex = 1;
@@ -57,7 +59,7 @@
             // 
             // mainAddVersBtn
             // 
-            this.mainAddVersBtn.Location = new System.Drawing.Point(53, 182);
+            this.mainAddVersBtn.Location = new System.Drawing.Point(53, 128);
             this.mainAddVersBtn.Name = "mainAddVersBtn";
             this.mainAddVersBtn.Size = new System.Drawing.Size(191, 46);
             this.mainAddVersBtn.TabIndex = 2;
@@ -67,7 +69,7 @@
             // 
             // customersBtn
             // 
-            this.customersBtn.Location = new System.Drawing.Point(279, 86);
+            this.customersBtn.Location = new System.Drawing.Point(279, 65);
             this.customersBtn.Name = "customersBtn";
             this.customersBtn.Size = new System.Drawing.Size(191, 46);
             this.customersBtn.TabIndex = 3;
@@ -77,7 +79,7 @@
             // 
             // versionsBtn
             // 
-            this.versionsBtn.Location = new System.Drawing.Point(279, 182);
+            this.versionsBtn.Location = new System.Drawing.Point(279, 128);
             this.versionsBtn.Name = "versionsBtn";
             this.versionsBtn.Size = new System.Drawing.Size(191, 46);
             this.versionsBtn.TabIndex = 4;
@@ -85,11 +87,33 @@
             this.versionsBtn.UseVisualStyleBackColor = true;
             this.versionsBtn.Click += new System.EventHandler(this.versionsBtn_Click);
             // 
+            // mainUpdatesBtn
+            // 
+            this.mainUpdatesBtn.Location = new System.Drawing.Point(279, 192);
+            this.mainUpdatesBtn.Name = "mainUpdatesBtn";
+            this.mainUpdatesBtn.Size = new System.Drawing.Size(191, 46);
+            this.mainUpdatesBtn.TabIndex = 6;
+            this.mainUpdatesBtn.Text = "Updates";
+            this.mainUpdatesBtn.UseVisualStyleBackColor = true;
+            this.mainUpdatesBtn.Click += new System.EventHandler(this.mainUpdatesBtn_Click);
+            // 
+            // mainAddUpdateBtn
+            // 
+            this.mainAddUpdateBtn.Location = new System.Drawing.Point(53, 192);
+            this.mainAddUpdateBtn.Name = "mainAddUpdateBtn";
+            this.mainAddUpdateBtn.Size = new System.Drawing.Size(191, 46);
+            this.mainAddUpdateBtn.TabIndex = 5;
+            this.mainAddUpdateBtn.Text = "Add Update";
+            this.mainAddUpdateBtn.UseVisualStyleBackColor = true;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(526, 278);
+            this.Controls.Add(this.mainUpdatesBtn);
+            this.Controls.Add(this.mainAddUpdateBtn);
             this.Controls.Add(this.versionsBtn);
             this.Controls.Add(this.customersBtn);
             this.Controls.Add(this.mainAddVersBtn);
@@ -109,6 +133,8 @@
         private System.Windows.Forms.Button mainAddVersBtn;
         private System.Windows.Forms.Button customersBtn;
         private System.Windows.Forms.Button versionsBtn;
+        private System.Windows.Forms.Button mainUpdatesBtn;
+        private System.Windows.Forms.Button mainAddUpdateBtn;
     }
 }
 
