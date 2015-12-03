@@ -103,8 +103,9 @@
             this.mainAddUpdateBtn.Name = "mainAddUpdateBtn";
             this.mainAddUpdateBtn.Size = new System.Drawing.Size(191, 46);
             this.mainAddUpdateBtn.TabIndex = 5;
-            this.mainAddUpdateBtn.Text = "Add Update";
+            this.mainAddUpdateBtn.Text = "Add Updates";
             this.mainAddUpdateBtn.UseVisualStyleBackColor = true;
+            this.mainAddUpdateBtn.Click += new System.EventHandler(this.mainAddUpdateBtn_Click);
             // 
             // MainMenu
             // 

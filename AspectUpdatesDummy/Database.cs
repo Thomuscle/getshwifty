@@ -284,6 +284,41 @@ namespace AspectUpdatesDummy
             return return_code;
         }
 
+        public static int AddUpdate(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate)
+        {
+            int return_code = 0;
+
+            string insertStatement = "INSERT INTO [Update] " +
+                "(VersionPK, CustomerPK, Expected_Date, Actual_Date) " +
+                "VALUES (@versionPK, @customerPK, @expectedDate, @actualDate)";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.AddWithValue("@versionPK", versionPK);
+            insertCommand.Parameters.AddWithValue("@customerPK", customerPK);
+            insertCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
+            insertCommand.Parameters.AddWithValue("@actualDate", actualDate);
+
+
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                return_code = 1;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return return_code;
+        }
+
 
         public static List<Update> GetUpdateList()
         {

@@ -78,6 +78,7 @@
             this.newVersLbl.Size = new System.Drawing.Size(109, 20);
             this.newVersLbl.TabIndex = 3;
             this.newVersLbl.Text = "New Version";
+            this.newVersLbl.Click += new System.EventHandler(this.newVersLbl_Click);
             // 
             // idTxtBx
             // 
@@ -153,6 +154,7 @@
             this.subLbl.TabIndex = 11;
             this.subLbl.Text = "Please enter new version information:";
             this.subLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.subLbl.Click += new System.EventHandler(this.subLbl_Click);
             // 
             // NewVersionPage
             // 
@@ -173,6 +175,7 @@
             this.Controls.Add(this.mainMenuBtn2);
             this.Name = "NewVersionPage";
             this.Text = "Aspect PT Version Database - Add Version";
+            this.Load += new System.EventHandler(this.NewVersionPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
