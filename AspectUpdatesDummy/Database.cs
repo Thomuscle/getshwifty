@@ -21,6 +21,10 @@ namespace AspectUpdatesDummy
             return connection;
         }
 
+        //
+        //VERSION METHODS:
+        //
+
         public static int InsertVersion(string id, string description, int type, string release_Date)
         {
             int return_code = 0;
@@ -93,6 +97,100 @@ namespace AspectUpdatesDummy
             return versionList;
         }
 
+        public static void UpdateVersion(int pk, string id, string description, int type, DateTime releaseDate)
+        {
+            string updateStatement = "UPDATE Version SET ID= @id, Description= @description," + 
+                " Type= @type, Release_Date= @releaseDate WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@id", id);
+            updateCommand.Parameters.AddWithValue("@pk", pk);
+            updateCommand.Parameters.AddWithValue("@description", description);
+            updateCommand.Parameters.AddWithValue("@type", type);
+            updateCommand.Parameters.AddWithValue("@releaseDate", releaseDate);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static void deleteVersion(int pk)
+        {
+            string updateStatement = "UPDATE Version SET isDeleted= @delete WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@pk", pk);
+
+            bool delete = true;
+            updateCommand.Parameters.AddWithValue("@delete", delete);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static string getVersionID(int versionPK)
+        {
+            string selectStatement = "SELECT ID FROM Version WHERE PK = @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@pk", versionPK);
+
+            string id = "";
+
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetString(0);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return id;
+
+        }
+
+        //
+        //CUSTOMER METHODS:
+        //
+
         public static int InsertCustomer(string name, string details, int versionPK)
         {
             int return_code = 0;
@@ -127,7 +225,6 @@ namespace AspectUpdatesDummy
 
             return return_code;
         }
-
 
         public static List<Customer> GetCustomerList()
         {
@@ -165,7 +262,6 @@ namespace AspectUpdatesDummy
             return customerList;
         }
 
-
         public static List<Customer> GetCustomerListWithID()
         {
             string selectStatement = "SELECT Customer.PK, Customer.Name, Customer.Details, Customer.VersionPK, Version.ID FROM Customer " +
@@ -188,6 +284,43 @@ namespace AspectUpdatesDummy
                     string versionID = reader.GetString(4);
 
                     Customer cust = new Customer(pk, name, details, versionPK, versionID, false);
+                    customerList.Add(cust);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return customerList;
+        }
+
+        public static List<Customer> GetCustomersWithVersion(int vpk)
+        {
+            string selectStatement = "SELECT * FROM Customer WHERE VersionPK = @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@pk", vpk);
+
+            List<Customer> customerList = new List<Customer>();
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    int pk = reader.GetInt32(0);
+                    String name = reader.GetString(1);
+                    String details = reader.GetString(2);
+                    int versionPK = reader.GetInt32(3);
+
+                    Customer cust = new Customer(pk, name, details, versionPK, "", false);
                     customerList.Add(cust);
                 }
             }
@@ -277,6 +410,37 @@ namespace AspectUpdatesDummy
 
         }
 
+        public static void UpdateCustomer(int customerPK, string name, string details)
+        {
+            string updateStatement = "UPDATE Customer SET Name= @name, Details = @details" +
+               "  WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@name", name);
+            updateCommand.Parameters.AddWithValue("@pk", customerPK);
+            updateCommand.Parameters.AddWithValue("@details", details);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        //
+        //UPDATE METHODS:
+        //
 
         public static int AddUpdate(int versionPK, int customerPK)
         {
@@ -356,7 +520,6 @@ namespace AspectUpdatesDummy
             return return_code;
         }
 
-
         public static List<Update> GetUpdateList()
         {
             string selectStatement = "SELECT * FROM [Update] " +
@@ -396,99 +559,5 @@ namespace AspectUpdatesDummy
             return updateList;
         }
 
-        public static void UpdateVersion(int pk, string id, string description, int type, DateTime releaseDate)
-        {
-            string updateStatement = "UPDATE Version SET ID= @id, Description= @description," + 
-                " Type= @type, Release_Date= @releaseDate WHERE PK= @pk";
-
-            SqlConnection connection = Database.GetConnection();
-            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-
-            updateCommand.Parameters.AddWithValue("@id", id);
-            updateCommand.Parameters.AddWithValue("@pk", pk);
-            updateCommand.Parameters.AddWithValue("@description", description);
-            updateCommand.Parameters.AddWithValue("@type", type);
-            updateCommand.Parameters.AddWithValue("@releaseDate", releaseDate);
-
-            try
-            {
-                connection.Open();
-                updateCommand.ExecuteNonQuery();
-
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-
-        public static void deleteVersion(int pk)
-        {
-            string updateStatement = "UPDATE Version SET isDeleted= @delete WHERE PK= @pk";
-
-            SqlConnection connection = Database.GetConnection();
-            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@pk", pk);
-
-            bool delete = true;
-            updateCommand.Parameters.AddWithValue("@delete", delete);
-
-            try
-            {
-                connection.Open();
-                updateCommand.ExecuteNonQuery();
-
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-        public static List<Customer> GetCustomersWithVersion(int vpk)
-        {
-            string selectStatement = "SELECT * FROM Customer WHERE VersionPK = @pk";
-
-            SqlConnection connection = Database.GetConnection();
-            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-
-            selectCommand.Parameters.AddWithValue("@pk", vpk);
-
-            List<Customer> customerList = new List<Customer>();
-            try
-            {
-                connection.Open();
-                var reader = selectCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    int pk = reader.GetInt32(0);
-                    String name = reader.GetString(1);
-                    String details = reader.GetString(2);
-                    int versionPK = reader.GetInt32(3);
-
-                    Customer cust = new Customer(pk, name, details, versionPK, "", false);
-                    customerList.Add(cust);
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return customerList;
-        }
     }
 }

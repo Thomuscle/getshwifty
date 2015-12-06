@@ -59,5 +59,11 @@ namespace AspectUpdatesDummy
             set { this.versionID = value; }
         }
 
+        public string Details
+        {
+            get { return this.details; }
+            set { this.details = value; }
+        }
+
     }
 }

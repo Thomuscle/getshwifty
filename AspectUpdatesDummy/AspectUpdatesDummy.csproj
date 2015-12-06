@@ -61,6 +61,12 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="EditCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCustomer.Designer.cs">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditVersion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VersionDatabase1DataSet1.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditCustomer.resx">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditVersion.resx">
       <DependentUpon>EditVersion.cs</DependentUpon>
     </EmbeddedResource>
