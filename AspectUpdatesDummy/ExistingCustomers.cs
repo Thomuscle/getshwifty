@@ -98,5 +98,19 @@ namespace AspectUpdatesDummy
             inspectCustomer.Show();
             this.Hide();
         }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this customer?",
+                                     "Confirm Deletion",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                int pk = (int)CustomersGrid.SelectedRows[0].Cells["PK"].Value;
+                Database.deleteCustomer(pk);
+
+                CustomersGrid.DataSource = Database.GetCustomerList();
+            }
+        }
     }
 }

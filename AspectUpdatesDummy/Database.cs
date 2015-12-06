@@ -438,6 +438,33 @@ namespace AspectUpdatesDummy
             }
         }
 
+        public static void deleteCustomer(int customerPK)
+        {
+            string updateStatement = "UPDATE Customer SET isDeleted= @delete WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@pk", customerPK);
+
+            bool delete = true;
+            updateCommand.Parameters.AddWithValue("@delete", delete);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         //
         //UPDATE METHODS:
         //

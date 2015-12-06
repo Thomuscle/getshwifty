@@ -75,6 +75,7 @@
             resources.ApplyResources(this.deleteBtn, "deleteBtn");
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // mainMenuBtn3
             // 
