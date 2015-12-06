@@ -93,8 +93,11 @@ namespace AspectUpdatesDummy
                 {
                     if ((row.Cells["Selected"].Value != null) && ((bool)((DataGridViewCheckBoxCell)row.Cells["Selected"]).Value))
                     {
-       
-                        Database.UpdateCustomer(Convert.ToInt32(row.Cells["PK"].Value.ToString()), versionPK);
+
+                        if (actualDate != null)
+                        {
+                            Database.UpdateCustomer(Convert.ToInt32(row.Cells["PK"].Value.ToString()), versionPK);
+                        }
                         Database.AddUpdate(versionPK, Convert.ToInt32(row.Cells["PK"].Value.ToString()), expectedDate, actualDate, comment);
                     }
                 }

@@ -32,6 +32,9 @@
             this.newVersUpdatesLbl = new System.Windows.Forms.Label();
             this.subLbl = new System.Windows.Forms.Label();
             this.submitBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.actualTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.actualDatePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +48,7 @@
             this.CustomersGrid.MultiSelect = false;
             this.CustomersGrid.Name = "CustomersGrid";
             this.CustomersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomersGrid.Size = new System.Drawing.Size(485, 181);
+            this.CustomersGrid.Size = new System.Drawing.Size(485, 147);
             this.CustomersGrid.TabIndex = 0;
             // 
             // newVersUpdatesLbl
@@ -79,16 +82,45 @@
             this.submitBtn.UseVisualStyleBackColor = true;
             this.submitBtn.Click += new System.EventHandler(this.submitBtn_Click);
             // 
-            // newVersionCustomers
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(74, 215);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 13);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Date and Time of Update Application:";
+            // 
+            // actualTimePicker
+            // 
+            this.actualTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.actualTimePicker.Location = new System.Drawing.Point(232, 231);
+            this.actualTimePicker.Name = "actualTimePicker";
+            this.actualTimePicker.ShowUpDown = true;
+            this.actualTimePicker.Size = new System.Drawing.Size(111, 20);
+            this.actualTimePicker.TabIndex = 25;
+            // 
+            // actualDatePicker
+            // 
+            this.actualDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.actualDatePicker.Location = new System.Drawing.Point(77, 231);
+            this.actualDatePicker.Name = "actualDatePicker";
+            this.actualDatePicker.Size = new System.Drawing.Size(150, 20);
+            this.actualDatePicker.TabIndex = 24;
+            // 
+            // NewVersionCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.actualTimePicker);
+            this.Controls.Add(this.actualDatePicker);
             this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.subLbl);
             this.Controls.Add(this.newVersUpdatesLbl);
             this.Controls.Add(this.CustomersGrid);
-            this.Name = "newVersionCustomers";
+            this.Name = "NewVersionCustomers";
             this.Text = "Aspect PT Version Database - New Version Updates";
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGrid)).EndInit();
             this.ResumeLayout(false);
@@ -102,5 +134,8 @@
         private System.Windows.Forms.Label newVersUpdatesLbl;
         private System.Windows.Forms.Label subLbl;
         private System.Windows.Forms.Button submitBtn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker actualTimePicker;
+        private System.Windows.Forms.DateTimePicker actualDatePicker;
     }
 }
