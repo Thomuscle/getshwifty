@@ -67,6 +67,12 @@
     <Compile Include="EditCustomer.Designer.cs">
       <DependentUpon>EditCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUpdate.Designer.cs">
+      <DependentUpon>EditUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditVersion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="InspectCustomer.Designer.cs">
       <DependentUpon>InspectCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InspectUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InspectUpdate.Designer.cs">
+      <DependentUpon>InspectUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="InspectVersion.cs">
       <SubType>Form</SubType>
@@ -156,6 +168,9 @@
     <EmbeddedResource Include="EditCustomer.resx">
       <DependentUpon>EditCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditUpdate.resx">
+      <DependentUpon>EditUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditVersion.resx">
       <DependentUpon>EditVersion.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InspectCustomer.resx">
       <DependentUpon>InspectCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InspectUpdate.resx">
+      <DependentUpon>InspectUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InspectVersion.resx">
       <DependentUpon>InspectVersion.cs</DependentUpon>

@@ -265,7 +265,7 @@ namespace AspectUpdatesDummy
         public static List<Customer> GetCustomerListWithID()
         {
             string selectStatement = "SELECT Customer.PK, Customer.Name, Customer.Details, Customer.VersionPK, Version.ID FROM Customer " +
-              "LEFT JOIN Version ON Customer.VersionPK=Version.PK ORDER BY Customer.Name ASC";
+              "LEFT JOIN Version ON Customer.VersionPK=Version.PK WHERE Customer.isDeleted=0 ORDER BY Customer.Name ASC";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);

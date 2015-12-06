@@ -77,6 +77,7 @@
             this.inspectBtn.TabIndex = 21;
             this.inspectBtn.Text = "Inspect";
             this.inspectBtn.UseVisualStyleBackColor = true;
+            this.inspectBtn.Click += new System.EventHandler(this.inspectBtn_Click);
             // 
             // UpdatesGrid
             // 

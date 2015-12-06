@@ -29,30 +29,37 @@ namespace AspectUpdatesDummy
             DataGridViewCheckBoxColumn csDeleted = new DataGridViewCheckBoxColumn();
             DataGridViewTextBoxColumn csComment = new DataGridViewTextBoxColumn();
 
+            csCustomerPK.Name = "CustomerPK";
             csCustomerPK.DataPropertyName = "CustomerPK";
             csCustomerPK.HeaderText = "Customer PK";
             UpdatesGrid.Columns.Add(csCustomerPK);
 
+            csVersionPK.Name = "VersionPK";
             csVersionPK.DataPropertyName = "VersionPK";
             csVersionPK.HeaderText = "Version PK";
             UpdatesGrid.Columns.Add(csVersionPK);
 
+            csVersionExpDate.Name = "ExpectedDate";
             csVersionExpDate.DataPropertyName = "ExpectedDate";
             csVersionExpDate.HeaderText = "Expected Date";
             UpdatesGrid.Columns.Add(csVersionExpDate);
 
+            csVersionActDate.Name = "ActualDate";
             csVersionActDate.DataPropertyName = "ActualDate";
             csVersionActDate.HeaderText = "Actual Date";
             UpdatesGrid.Columns.Add(csVersionActDate);
 
+            csPK.Name = "PK";
             csPK.DataPropertyName = "PK";
-            csPK.HeaderText = "PK";
+            csPK.Visible = false;
             UpdatesGrid.Columns.Add(csPK);
 
+            csComment.Name = "Comment";
             csComment.DataPropertyName = "Comment";
             csComment.Visible = false;
             UpdatesGrid.Columns.Add(csComment);
 
+            csDeleted.Name = "isDeleted";
             csDeleted.DataPropertyName = "isDeleted";
             csDeleted.HeaderText = "Deleted";
             UpdatesGrid.Columns.Add(csDeleted);
@@ -68,6 +75,11 @@ namespace AspectUpdatesDummy
         public DataGridView getUpdatesGrid()
         {
             return UpdatesGrid;
+        }
+
+        private void inspectBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

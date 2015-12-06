@@ -30,6 +30,8 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csVersionPK = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csVersionID = new DataGridViewTextBoxColumn();
             DataGridViewCheckBoxColumn csSelected = new DataGridViewCheckBoxColumn();
+            DataGridViewCheckBoxColumn csDetails = new DataGridViewCheckBoxColumn();
+            
 
             csSelected.HeaderText = "Selected";
             csSelected.Name = "Selected";
@@ -51,6 +53,10 @@ namespace AspectUpdatesDummy
             csPK.HeaderText = "PK";
             csPK.Name = "PK";
             CustomersGrid.Columns.Add(csPK);
+
+            csDetails.DataPropertyName = "Details";
+            csDetails.Visible = false;
+            CustomersGrid.Columns.Add(csDetails);
 
             foreach (DataGridViewColumn dc in CustomersGrid.Columns)
             {
