@@ -61,6 +61,7 @@
             resources.ApplyResources(this.inspectBtn, "inspectBtn");
             this.inspectBtn.Name = "inspectBtn";
             this.inspectBtn.UseVisualStyleBackColor = true;
+            this.inspectBtn.Click += new System.EventHandler(this.inspectBtn_Click);
             // 
             // editBtn
             // 

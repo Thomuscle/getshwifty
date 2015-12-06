@@ -138,7 +138,7 @@
             this.Controls.Add(this.existingVersionsGrid);
             this.Controls.Add(this.versionsLbl);
             this.Name = "ExistingVersions";
-            this.Text = "ExistingVersions";
+            this.Text = "Aspect PT Version Database - Versions";
             this.Load += new System.EventHandler(this.ExistingVersions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.existingVersionsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.versionDatabase1DataSet1)).EndInit();

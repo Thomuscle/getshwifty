@@ -15,6 +15,7 @@ namespace AspectUpdatesDummy
 
         MainMenu mainMenu;
         EditCustomer editCustomer;
+        InspectCustomer inspectCustomer;
 
         public ExistingCustomers(MainMenu m)
         {
@@ -22,6 +23,7 @@ namespace AspectUpdatesDummy
             mainMenu = m;
 
             editCustomer = new EditCustomer(this);
+            inspectCustomer = new InspectCustomer(this);
 
             CustomersGrid.Columns.Clear();
             DataGridViewTextBoxColumn csPK = new DataGridViewTextBoxColumn();
@@ -80,6 +82,20 @@ namespace AspectUpdatesDummy
             editCustomer.setFields(name, details, versionID, pk);
 
             editCustomer.Show();
+            this.Hide();
+        }
+
+        private void inspectBtn_Click(object sender, EventArgs e)
+        {
+            string name = CustomersGrid.SelectedRows[0].Cells["Name"].Value.ToString();
+            string details = CustomersGrid.SelectedRows[0].Cells["Details"].Value.ToString();
+            int versionPK = Convert.ToInt32(CustomersGrid.SelectedRows[0].Cells["VersionPK"].Value);
+
+            string versionID = Database.getVersionID(versionPK);
+
+            inspectCustomer.setFields(name, details, versionID);
+
+            inspectCustomer.Show();
             this.Hide();
         }
     }
