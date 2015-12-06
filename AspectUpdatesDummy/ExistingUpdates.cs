@@ -14,11 +14,14 @@ namespace AspectUpdatesDummy
     {
 
         MainMenu mainMenu;
+        InspectUpdate inspectUpdate;
 
         public ExistingUpdates(MainMenu m)
         {
             InitializeComponent();
             mainMenu = m;
+
+            inspectUpdate = new InspectUpdate(this);
 
             UpdatesGrid.Columns.Clear();
             DataGridViewTextBoxColumn csPK = new DataGridViewTextBoxColumn();
@@ -79,7 +82,17 @@ namespace AspectUpdatesDummy
 
         private void inspectBtn_Click(object sender, EventArgs e)
         {
+            string comment = UpdatesGrid.SelectedRows[0].Cells["Comment"].Value.ToString();
+            int versionPK = (int)UpdatesGrid.SelectedRows[0].Cells["VersionPK"].Value;
+            int customerPK = (int)UpdatesGrid.SelectedRows[0].Cells["CustomerPK"].Value;
+            int pk = (int)UpdatesGrid.SelectedRows[0].Cells["PK"].Value;
+            DateTime expectedDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ExpectedDate"].Value);
+            DateTime? actualDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ActualDate"].Value);
 
+            inspectUpdate.setFields(versionPK, customerPK, expectedDate, actualDate, comment);
+
+            inspectUpdate.Show();
+            this.Hide();
         }
     }
 }

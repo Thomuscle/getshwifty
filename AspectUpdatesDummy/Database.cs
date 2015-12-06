@@ -465,6 +465,38 @@ namespace AspectUpdatesDummy
             }
         }
 
+        public static string getCustomerName(int customerPK)
+        {
+            string selectStatement = "SELECT Name FROM Customer WHERE PK = @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@pk", customerPK);
+
+            string name = "";
+
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    name = reader.GetString(0);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return name;
+        }
+
         //
         //UPDATE METHODS:
         //
