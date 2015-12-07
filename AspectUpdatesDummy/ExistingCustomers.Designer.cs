@@ -35,6 +35,7 @@
             this.editBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.mainMenuBtn3 = new System.Windows.Forms.Button();
+            this.mainAddCustBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,10 +85,18 @@
             this.mainMenuBtn3.UseVisualStyleBackColor = true;
             this.mainMenuBtn3.Click += new System.EventHandler(this.mainMenuBtn3_Click);
             // 
+            // mainAddCustBtn
+            // 
+            resources.ApplyResources(this.mainAddCustBtn, "mainAddCustBtn");
+            this.mainAddCustBtn.Name = "mainAddCustBtn";
+            this.mainAddCustBtn.UseVisualStyleBackColor = true;
+            this.mainAddCustBtn.Click += new System.EventHandler(this.mainAddCustBtn_Click);
+            // 
             // ExistingCustomers
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.mainAddCustBtn);
             this.Controls.Add(this.mainMenuBtn3);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.editBtn);
@@ -109,5 +118,6 @@
         private System.Windows.Forms.Button editBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button mainMenuBtn3;
+        private System.Windows.Forms.Button mainAddCustBtn;
     }
 }

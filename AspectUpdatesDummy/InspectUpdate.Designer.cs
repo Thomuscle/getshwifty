@@ -36,6 +36,7 @@
             this.UpdateLbl = new System.Windows.Forms.Label();
             this.expLbl = new System.Windows.Forms.Label();
             this.actLbl = new System.Windows.Forms.Label();
+            this.employeeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // backBtn
@@ -56,7 +57,7 @@
             this.commentsTextBox.Multiline = true;
             this.commentsTextBox.Name = "commentsTextBox";
             this.commentsTextBox.ReadOnly = true;
-            this.commentsTextBox.Size = new System.Drawing.Size(294, 77);
+            this.commentsTextBox.Size = new System.Drawing.Size(260, 77);
             this.commentsTextBox.TabIndex = 39;
             // 
             // commentsLabel
@@ -108,7 +109,7 @@
             this.expLbl.AutoSize = true;
             this.expLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.expLbl.Location = new System.Drawing.Point(301, 109);
+            this.expLbl.Location = new System.Drawing.Point(301, 145);
             this.expLbl.Name = "expLbl";
             this.expLbl.Size = new System.Drawing.Size(127, 18);
             this.expLbl.TabIndex = 41;
@@ -119,25 +120,37 @@
             this.actLbl.AutoSize = true;
             this.actLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.actLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.actLbl.Location = new System.Drawing.Point(301, 174);
+            this.actLbl.Location = new System.Drawing.Point(301, 209);
             this.actLbl.Name = "actLbl";
             this.actLbl.Size = new System.Drawing.Size(104, 18);
             this.actLbl.TabIndex = 42;
             this.actLbl.Text = "Actual Date: ";
+            // 
+            // employeeLabel
+            // 
+            this.employeeLabel.AutoSize = true;
+            this.employeeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.employeeLabel.Location = new System.Drawing.Point(301, 79);
+            this.employeeLabel.Name = "employeeLabel";
+            this.employeeLabel.Size = new System.Drawing.Size(111, 18);
+            this.employeeLabel.TabIndex = 43;
+            this.employeeLabel.Text = "Assigned To: ";
             // 
             // InspectUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.employeeLabel);
             this.Controls.Add(this.actLbl);
             this.Controls.Add(this.expLbl);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.commentsTextBox);
             this.Controls.Add(this.commentsLabel);
             this.Controls.Add(this.versionLabel);
-            this.Controls.Add(this.customerLabel);
             this.Controls.Add(this.UpdateLbl);
+            this.Controls.Add(this.customerLabel);
             this.Name = "InspectUpdate";
             this.Text = "Aspect PT Version Database - Inspect Update";
             this.ResumeLayout(false);
@@ -155,5 +168,6 @@
         private System.Windows.Forms.Label UpdateLbl;
         private System.Windows.Forms.Label expLbl;
         private System.Windows.Forms.Label actLbl;
+        private System.Windows.Forms.Label employeeLabel;
     }
 }

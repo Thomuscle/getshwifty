@@ -34,15 +34,16 @@ namespace AspectUpdatesDummy
         {
             DateTime expectedDate = Convert.ToDateTime(expectedDatePicker.Value.ToShortDateString() + ' ' + expectedTimePicker.Value.ToShortTimeString());
             DateTime actualDate = Convert.ToDateTime(actualDatePicker.Value.ToShortDateString() + ' ' + actualTimePicker.Value.ToShortTimeString());
-            
+            int employee = Convert.ToInt32(employeeComboBox.SelectedValue);
+
             if (useActual.Checked)
             {
-               Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, actualDate);
+               Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, actualDate, employee);
                Database.UpdateCustomer(currentCustomer, currentVersion);
             }
             else
             {
-                Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text);
+                Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, employee);
             }
             
             MessageBox.Show("Completed!");
@@ -54,7 +55,7 @@ namespace AspectUpdatesDummy
             updatesPage.Show();
         }
 
-        public void setFields(int versionPK, int customerPK, DateTime expectedDate, string comment, int pk)
+        public void setFields(int versionPK, int customerPK, DateTime expectedDate, string comment, int pk, int employeePK)
         {
             currentPK = pk;
             currentCustomer = customerPK;
@@ -63,6 +64,15 @@ namespace AspectUpdatesDummy
             string versionID = Database.getVersionID(versionPK);
 
             string customerName = Database.getCustomerName(customerPK);
+
+            List<Employee> employeeList = Database.GetEmployeeList();
+            //employeeComboBox.DataSource
+
+            employeeComboBox.ValueMember = "PK";
+            employeeComboBox.DisplayMember = "Name";
+            employeeComboBox.DataSource = employeeList;
+            employeeComboBox.SelectedIndex = employeeList.FindIndex(k => k.PK == employeePK);
+            //employeeComboBox.ValueType = typeof(Employee);
 
             versionLabel.Text = "Version: " + versionID;
             customerLabel.Text = "Customer: " + customerName;

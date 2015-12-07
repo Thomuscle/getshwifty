@@ -34,13 +34,14 @@
             this.inspectBtn = new System.Windows.Forms.Button();
             this.UpdatesGrid = new System.Windows.Forms.DataGridView();
             this.UpdtLbl = new System.Windows.Forms.Label();
+            this.mainAddVersBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.UpdatesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuBtn5
             // 
             this.mainMenuBtn5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.mainMenuBtn5.Location = new System.Drawing.Point(486, 277);
+            this.mainMenuBtn5.Location = new System.Drawing.Point(582, 323);
             this.mainMenuBtn5.Name = "mainMenuBtn5";
             this.mainMenuBtn5.Size = new System.Drawing.Size(134, 40);
             this.mainMenuBtn5.TabIndex = 24;
@@ -51,7 +52,7 @@
             // deleteBtn
             // 
             this.deleteBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.deleteBtn.Location = new System.Drawing.Point(328, 277);
+            this.deleteBtn.Location = new System.Drawing.Point(442, 323);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(134, 40);
             this.deleteBtn.TabIndex = 23;
@@ -62,7 +63,7 @@
             // editBtn
             // 
             this.editBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.editBtn.Location = new System.Drawing.Point(172, 277);
+            this.editBtn.Location = new System.Drawing.Point(302, 323);
             this.editBtn.Name = "editBtn";
             this.editBtn.Size = new System.Drawing.Size(134, 40);
             this.editBtn.TabIndex = 22;
@@ -73,7 +74,7 @@
             // inspectBtn
             // 
             this.inspectBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.inspectBtn.Location = new System.Drawing.Point(14, 277);
+            this.inspectBtn.Location = new System.Drawing.Point(162, 323);
             this.inspectBtn.Name = "inspectBtn";
             this.inspectBtn.Size = new System.Drawing.Size(134, 40);
             this.inspectBtn.TabIndex = 21;
@@ -88,12 +89,12 @@
             this.UpdatesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UpdatesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.UpdatesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UpdatesGrid.Location = new System.Drawing.Point(14, 43);
+            this.UpdatesGrid.Location = new System.Drawing.Point(22, 47);
             this.UpdatesGrid.MultiSelect = false;
             this.UpdatesGrid.Name = "UpdatesGrid";
             this.UpdatesGrid.ReadOnly = true;
             this.UpdatesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.UpdatesGrid.Size = new System.Drawing.Size(606, 214);
+            this.UpdatesGrid.Size = new System.Drawing.Size(694, 257);
             this.UpdatesGrid.TabIndex = 20;
             // 
             // UpdtLbl
@@ -101,17 +102,28 @@
             this.UpdtLbl.AutoSize = true;
             this.UpdtLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.UpdtLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.UpdtLbl.Location = new System.Drawing.Point(274, 14);
+            this.UpdtLbl.Location = new System.Drawing.Point(330, 9);
             this.UpdtLbl.Name = "UpdtLbl";
             this.UpdtLbl.Size = new System.Drawing.Size(77, 20);
             this.UpdtLbl.TabIndex = 19;
             this.UpdtLbl.Text = "Updates";
             // 
+            // mainAddVersBtn
+            // 
+            this.mainAddVersBtn.Location = new System.Drawing.Point(22, 323);
+            this.mainAddVersBtn.Name = "mainAddVersBtn";
+            this.mainAddVersBtn.Size = new System.Drawing.Size(134, 40);
+            this.mainAddVersBtn.TabIndex = 25;
+            this.mainAddVersBtn.Text = "Add Update";
+            this.mainAddVersBtn.UseVisualStyleBackColor = true;
+            this.mainAddVersBtn.Click += new System.EventHandler(this.mainAddVersBtn_Click);
+            // 
             // ExistingUpdates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 330);
+            this.ClientSize = new System.Drawing.Size(741, 375);
+            this.Controls.Add(this.mainAddVersBtn);
             this.Controls.Add(this.mainMenuBtn5);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.editBtn);
@@ -134,5 +146,6 @@
         private System.Windows.Forms.Button inspectBtn;
         private System.Windows.Forms.DataGridView UpdatesGrid;
         private System.Windows.Forms.Label UpdtLbl;
+        private System.Windows.Forms.Button mainAddVersBtn;
     }
 }

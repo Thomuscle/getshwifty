@@ -662,8 +662,9 @@ namespace AspectUpdatesDummy
                     DateTime? actualDate = reader[4] as DateTime?;
                     String comment = Convert.ToString(reader.GetValue(5));
                     bool isDeleted = reader.GetBoolean(6);
+                    int? assignedTo = reader[7] as int?;
 
-                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted);
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
                     updateList.Add(up);
                 }
             }
@@ -679,9 +680,9 @@ namespace AspectUpdatesDummy
             return updateList;
         }
 
-        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments)
+        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, int assigned)
         {
-            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments" +
+            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, AssignedTo = @assigned" +
                "  WHERE PK= @pk";
 
             SqlConnection connection = Database.GetConnection();
@@ -690,6 +691,7 @@ namespace AspectUpdatesDummy
             updateCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
             updateCommand.Parameters.AddWithValue("@pk", pk);
             updateCommand.Parameters.AddWithValue("@comments", comments);
+            updateCommand.Parameters.AddWithValue("@assigned", assigned);
 
             try
             {
@@ -707,9 +709,9 @@ namespace AspectUpdatesDummy
             }
         }
 
-        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, DateTime actualDate)
+        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, DateTime actualDate, int assigned)
         {
-            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, Actual_Date= @actualDate" +
+            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, Actual_Date= @actualDate, AssignedTo = @assigned" +
                "  WHERE PK= @pk";
 
             SqlConnection connection = Database.GetConnection();
@@ -719,6 +721,7 @@ namespace AspectUpdatesDummy
             updateCommand.Parameters.AddWithValue("@actualDate", actualDate);
             updateCommand.Parameters.AddWithValue("@pk", pk);
             updateCommand.Parameters.AddWithValue("@comments", comments);
+            updateCommand.Parameters.AddWithValue("@assigned", assigned);
 
             try
             {
@@ -801,5 +804,36 @@ namespace AspectUpdatesDummy
             return employeeList;
         }
 
+        public static string getEmployeeName(int employeePK)
+        {
+            string selectStatement = "SELECT Name FROM Employee WHERE PK = @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@pk", employeePK);
+
+            string name = "";
+
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    name = reader.GetString(0);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return name;
+        }
     }
 }

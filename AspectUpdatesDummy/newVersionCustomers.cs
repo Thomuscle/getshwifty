@@ -12,12 +12,12 @@ namespace AspectUpdatesDummy
 {
     public partial class NewVersionCustomers : Form
     {
-        MainMenu mainMenu;
+        ExistingVersions mainMenu;
         NewVersionPage versionPage;
         string versionID;
         int versionPK;
 
-        public NewVersionCustomers(MainMenu m, NewVersionPage nvp)
+        public NewVersionCustomers(ExistingVersions m, NewVersionPage nvp)
         {
             InitializeComponent();
             mainMenu = m;

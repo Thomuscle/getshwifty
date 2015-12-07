@@ -38,6 +38,7 @@
             this.versionDatabase1DataSet1 = new AspectUpdatesDummy.VersionDatabase1DataSet1();
             this.versionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.versionTableAdapter = new AspectUpdatesDummy.VersionDatabase1DataSet1TableAdapters.VersionTableAdapter();
+            this.mainAddVersBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.existingVersionsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.versionDatabase1DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.versionBindingSource)).BeginInit();
@@ -46,7 +47,7 @@
             // mainMenuBtn4
             // 
             this.mainMenuBtn4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.mainMenuBtn4.Location = new System.Drawing.Point(487, 272);
+            this.mainMenuBtn4.Location = new System.Drawing.Point(583, 323);
             this.mainMenuBtn4.Name = "mainMenuBtn4";
             this.mainMenuBtn4.Size = new System.Drawing.Size(134, 40);
             this.mainMenuBtn4.TabIndex = 24;
@@ -57,7 +58,7 @@
             // deleteBtn
             // 
             this.deleteBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.deleteBtn.Location = new System.Drawing.Point(329, 272);
+            this.deleteBtn.Location = new System.Drawing.Point(443, 323);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(134, 40);
             this.deleteBtn.TabIndex = 23;
@@ -68,7 +69,7 @@
             // editBtn
             // 
             this.editBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.editBtn.Location = new System.Drawing.Point(173, 272);
+            this.editBtn.Location = new System.Drawing.Point(303, 323);
             this.editBtn.Name = "editBtn";
             this.editBtn.Size = new System.Drawing.Size(134, 40);
             this.editBtn.TabIndex = 22;
@@ -79,7 +80,7 @@
             // inspectBtn
             // 
             this.inspectBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.inspectBtn.Location = new System.Drawing.Point(15, 272);
+            this.inspectBtn.Location = new System.Drawing.Point(163, 323);
             this.inspectBtn.Name = "inspectBtn";
             this.inspectBtn.Size = new System.Drawing.Size(134, 40);
             this.inspectBtn.TabIndex = 21;
@@ -93,12 +94,12 @@
             this.existingVersionsGrid.AllowUserToDeleteRows = false;
             this.existingVersionsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.existingVersionsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.existingVersionsGrid.Location = new System.Drawing.Point(15, 38);
+            this.existingVersionsGrid.Location = new System.Drawing.Point(23, 50);
             this.existingVersionsGrid.MultiSelect = false;
             this.existingVersionsGrid.Name = "existingVersionsGrid";
             this.existingVersionsGrid.ReadOnly = true;
             this.existingVersionsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.existingVersionsGrid.Size = new System.Drawing.Size(606, 214);
+            this.existingVersionsGrid.Size = new System.Drawing.Size(694, 255);
             this.existingVersionsGrid.TabIndex = 20;
             // 
             // versionsLbl
@@ -106,7 +107,7 @@
             this.versionsLbl.AutoSize = true;
             this.versionsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.versionsLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.versionsLbl.Location = new System.Drawing.Point(271, 9);
+            this.versionsLbl.Location = new System.Drawing.Point(327, 9);
             this.versionsLbl.Name = "versionsLbl";
             this.versionsLbl.Size = new System.Drawing.Size(79, 20);
             this.versionsLbl.TabIndex = 19;
@@ -126,11 +127,22 @@
             // 
             this.versionTableAdapter.ClearBeforeFill = true;
             // 
+            // mainAddVersBtn
+            // 
+            this.mainAddVersBtn.Location = new System.Drawing.Point(23, 323);
+            this.mainAddVersBtn.Name = "mainAddVersBtn";
+            this.mainAddVersBtn.Size = new System.Drawing.Size(134, 40);
+            this.mainAddVersBtn.TabIndex = 25;
+            this.mainAddVersBtn.Text = "Add Version";
+            this.mainAddVersBtn.UseVisualStyleBackColor = true;
+            this.mainAddVersBtn.Click += new System.EventHandler(this.mainAddVersBtn_Click);
+            // 
             // ExistingVersions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 330);
+            this.ClientSize = new System.Drawing.Size(741, 375);
+            this.Controls.Add(this.mainAddVersBtn);
             this.Controls.Add(this.mainMenuBtn4);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.editBtn);
@@ -159,5 +171,6 @@
         private VersionDatabase1DataSet1 versionDatabase1DataSet1;
         private System.Windows.Forms.BindingSource versionBindingSource;
         private VersionDatabase1DataSet1TableAdapters.VersionTableAdapter versionTableAdapter;
+        private System.Windows.Forms.Button mainAddVersBtn;
     }
 }

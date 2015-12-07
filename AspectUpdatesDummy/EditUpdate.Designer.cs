@@ -43,6 +43,8 @@
             this.actualTimePicker = new System.Windows.Forms.DateTimePicker();
             this.actualDatePicker = new System.Windows.Forms.DateTimePicker();
             this.expectedTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.employeeComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // submitBtn
@@ -187,11 +189,30 @@
             this.expectedTimePicker.Size = new System.Drawing.Size(111, 20);
             this.expectedTimePicker.TabIndex = 49;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(327, 83);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.TabIndex = 55;
+            this.label4.Text = "Assigned To";
+            // 
+            // employeeComboBox
+            // 
+            this.employeeComboBox.FormattingEnabled = true;
+            this.employeeComboBox.Location = new System.Drawing.Point(399, 79);
+            this.employeeComboBox.Name = "employeeComboBox";
+            this.employeeComboBox.Size = new System.Drawing.Size(195, 21);
+            this.employeeComboBox.TabIndex = 56;
+            // 
             // EditUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.employeeComboBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.useActual);
@@ -231,5 +252,7 @@
         private System.Windows.Forms.DateTimePicker actualTimePicker;
         private System.Windows.Forms.DateTimePicker actualDatePicker;
         private System.Windows.Forms.DateTimePicker expectedTimePicker;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox employeeComboBox;
     }
 }

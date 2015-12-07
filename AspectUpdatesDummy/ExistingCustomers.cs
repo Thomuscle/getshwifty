@@ -16,6 +16,7 @@ namespace AspectUpdatesDummy
         MainMenu mainMenu;
         EditCustomer editCustomer;
         InspectCustomer inspectCustomer;
+        NewCustomerPage newCustomerPage;
 
         public ExistingCustomers(MainMenu m)
         {
@@ -114,6 +115,15 @@ namespace AspectUpdatesDummy
 
                 CustomersGrid.DataSource = Database.GetCustomerList();
             }
+        }
+
+        private void mainAddCustBtn_Click(object sender, EventArgs e)
+        {
+            newCustomerPage = new NewCustomerPage(this);
+            DataGridView dgv = newCustomerPage.getVersionGrid();
+            dgv.DataSource = Database.GetVersionList();
+            newCustomerPage.Show();
+            this.Hide();
         }
     }
 }

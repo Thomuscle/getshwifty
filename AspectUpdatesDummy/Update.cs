@@ -15,8 +15,9 @@ namespace AspectUpdatesDummy
         private bool isDeleted;
         private DateTime? expectedDate;
         private DateTime? actualDate;
+        private int? assignedTo;
 
-        public Update(int pk, int versionPK, int customerPK, DateTime? expectedDate, DateTime? actualDate, string comment, bool deleted)
+        public Update(int pk, int versionPK, int customerPK, DateTime? expectedDate, DateTime? actualDate, string comment, bool deleted, int? assignedTo)
         {
             this.pk = pk;
             this.customerPK = customerPK;
@@ -25,6 +26,7 @@ namespace AspectUpdatesDummy
             this.comment = comment;
             this.versionPK = versionPK;
             isDeleted = deleted;
+            this.assignedTo = assignedTo;
 
         }
 
@@ -78,6 +80,12 @@ namespace AspectUpdatesDummy
         public string VersionID
         {
             get { return Database.getVersionID(versionPK); }
+        }
+
+        public int? Employee
+        {
+            get { return this.assignedTo; }
+            set { this.assignedTo = value; }
         }
     }
 }

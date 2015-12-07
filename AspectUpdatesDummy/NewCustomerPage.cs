@@ -13,9 +13,9 @@ namespace AspectUpdatesDummy
     public partial class NewCustomerPage : Form
     {
 
-        MainMenu mainMenu;
+        ExistingCustomers mainMenu;
 
-        public NewCustomerPage(MainMenu m)
+        public NewCustomerPage(ExistingCustomers m)
         {
             InitializeComponent();
             mainMenu = m;

@@ -14,13 +14,13 @@ namespace AspectUpdatesDummy
     {
 
         NewUpdatePage newUpdatePage;
-        MainMenu mainMenu;
+        ExistingUpdates mainMenu;
         int versionPK;
         DateTime? actualDate;
         DateTime expectedDate;
         string comment;
 
-        public NewUpdateCustomers(NewUpdatePage nup, MainMenu m)
+        public NewUpdateCustomers(NewUpdatePage nup, ExistingUpdates m)
         {
             InitializeComponent();
             newUpdatePage = nup;

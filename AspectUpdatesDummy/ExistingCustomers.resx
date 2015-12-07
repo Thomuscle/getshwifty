@@ -126,7 +126,7 @@
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="CustLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 9</value>
+    <value>314, 9</value>
   </data>
   <data name="CustLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 20</value>
@@ -147,13 +147,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CustLbl.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="CustomersGrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 38</value>
+    <value>22, 41</value>
   </data>
   <data name="CustomersGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>606, 214</value>
+    <value>694, 265</value>
   </data>
   <data name="CustomersGrid.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -168,10 +168,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CustomersGrid.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="inspectBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 272</value>
+    <value>162, 323</value>
   </data>
   <data name="inspectBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 40</value>
@@ -192,14 +192,14 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;inspectBtn.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="editBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="editBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 272</value>
+    <value>302, 323</value>
   </data>
   <data name="editBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 40</value>
@@ -220,13 +220,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;editBtn.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="deleteBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="deleteBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>329, 272</value>
+    <value>442, 323</value>
   </data>
   <data name="deleteBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 40</value>
@@ -247,13 +247,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;deleteBtn.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="mainMenuBtn3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="mainMenuBtn3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 272</value>
+    <value>582, 323</value>
   </data>
   <data name="mainMenuBtn3.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 40</value>
@@ -274,6 +274,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mainMenuBtn3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="mainAddCustBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 323</value>
+  </data>
+  <data name="mainAddCustBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 40</value>
+  </data>
+  <data name="mainAddCustBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="mainAddCustBtn.Text" xml:space="preserve">
+    <value>Add Customer</value>
+  </data>
+  <data name="&gt;&gt;mainAddCustBtn.Name" xml:space="preserve">
+    <value>mainAddCustBtn</value>
+  </data>
+  <data name="&gt;&gt;mainAddCustBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mainAddCustBtn.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mainAddCustBtn.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -283,7 +307,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>634, 330</value>
+    <value>741, 375</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Aspect PT Version Database - Customers</value>

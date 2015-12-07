@@ -21,14 +21,17 @@ namespace AspectUpdatesDummy
             updatesPage = eu;
         }
 
-        public void setFields(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate, string comment)
+        public void setFields(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate, string comment, int assignedTo)
         {
             string versionID = Database.getVersionID(versionPK);
 
             string customerName = Database.getCustomerName(customerPK);
+
+            string employeeName = Database.getEmployeeName(assignedTo);
             
             versionLabel.Text = "Version: " + versionID;
             customerLabel.Text = "Customer: " + customerName;
+            employeeLabel.Text = "Assigned To: " + employeeName;
             commentsTextBox.Text = comment;
             if (expectedDate == System.DateTime.MinValue)
             {
