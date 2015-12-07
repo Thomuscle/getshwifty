@@ -13,13 +13,15 @@ namespace AspectUpdatesDummy
     public partial class NewVersionCustomers : Form
     {
         MainMenu mainMenu;
+        NewVersionPage versionPage;
         string versionID;
         int versionPK;
 
-        public NewVersionCustomers(MainMenu m)
+        public NewVersionCustomers(MainMenu m, NewVersionPage nvp)
         {
             InitializeComponent();
             mainMenu = m;
+            versionPage = nvp;
 
             CustomersGrid.Columns.Clear();
             DataGridViewTextBoxColumn csPK = new DataGridViewTextBoxColumn();
@@ -76,9 +78,9 @@ namespace AspectUpdatesDummy
                     if ((row.Cells[0].Value != null) && ((bool)((DataGridViewCheckBoxCell)row.Cells[0]).Value))
                     {
                         int versionPK = Database.UpdateCustomer(Convert.ToInt32(row.Cells["PK"].Value.ToString()));
-
+                        
                         DateTime date = Convert.ToDateTime(actualDatePicker.Value.ToShortDateString() + ' ' + actualTimePicker.Value.ToShortTimeString());
-                        Database.AddUpdate(versionPK, Convert.ToInt32(row.Cells["PK"].Value.ToString()), date, date, "");
+                        Database.AddUpdate(versionPK, Convert.ToInt32(row.Cells["PK"].Value.ToString()), date, date, "", 0);
                     }
                 }
             }catch(Exception ex){
@@ -99,6 +101,12 @@ namespace AspectUpdatesDummy
         {
             get { return versionPK; }
             set { versionPK = value; }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            versionPage.Show();
         }
     }
 }

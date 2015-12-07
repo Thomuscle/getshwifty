@@ -79,6 +79,7 @@
     <Compile Include="EditVersion.Designer.cs">
       <DependentUpon>EditVersion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employee.cs" />
     <Compile Include="ExistingCustomers.cs">
       <SubType>Form</SubType>
     </Compile>

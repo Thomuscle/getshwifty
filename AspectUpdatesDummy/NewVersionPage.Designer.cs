@@ -114,9 +114,9 @@
             this.typeLbl.AutoSize = true;
             this.typeLbl.Location = new System.Drawing.Point(25, 121);
             this.typeLbl.Name = "typeLbl";
-            this.typeLbl.Size = new System.Drawing.Size(117, 13);
+            this.typeLbl.Size = new System.Drawing.Size(69, 13);
             this.typeLbl.TabIndex = 7;
-            this.typeLbl.Text = "Version Type (Optional)";
+            this.typeLbl.Text = "Version Type";
             // 
             // releaseDateCal
             // 

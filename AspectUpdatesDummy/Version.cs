@@ -15,6 +15,8 @@ namespace AspectUpdatesDummy
         private DateTime release_Date;
         private bool isDeleted;
 
+        public enum TypeEnum { Release = 1, Hotfix = 2 };
+
         public Version(int pk, string id, string description, int type, DateTime release_date, bool deleted)
         {
             this.pk = pk;
@@ -38,10 +40,12 @@ namespace AspectUpdatesDummy
             set { this.id = value; }
         }
 
-        public int Type
+        public string Type
         {
-            get { return this.type; }
-            set { this.type = value; }
+            get {TypeEnum typeEnum = (TypeEnum)this.type;
+            return typeEnum.ToString();
+            }
+            set { this.type = Convert.ToInt32(value); }
         }
 
         public DateTime ReleaseDate

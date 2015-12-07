@@ -40,6 +40,7 @@ namespace AspectUpdatesDummy
             csVersionPK.Name = "VersionPK";
             csVersionPK.DataPropertyName = "VersionPK";
             csVersionPK.HeaderText = "Version PK";
+            csVersionPK.Visible = false;
             CustomersGrid.Columns.Add(csVersionPK);
 
             csPK.Name = "PK";
@@ -48,8 +49,8 @@ namespace AspectUpdatesDummy
             csPK.Visible = false;
             CustomersGrid.Columns.Add(csPK);
 
-            csVersionID.DataPropertyName = "VersionID";
-            csVersionID.Visible = false;
+            csVersionID.Name = "VersionID";
+            csVersionID.HeaderText = "Version";
             csVersionID.DataPropertyName = "VersionID";
             CustomersGrid.Columns.Add(csVersionID);
 
@@ -77,8 +78,9 @@ namespace AspectUpdatesDummy
             string details = CustomersGrid.SelectedRows[0].Cells["Details"].Value.ToString();
             int versionPK = Convert.ToInt32(CustomersGrid.SelectedRows[0].Cells["VersionPK"].Value);
             int pk = Convert.ToInt32(CustomersGrid.SelectedRows[0].Cells["PK"].Value);
+            string versionID = CustomersGrid.SelectedRows[0].Cells["VersionID"].Value.ToString();
 
-            string versionID = Database.getVersionID(versionPK);
+            //string versionID = Database.getVersionID(versionPK);
             
             editCustomer.setFields(name, details, versionID, pk);
 

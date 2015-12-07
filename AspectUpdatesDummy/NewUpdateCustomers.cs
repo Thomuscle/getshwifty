@@ -32,7 +32,8 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csVersionPK = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csVersionID = new DataGridViewTextBoxColumn();
             DataGridViewCheckBoxColumn csSelected = new DataGridViewCheckBoxColumn();
-            DataGridViewCheckBoxColumn csDetails = new DataGridViewCheckBoxColumn();
+            DataGridViewTextBoxColumn csDetails = new DataGridViewTextBoxColumn();
+            DataGridViewComboBoxColumn csAssigned = new DataGridViewComboBoxColumn();
             
 
             csSelected.HeaderText = "Selected";
@@ -47,8 +48,18 @@ namespace AspectUpdatesDummy
             csVersionID.HeaderText = "Current Version";
             CustomersGrid.Columns.Add(csVersionID);
 
+            csAssigned.Name = "AssignedTo";
+            csAssigned.HeaderText = "Assign To";
+            csAssigned.ValueMember = "PK";
+            csAssigned.DisplayMember = "Name";
+            csAssigned.DataSource = Database.GetEmployeeList();
+            csAssigned.ValueType = typeof(Employee);
+           
+            CustomersGrid.Columns.Add(csAssigned);
+
             csVersionPK.DataPropertyName = "VersionPK";
             csVersionPK.HeaderText = "Version PK";
+            csVersionPK.Visible = false;
             CustomersGrid.Columns.Add(csVersionPK);
 
             csPK.DataPropertyName = "PK";
@@ -63,7 +74,7 @@ namespace AspectUpdatesDummy
 
             foreach (DataGridViewColumn dc in CustomersGrid.Columns)
             {
-                if (dc.Index.Equals(0))
+                if (dc.Index.Equals(0) || dc.Index.Equals(3))
                 {
                     dc.ReadOnly = false;
                 }
@@ -92,6 +103,7 @@ namespace AspectUpdatesDummy
             this.expectedDate = expectedDate;
             this.actualDate = actualDate;
             this.comment = comment;
+            
         }
 
         private void submitBtn_Click(object sender, EventArgs e)
@@ -106,8 +118,12 @@ namespace AspectUpdatesDummy
                         if (actualDate != null)
                         {
                             Database.UpdateCustomer(Convert.ToInt32(row.Cells["PK"].Value.ToString()), versionPK);
+                            //Remove update from employee's tasks.
                         }
-                        Database.AddUpdate(versionPK, Convert.ToInt32(row.Cells["PK"].Value.ToString()), expectedDate, actualDate, comment);
+
+                        int employeePK = Convert.ToInt32(row.Cells["AssignedTo"].Value);
+
+                        Database.AddUpdate(versionPK, Convert.ToInt32(row.Cells["PK"].Value.ToString()), expectedDate, actualDate, comment, employeePK);
                     }
                 }
             }

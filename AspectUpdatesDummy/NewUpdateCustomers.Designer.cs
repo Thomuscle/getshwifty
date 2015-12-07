@@ -98,7 +98,7 @@
             this.Controls.Add(this.subtitle);
             this.Controls.Add(this.CustLbl);
             this.Name = "NewUpdateCustomers";
-            this.Text = "NewUpdateCustomers";
+            this.Text = "Aspect PT Version Database - New Update Customers";
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

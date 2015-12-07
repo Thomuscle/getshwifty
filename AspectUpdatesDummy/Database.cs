@@ -154,7 +154,7 @@ namespace AspectUpdatesDummy
             }
         }
 
-        public static string getVersionID(int versionPK)
+        public static string getVersionID(int? versionPK)
         {
             string selectStatement = "SELECT ID FROM Version WHERE PK = @pk";
 
@@ -584,13 +584,13 @@ namespace AspectUpdatesDummy
             return return_code;
         }
 
-        public static int AddUpdate(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate, string comment)
+        public static int AddUpdate(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate, string comment, int assigned)
         {
             int return_code = 0;
 
             string insertStatement = "INSERT INTO [Update] " +
-                "(VersionPK, CustomerPK, Expected_Date, Actual_Date, Comment) " +
-                "VALUES (@versionPK, @customerPK, @expectedDate, @actualDate, @comment)";
+                "(VersionPK, CustomerPK, Expected_Date, Actual_Date, Comment, AssignedTo) " +
+                "VALUES (@versionPK, @customerPK, @expectedDate, @actualDate, @comment, @assigned)";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
@@ -599,6 +599,16 @@ namespace AspectUpdatesDummy
             insertCommand.Parameters.AddWithValue("@customerPK", customerPK);
             insertCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
             insertCommand.Parameters.AddWithValue("@comment", comment);
+
+            if (assigned == 0)
+            {
+                insertCommand.Parameters.AddWithValue("@assigned", DBNull.Value);
+            }
+            else
+            {
+                insertCommand.Parameters.AddWithValue("@assigned", assigned);
+            }
+            
 
 
             if (actualDate == null)
@@ -752,5 +762,44 @@ namespace AspectUpdatesDummy
                 connection.Close();
             }
         }
+
+        //
+        //EMPLOYEE METHODS:
+        //
+
+        public static List<Employee> GetEmployeeList()
+        {
+            string selectStatement = "SELECT PK, Name FROM Employee " +
+              "WHERE isDeleted=0 ORDER BY Name ASC";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            List<Employee> employeeList = new List<Employee>();
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    int pk = reader.GetInt32(0);
+                    String name = reader.GetString(1);
+
+                    Employee employee = new Employee(pk, name, false);
+                    employeeList.Add(employee);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return employeeList;
+        }
+
     }
 }

@@ -55,7 +55,7 @@ namespace AspectUpdatesDummy
 
         public string VersionID
         {
-            get { return this.versionID; }
+            get { return Database.getVersionID(versionPK); }
             set { this.versionID = value; }
         }
 
