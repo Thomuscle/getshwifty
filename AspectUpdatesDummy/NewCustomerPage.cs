@@ -38,15 +38,17 @@ namespace AspectUpdatesDummy
             csReleaseDate.HeaderText = "Release Date";
             versionGrid.Columns.Add(csReleaseDate);
 
+            csPK.Name = "PK";
             csPK.DataPropertyName = "PK";
             csPK.HeaderText = "PK";
+            csPK.Visible = false;
             versionGrid.Columns.Add(csPK);
 
         }
 
         private void mainMenuBtn1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             mainMenu.Show();
         }
 
@@ -63,9 +65,15 @@ namespace AspectUpdatesDummy
         {
             string name = nameTxtBx.Text;
             string details = descriptionTxtBx.Text;
-            int versionPK = (int)versionGrid.SelectedCells[0].Value;
-            Database.InsertCustomer(name, details, versionPK);
-
+            if (versionGrid.Rows.Count != 0)
+            {
+                int versionPK = (int)versionGrid.SelectedRows[0].Cells["PK"].Value;
+                Database.InsertCustomer(name, details, versionPK);
+            }
+            else
+            {
+                Database.InsertCustomer(name, details);
+            }
             MessageBox.Show("Completed!");
             
             this.Hide();

@@ -226,6 +226,38 @@ namespace AspectUpdatesDummy
             return return_code;
         }
 
+        public static int InsertCustomer(string name, string details)
+        {
+            int return_code = 0;
+            
+            string insertStatement = "INSERT INTO Customer " +
+                "(Name, Details) " +
+                "VALUES (@name, @details)";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.AddWithValue("@name", name);
+            insertCommand.Parameters.AddWithValue("@details", details);
+
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                return_code = 1;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return return_code;
+        }
+
         public static List<Customer> GetCustomerList()
         {
             string selectStatement = "SELECT * FROM Customer " +
@@ -244,7 +276,16 @@ namespace AspectUpdatesDummy
                     int pk = reader.GetInt32(0);
                     String name = reader.GetString(1);
                     String details = reader.GetString(2);
-                    int versionPK = reader.GetInt32(3);
+                    int? versionPK;
+
+                    if (reader.GetValue(3) == DBNull.Value)
+                    {
+                        versionPK = null;
+                    }
+                    else
+                    {
+                        versionPK = reader.GetInt32(3);
+                    }
 
                     Customer cust = new Customer(pk, name, details, versionPK, false);
                     customerList.Add(cust);
@@ -280,9 +321,19 @@ namespace AspectUpdatesDummy
                     int pk = reader.GetInt32(0);
                     String name = reader.GetString(1);
                     String details = reader.GetString(2);
-                    int versionPK = reader.GetInt32(3);
-                    string versionID = reader.GetString(4);
-
+                    int? versionPK;
+                    string versionID;
+                    if (reader.GetValue(3) == DBNull.Value)
+                    {
+                        versionPK = null;
+                        versionID = "";
+                    }
+                    else
+                    {
+                        versionPK = reader.GetInt32(3);
+                        versionID = reader.GetString(4);
+                    }
+                   
                     Customer cust = new Customer(pk, name, details, versionPK, versionID, false);
                     customerList.Add(cust);
                 }
@@ -301,7 +352,7 @@ namespace AspectUpdatesDummy
 
         public static List<Customer> GetCustomersWithVersion(int vpk)
         {
-            string selectStatement = "SELECT * FROM Customer WHERE VersionPK = @pk";
+            string selectStatement = "SELECT * FROM Customer WHERE VersionPK = @pk AND isDeleted =0";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
@@ -582,7 +633,7 @@ namespace AspectUpdatesDummy
         public static List<Update> GetUpdateList()
         {
             string selectStatement = "SELECT * FROM [Update] " +
-              "ORDER BY isDeleted, Expected_Date DESC";
+              "WHERE isDeleted =0 ORDER BY Expected_Date DESC";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);

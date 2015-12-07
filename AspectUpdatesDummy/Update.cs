@@ -69,5 +69,15 @@ namespace AspectUpdatesDummy
             get { return this.isDeleted; }
             set { this.isDeleted = value; }
         }
+
+        public string CustomerName
+        {
+            get { return Database.getCustomerName(customerPK); }
+        }
+
+        public string VersionID
+        {
+            get { return Database.getVersionID(versionPK); }
+        }
     }
 }

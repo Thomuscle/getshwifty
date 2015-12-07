@@ -45,6 +45,7 @@ namespace AspectUpdatesDummy
             csPK.Name = "PK";
             csPK.DataPropertyName = "PK";
             csPK.HeaderText = "PK";
+            csPK.Visible = false;
             CustomersGrid.Columns.Add(csPK);
 
             csVersionID.DataPropertyName = "VersionID";

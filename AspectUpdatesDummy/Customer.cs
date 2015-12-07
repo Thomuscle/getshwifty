@@ -11,11 +11,11 @@ namespace AspectUpdatesDummy
         private int pk;
         private string name;
         private string details;
-        private int versionPK;
+        private int? versionPK;
         private string versionID;
         private bool isDeleted;
 
-        public Customer(int pk, string name, string details, int versionPK, bool deleted)
+        public Customer(int pk, string name, string details, int? versionPK, bool deleted)
         {
             this.pk = pk;
             this.name = name;
@@ -25,7 +25,7 @@ namespace AspectUpdatesDummy
 
         }
 
-        public Customer(int pk, string name, string details, int versionPK, string versionID, bool deleted)
+        public Customer(int pk, string name, string details, int? versionPK, string versionID, bool deleted)
         {
             this.pk = pk;
             this.name = name;
@@ -47,7 +47,7 @@ namespace AspectUpdatesDummy
             set { this.name = value; }
         }
 
-        public int VersionPK
+        public int? VersionPK
         {
             get { return this.versionPK; }
             set { this.versionPK = value; }

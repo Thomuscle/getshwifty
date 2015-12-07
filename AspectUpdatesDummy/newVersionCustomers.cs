@@ -46,6 +46,7 @@ namespace AspectUpdatesDummy
             csPK.DataPropertyName = "PK";
             csPK.HeaderText = "PK";
             csPK.Name = "PK";
+            csPK.Visible = false;
             CustomersGrid.Columns.Add(csPK);
 
             foreach (DataGridViewColumn dc in CustomersGrid.Columns)

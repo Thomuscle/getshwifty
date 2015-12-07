@@ -14,15 +14,17 @@ namespace AspectUpdatesDummy
     {
 
         NewUpdatePage newUpdatePage;
+        MainMenu mainMenu;
         int versionPK;
         DateTime? actualDate;
         DateTime expectedDate;
         string comment;
 
-        public NewUpdateCustomers(NewUpdatePage nup)
+        public NewUpdateCustomers(NewUpdatePage nup, MainMenu m)
         {
             InitializeComponent();
             newUpdatePage = nup;
+            mainMenu = m;
 
             CustomersGrid.Columns.Clear();
             DataGridViewTextBoxColumn csPK = new DataGridViewTextBoxColumn();
@@ -52,6 +54,7 @@ namespace AspectUpdatesDummy
             csPK.DataPropertyName = "PK";
             csPK.HeaderText = "PK";
             csPK.Name = "PK";
+            csPK.Visible = false;
             CustomersGrid.Columns.Add(csPK);
 
             csDetails.DataPropertyName = "Details";

@@ -29,6 +29,8 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csPK = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csCustomerPK = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csVersionPK = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csCustomerName = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csVersionID = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csVersionExpDate = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csVersionActDate = new DataGridViewTextBoxColumn();
             DataGridViewCheckBoxColumn csDeleted = new DataGridViewCheckBoxColumn();
@@ -37,12 +39,24 @@ namespace AspectUpdatesDummy
             csCustomerPK.Name = "CustomerPK";
             csCustomerPK.DataPropertyName = "CustomerPK";
             csCustomerPK.HeaderText = "Customer PK";
+            csCustomerPK.Visible = false;
             UpdatesGrid.Columns.Add(csCustomerPK);
+
+            csCustomerName.Name = "CustomerName";
+            csCustomerName.DataPropertyName = "CustomerName";
+            csCustomerName.HeaderText = "Customer Name";
+            UpdatesGrid.Columns.Add(csCustomerName);
 
             csVersionPK.Name = "VersionPK";
             csVersionPK.DataPropertyName = "VersionPK";
             csVersionPK.HeaderText = "Version PK";
+            csVersionPK.Visible = false;
             UpdatesGrid.Columns.Add(csVersionPK);
+
+            csVersionID.Name = "VersionID";
+            csVersionID.DataPropertyName = "VersionID";
+            csVersionID.HeaderText = "Version";
+            UpdatesGrid.Columns.Add(csVersionID);
 
             csVersionExpDate.Name = "ExpectedDate";
             csVersionExpDate.DataPropertyName = "ExpectedDate";
@@ -67,6 +81,7 @@ namespace AspectUpdatesDummy
             csDeleted.Name = "isDeleted";
             csDeleted.DataPropertyName = "isDeleted";
             csDeleted.HeaderText = "Deleted";
+            csDeleted.Visible = false;
             UpdatesGrid.Columns.Add(csDeleted);
 
         }
