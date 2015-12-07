@@ -13,16 +13,16 @@ namespace AspectUpdatesDummy
     public partial class NewUpdateCustomers : Form
     {
 
-        MainMenu mainMenu;
+        NewUpdatePage newUpdatePage;
         int versionPK;
         DateTime? actualDate;
         DateTime expectedDate;
         string comment;
 
-        public NewUpdateCustomers(MainMenu m)
+        public NewUpdateCustomers(NewUpdatePage nup)
         {
             InitializeComponent();
-            mainMenu = m;
+            newUpdatePage = nup;
 
             CustomersGrid.Columns.Clear();
             DataGridViewTextBoxColumn csPK = new DataGridViewTextBoxColumn();
@@ -80,7 +80,7 @@ namespace AspectUpdatesDummy
         private void mainMenuBtn2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            mainMenu.Show();
+            newUpdatePage.Show();
         }
 
         public void GiveInfo(int versionPK, DateTime expectedDate, DateTime? actualDate, string comment)

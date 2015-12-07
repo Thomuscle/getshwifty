@@ -582,7 +582,7 @@ namespace AspectUpdatesDummy
         public static List<Update> GetUpdateList()
         {
             string selectStatement = "SELECT * FROM [Update] " +
-              "ORDER BY Expected_Date DESC";
+              "ORDER BY isDeleted, Expected_Date DESC";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
