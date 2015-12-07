@@ -618,5 +618,88 @@ namespace AspectUpdatesDummy
             return updateList;
         }
 
+        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments)
+        {
+            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments" +
+               "  WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
+            updateCommand.Parameters.AddWithValue("@pk", pk);
+            updateCommand.Parameters.AddWithValue("@comments", comments);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, DateTime actualDate)
+        {
+            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, Actual_Date= @actualDate" +
+               "  WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
+            updateCommand.Parameters.AddWithValue("@actualDate", actualDate);
+            updateCommand.Parameters.AddWithValue("@pk", pk);
+            updateCommand.Parameters.AddWithValue("@comments", comments);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static void deleteUpdate(int updatePK)
+        {
+            string updateStatement = "UPDATE [Update] SET isDeleted= @delete WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@pk", updatePK);
+
+            bool delete = true;
+            updateCommand.Parameters.AddWithValue("@delete", delete);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

@@ -65,6 +65,11 @@ namespace AspectUpdatesDummy
             string details = descriptionTxtBx.Text;
             int versionPK = (int)versionGrid.SelectedCells[0].Value;
             Database.InsertCustomer(name, details, versionPK);
+
+            MessageBox.Show("Completed!");
+            
+            this.Hide();
+            mainMenu.Show();
         }
 
         public DataGridView getVersionGrid()

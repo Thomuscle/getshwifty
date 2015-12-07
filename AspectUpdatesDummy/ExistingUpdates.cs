@@ -15,6 +15,7 @@ namespace AspectUpdatesDummy
 
         MainMenu mainMenu;
         InspectUpdate inspectUpdate;
+        EditUpdate editUpdate;
 
         public ExistingUpdates(MainMenu m)
         {
@@ -22,6 +23,7 @@ namespace AspectUpdatesDummy
             mainMenu = m;
 
             inspectUpdate = new InspectUpdate(this);
+            editUpdate = new EditUpdate(this);
 
             UpdatesGrid.Columns.Clear();
             DataGridViewTextBoxColumn csPK = new DataGridViewTextBoxColumn();
@@ -93,6 +95,43 @@ namespace AspectUpdatesDummy
 
             inspectUpdate.Show();
             this.Hide();
+        }
+
+        private void editBtn_Click(object sender, EventArgs e)
+        {
+            string comment = UpdatesGrid.SelectedRows[0].Cells["Comment"].Value.ToString();
+            int versionPK = (int)UpdatesGrid.SelectedRows[0].Cells["VersionPK"].Value;
+            int customerPK = (int)UpdatesGrid.SelectedRows[0].Cells["CustomerPK"].Value;
+            int pk = (int)UpdatesGrid.SelectedRows[0].Cells["PK"].Value;
+            DateTime expectedDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ExpectedDate"].Value);
+            DateTime? actualDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ActualDate"].Value);
+
+            if (actualDate == DateTime.MinValue)
+            {
+
+                editUpdate.setFields(versionPK, customerPK, expectedDate, comment, pk);
+
+                editUpdate.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Sorry. Cannot edit an update that has been completed.");
+            }
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this update?",
+                                    "Confirm Deletion",
+                                    MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                int pk = (int)UpdatesGrid.SelectedRows[0].Cells["PK"].Value;
+                Database.deleteUpdate(pk);
+
+                UpdatesGrid.DataSource = Database.GetUpdateList();
+            }
         }
     }
 }
