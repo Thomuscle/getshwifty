@@ -87,6 +87,9 @@ namespace AspectUpdatesDummy
                 System.Console.WriteLine(ex.StackTrace);
             }
 
+            DataGridView dgv = mainMenu.getVersionGrid();
+            dgv.DataSource = Database.GetVersionList();
+
             MessageBox.Show("Completed!");
             this.Hide();
             mainMenu.Show();
@@ -103,10 +106,5 @@ namespace AspectUpdatesDummy
             set { versionPK = value; }
         }
 
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            versionPage.Show();
-        }
     }
 }

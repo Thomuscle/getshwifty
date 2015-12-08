@@ -86,6 +86,12 @@
     <Compile Include="ExistingCustomers.Designer.cs">
       <DependentUpon>ExistingCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExistingEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExistingEmployees.Designer.cs">
+      <DependentUpon>ExistingEmployees.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExistingUpdates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,12 @@
     </Compile>
     <Compile Include="InspectVersion.Designer.cs">
       <DependentUpon>InspectVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewEmployeePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewEmployeePage.Designer.cs">
+      <DependentUpon>NewEmployeePage.cs</DependentUpon>
     </Compile>
     <Compile Include="NewUpdateCustomers.cs">
       <SubType>Form</SubType>
@@ -178,6 +190,9 @@
     <EmbeddedResource Include="ExistingCustomers.resx">
       <DependentUpon>ExistingCustomers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExistingEmployees.resx">
+      <DependentUpon>ExistingEmployees.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExistingUpdates.resx">
       <DependentUpon>ExistingUpdates.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewCustomerPage.resx">
       <DependentUpon>NewCustomerPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewEmployeePage.resx">
+      <DependentUpon>NewEmployeePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewUpdateCustomers.resx">
       <DependentUpon>NewUpdateCustomers.cs</DependentUpon>

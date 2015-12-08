@@ -835,5 +835,36 @@ namespace AspectUpdatesDummy
 
             return name;
         }
+
+        public static int InsertEmployee(string name)
+        {
+            int return_code = 0;
+
+            string insertStatement = "INSERT INTO Employee " +
+                "(Name) " +
+                "VALUES (@name)";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+
+            insertCommand.Parameters.AddWithValue("@name", name);
+
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+                return_code = 1;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return return_code;
+        }
     }
 }

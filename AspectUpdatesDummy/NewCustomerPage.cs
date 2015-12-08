@@ -75,6 +75,9 @@ namespace AspectUpdatesDummy
                 Database.InsertCustomer(name, details);
             }
             MessageBox.Show("Completed!");
+
+            DataGridView dgv = mainMenu.getCustomersGrid();
+            dgv.DataSource = Database.GetCustomerList();
             
             this.Hide();
             mainMenu.Show();

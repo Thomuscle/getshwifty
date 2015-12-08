@@ -133,6 +133,10 @@ namespace AspectUpdatesDummy
             }
 
             MessageBox.Show("Completed!");
+
+            DataGridView dgv = mainMenu.getUpdatesGrid();
+            dgv.DataSource = Database.GetUpdateList();
+
             this.Hide();
             mainMenu.Show();
         }
