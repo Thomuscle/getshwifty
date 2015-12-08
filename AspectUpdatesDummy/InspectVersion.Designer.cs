@@ -37,6 +37,10 @@
             this.CustomerGrid = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.backBtn = new System.Windows.Forms.Button();
+            this.webServiceCB = new System.Windows.Forms.CheckBox();
+            this.webAppCB = new System.Windows.Forms.CheckBox();
+            this.redAspectCB = new System.Windows.Forms.CheckBox();
+            this.blueAspectCB = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,13 +117,13 @@
             this.CustomerGrid.AllowUserToResizeRows = false;
             this.CustomerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CustomerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CustomerGrid.Location = new System.Drawing.Point(336, 99);
+            this.CustomerGrid.Location = new System.Drawing.Point(337, 137);
             this.CustomerGrid.MultiSelect = false;
             this.CustomerGrid.Name = "CustomerGrid";
             this.CustomerGrid.ReadOnly = true;
             this.CustomerGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.CustomerGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomerGrid.Size = new System.Drawing.Size(268, 148);
+            this.CustomerGrid.Size = new System.Drawing.Size(268, 110);
             this.CustomerGrid.TabIndex = 26;
             // 
             // label1
@@ -127,7 +131,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(333, 78);
+            this.label1.Location = new System.Drawing.Point(334, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(193, 18);
             this.label1.TabIndex = 27;
@@ -144,11 +148,59 @@
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // webServiceCB
+            // 
+            this.webServiceCB.AutoCheck = false;
+            this.webServiceCB.AutoSize = true;
+            this.webServiceCB.Location = new System.Drawing.Point(478, 81);
+            this.webServiceCB.Name = "webServiceCB";
+            this.webServiceCB.Size = new System.Drawing.Size(131, 17);
+            this.webServiceCB.TabIndex = 32;
+            this.webServiceCB.Text = "Includes Web Service";
+            this.webServiceCB.UseVisualStyleBackColor = true;
+            // 
+            // webAppCB
+            // 
+            this.webAppCB.AutoCheck = false;
+            this.webAppCB.AutoSize = true;
+            this.webAppCB.Location = new System.Drawing.Point(478, 58);
+            this.webAppCB.Name = "webAppCB";
+            this.webAppCB.Size = new System.Drawing.Size(114, 17);
+            this.webAppCB.TabIndex = 31;
+            this.webAppCB.Text = "Includes Web App";
+            this.webAppCB.UseVisualStyleBackColor = true;
+            // 
+            // redAspectCB
+            // 
+            this.redAspectCB.AutoCheck = false;
+            this.redAspectCB.AutoSize = true;
+            this.redAspectCB.Location = new System.Drawing.Point(337, 81);
+            this.redAspectCB.Name = "redAspectCB";
+            this.redAspectCB.Size = new System.Drawing.Size(125, 17);
+            this.redAspectCB.TabIndex = 30;
+            this.redAspectCB.Text = "Includes Red Aspect";
+            this.redAspectCB.UseVisualStyleBackColor = true;
+            // 
+            // blueAspectCB
+            // 
+            this.blueAspectCB.AutoCheck = false;
+            this.blueAspectCB.AutoSize = true;
+            this.blueAspectCB.Location = new System.Drawing.Point(337, 58);
+            this.blueAspectCB.Name = "blueAspectCB";
+            this.blueAspectCB.Size = new System.Drawing.Size(126, 17);
+            this.blueAspectCB.TabIndex = 29;
+            this.blueAspectCB.Text = "Includes Blue Aspect";
+            this.blueAspectCB.UseVisualStyleBackColor = true;
+            // 
             // InspectVersion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.webServiceCB);
+            this.Controls.Add(this.webAppCB);
+            this.Controls.Add(this.redAspectCB);
+            this.Controls.Add(this.blueAspectCB);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CustomerGrid);
@@ -177,5 +229,9 @@
         private System.Windows.Forms.DataGridView CustomerGrid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.CheckBox webServiceCB;
+        private System.Windows.Forms.CheckBox webAppCB;
+        private System.Windows.Forms.CheckBox redAspectCB;
+        private System.Windows.Forms.CheckBox blueAspectCB;
     }
 }

@@ -80,8 +80,12 @@ namespace AspectUpdatesDummy
                     String description = reader.GetString(2);
                     int type = reader.GetInt32(3);
                     DateTime release_date = reader.GetDateTime(4);
+                    bool b = reader.GetBoolean(6);
+                    bool r = reader.GetBoolean(7);
+                    bool a = reader.GetBoolean(8);
+                    bool s = reader.GetBoolean(9);
 
-                    Version vers = new Version(pk, id, description, type, release_date, false);
+                    Version vers = new Version(pk, id, description, type, release_date, false, b, r, a, s);
                     versionList.Add(vers);
                 }
             }
@@ -97,10 +101,12 @@ namespace AspectUpdatesDummy
             return versionList;
         }
 
-        public static void UpdateVersion(int pk, string id, string description, int type, DateTime releaseDate)
+        public static void UpdateVersion(int pk, string id, string description, int type, DateTime releaseDate, bool blueAspect, bool redAspect, bool webApp, bool webService)
         {
             string updateStatement = "UPDATE Version SET ID= @id, Description= @description," + 
-                " Type= @type, Release_Date= @releaseDate WHERE PK= @pk";
+                " Type= @type, Release_Date= @releaseDate," +
+                " includeBlueAspect= @b, includeRedAspect= @r, includeWebApp= @a, includeWebService= @s" 
+                + " WHERE PK= @pk";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
@@ -110,6 +116,10 @@ namespace AspectUpdatesDummy
             updateCommand.Parameters.AddWithValue("@description", description);
             updateCommand.Parameters.AddWithValue("@type", type);
             updateCommand.Parameters.AddWithValue("@releaseDate", releaseDate);
+            updateCommand.Parameters.AddWithValue("@b", blueAspect);
+            updateCommand.Parameters.AddWithValue("@r", redAspect);
+            updateCommand.Parameters.AddWithValue("@a", webApp);
+            updateCommand.Parameters.AddWithValue("@s", webService);
 
             try
             {

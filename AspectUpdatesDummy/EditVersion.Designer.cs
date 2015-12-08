@@ -40,6 +40,10 @@
             this.descLbl = new System.Windows.Forms.Label();
             this.descriptionTxtBx = new System.Windows.Forms.TextBox();
             this.backBtn = new System.Windows.Forms.Button();
+            this.webServiceCB = new System.Windows.Forms.CheckBox();
+            this.webAppCB = new System.Windows.Forms.CheckBox();
+            this.redAspectCB = new System.Windows.Forms.CheckBox();
+            this.blueAspectCB = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // subLbl
@@ -92,10 +96,8 @@
             // 
             this.typeCmboBx.FormattingEnabled = true;
             this.typeCmboBx.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
+            "Release",
+            "Hotfix"});
             this.typeCmboBx.Location = new System.Drawing.Point(28, 137);
             this.typeCmboBx.Name = "typeCmboBx";
             this.typeCmboBx.Size = new System.Drawing.Size(189, 21);
@@ -154,11 +156,55 @@
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // webServiceCB
+            // 
+            this.webServiceCB.AutoSize = true;
+            this.webServiceCB.Location = new System.Drawing.Point(243, 144);
+            this.webServiceCB.Name = "webServiceCB";
+            this.webServiceCB.Size = new System.Drawing.Size(126, 17);
+            this.webServiceCB.TabIndex = 27;
+            this.webServiceCB.Text = "Include Web Service";
+            this.webServiceCB.UseVisualStyleBackColor = true;
+            // 
+            // webAppCB
+            // 
+            this.webAppCB.AutoSize = true;
+            this.webAppCB.Location = new System.Drawing.Point(243, 121);
+            this.webAppCB.Name = "webAppCB";
+            this.webAppCB.Size = new System.Drawing.Size(109, 17);
+            this.webAppCB.TabIndex = 26;
+            this.webAppCB.Text = "Include Web App";
+            this.webAppCB.UseVisualStyleBackColor = true;
+            // 
+            // redAspectCB
+            // 
+            this.redAspectCB.AutoSize = true;
+            this.redAspectCB.Location = new System.Drawing.Point(243, 98);
+            this.redAspectCB.Name = "redAspectCB";
+            this.redAspectCB.Size = new System.Drawing.Size(120, 17);
+            this.redAspectCB.TabIndex = 25;
+            this.redAspectCB.Text = "Include Red Aspect";
+            this.redAspectCB.UseVisualStyleBackColor = true;
+            // 
+            // blueAspectCB
+            // 
+            this.blueAspectCB.AutoSize = true;
+            this.blueAspectCB.Location = new System.Drawing.Point(243, 75);
+            this.blueAspectCB.Name = "blueAspectCB";
+            this.blueAspectCB.Size = new System.Drawing.Size(121, 17);
+            this.blueAspectCB.TabIndex = 24;
+            this.blueAspectCB.Text = "Include Blue Aspect";
+            this.blueAspectCB.UseVisualStyleBackColor = true;
+            // 
             // EditVersion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.webServiceCB);
+            this.Controls.Add(this.webAppCB);
+            this.Controls.Add(this.redAspectCB);
+            this.Controls.Add(this.blueAspectCB);
             this.Controls.Add(this.subLbl);
             this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.releaseDateLbl);
@@ -192,5 +238,9 @@
         private System.Windows.Forms.Label descLbl;
         private System.Windows.Forms.TextBox descriptionTxtBx;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.CheckBox webServiceCB;
+        private System.Windows.Forms.CheckBox webAppCB;
+        private System.Windows.Forms.CheckBox redAspectCB;
+        private System.Windows.Forms.CheckBox blueAspectCB;
     }
 }
