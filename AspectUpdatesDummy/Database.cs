@@ -297,7 +297,11 @@ namespace AspectUpdatesDummy
                         versionPK = reader.GetInt32(3);
                     }
 
-                    Customer cust = new Customer(pk, name, details, versionPK, false);
+                    String plc = reader.GetString(5);
+                    String contacts = reader.GetString(6);
+                    String logon = reader.GetString(7);
+
+                    Customer cust = new Customer(pk, name, details, plc, contacts,logon, versionPK, false);
                     customerList.Add(cust);
                 }
             }
@@ -315,7 +319,7 @@ namespace AspectUpdatesDummy
 
         public static List<Customer> GetCustomerListWithID()
         {
-            string selectStatement = "SELECT Customer.PK, Customer.Name, Customer.Details, Customer.VersionPK, Version.ID FROM Customer " +
+            string selectStatement = "SELECT Customer.PK, Customer.Name, Customer.Details, Customer.VersionPK, Version.ID, Customer.plcAddress, Customer.Contacts, Customer.LogonDetail FROM Customer " +
               "LEFT JOIN Version ON Customer.VersionPK=Version.PK WHERE Customer.isDeleted=0 ORDER BY Customer.Name ASC";
 
             SqlConnection connection = Database.GetConnection();
@@ -333,7 +337,7 @@ namespace AspectUpdatesDummy
                     String details = reader.GetString(2);
                     int? versionPK;
                     string versionID;
-                    if (reader.GetValue(3) == DBNull.Value)
+                    if (reader.GetValue(3) == DBNull.Value || reader.GetValue(3) == null)
                     {
                         versionPK = null;
                         versionID = "";
@@ -343,8 +347,12 @@ namespace AspectUpdatesDummy
                         versionPK = reader.GetInt32(3);
                         versionID = reader.GetString(4);
                     }
+
+                    String plc = reader.GetString(5);
+                    String contacts = reader.GetString(6);
+                    String logon = reader.GetString(7);
                    
-                    Customer cust = new Customer(pk, name, details, versionPK, versionID, false);
+                    Customer cust = new Customer(pk, name, details, plc, contacts, logon, versionPK, versionID, false);
                     customerList.Add(cust);
                 }
             }
@@ -380,8 +388,11 @@ namespace AspectUpdatesDummy
                     String name = reader.GetString(1);
                     String details = reader.GetString(2);
                     int versionPK = reader.GetInt32(3);
+                    String plc = reader.GetString(5);
+                    String contacts = reader.GetString(6);
+                    String logon = reader.GetString(7);
 
-                    Customer cust = new Customer(pk, name, details, versionPK, "", false);
+                    Customer cust = new Customer(pk, name, details, plc, contacts, logon, versionPK, "", false);
                     customerList.Add(cust);
                 }
             }

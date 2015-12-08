@@ -14,18 +14,24 @@ namespace AspectUpdatesDummy
         private int? versionPK;
         private string versionID;
         private bool isDeleted;
+        private string plcAddress;
+        private string contacts;
+        private string logonDetails;
 
-        public Customer(int pk, string name, string details, int? versionPK, bool deleted)
+        public Customer(int pk, string name, string details, string plc, string contacts, string logon, int? versionPK, bool deleted)
         {
             this.pk = pk;
             this.name = name;
             this.details = details;
             this.versionPK = versionPK;
             isDeleted = deleted;
+            this.plcAddress = plc;
+            this.contacts = contacts;
+            this.logonDetails = logon;
 
         }
 
-        public Customer(int pk, string name, string details, int? versionPK, string versionID, bool deleted)
+        public Customer(int pk, string name, string details, string plc, string contacts, string logon, int? versionPK, string versionID, bool deleted)
         {
             this.pk = pk;
             this.name = name;
@@ -33,6 +39,9 @@ namespace AspectUpdatesDummy
             this.versionPK = versionPK;
             isDeleted = deleted;
             this.versionID = versionID;
+            this.plcAddress = plc;
+            this.contacts = contacts;
+            this.logonDetails = logon;
         }
 
         public int PK
@@ -64,6 +73,25 @@ namespace AspectUpdatesDummy
             get { return this.details; }
             set { this.details = value; }
         }
+
+        public string PLC
+        {
+            get { return this.plcAddress; }
+            set { this.plcAddress = value; }
+        }
+        
+        public string Contacts
+        {
+            get { return this.contacts; }
+            set { this.contacts = value; }
+        }
+        
+        public string LogonDetails
+        {
+            get { return this.logonDetails; }
+            set { this.logonDetails = value; }
+        }
+
 
     }
 }
