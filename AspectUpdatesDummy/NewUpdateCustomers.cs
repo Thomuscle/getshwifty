@@ -158,8 +158,32 @@ namespace AspectUpdatesDummy
             DataGridView dgv = mainMenu.getUpdatesGrid();
             dgv.DataSource = Database.GetUpdateList();
 
+            mainMenu.getCurrentButton().Text = "All";
+
             this.Hide();
             mainMenu.Show();
+        }
+
+        private void selectButton_Click(object sender, EventArgs e)
+        {
+            if (selectButton.Text.Equals("Select All"))
+            {
+                foreach (DataGridViewRow row in CustomersGrid.Rows)
+                {
+                    // This will check the cell.
+                    row.Cells["Selected"].Value = "true";
+                }
+                selectButton.Text = "Deselect All";
+            }
+            else
+            {
+                foreach (DataGridViewRow row in CustomersGrid.Rows)
+                {
+                    // This will check the cell.
+                    row.Cells["Selected"].Value = null;
+                }
+                selectButton.Text = "Select All";
+            }
         }
     }
 }

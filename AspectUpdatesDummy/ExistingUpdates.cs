@@ -98,11 +98,17 @@ namespace AspectUpdatesDummy
         {
             this.Hide();
             mainMenu.Show();
+            currentVersionBtn.Text = "All";
         }
 
         public DataGridView getUpdatesGrid()
         {
             return UpdatesGrid;
+        }
+
+        public Button getCurrentButton()
+        {
+            return currentVersionBtn;
         }
 
         private void inspectBtn_Click(object sender, EventArgs e)
@@ -172,6 +178,7 @@ namespace AspectUpdatesDummy
                 Database.deleteUpdate(pk);
 
                 UpdatesGrid.DataSource = Database.GetUpdateList();
+                currentVersionBtn.Text = "All";
             }
         }
 
@@ -184,6 +191,21 @@ namespace AspectUpdatesDummy
             dgv.Columns[0].Visible = false;
             newUpdatePage.Show();
             this.Hide();
+        }
+
+        private void currentVersionBtn_Click(object sender, EventArgs e)
+        {
+            if (currentVersionBtn.Text.Equals("All"))
+            {
+                int currentPK = Database.getLatestVersion();
+                UpdatesGrid.DataSource = Database.GetUpdatesWithVersion(currentPK);
+                currentVersionBtn.Text = "Current Version";
+            }
+            else
+            {
+                UpdatesGrid.DataSource = Database.GetUpdateList();
+                currentVersionBtn.Text = "All";
+            }
         }
     }
 }

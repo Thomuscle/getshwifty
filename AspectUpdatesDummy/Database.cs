@@ -201,6 +201,36 @@ namespace AspectUpdatesDummy
 
         }
 
+        public static int getLatestVersion()
+        {
+            string selectStatement = "SELECT MAX(PK) FROM Version";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            int pk = 1;
+
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    pk = SafeGetInt(reader, 0);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return pk;
+        }
+
         //
         //CUSTOMER METHODS:
         //
@@ -681,6 +711,48 @@ namespace AspectUpdatesDummy
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            List<Update> updateList = new List<Update>();
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    int pk = reader.GetInt32(0);
+                    int versionPK = reader.GetInt32(1);
+                    int customerPK = reader.GetInt32(2);
+                    DateTime? expectedDate = reader[3] as DateTime?;
+                    DateTime? actualDate = reader[4] as DateTime?;
+                    String comment = SafeGetString(reader, 5);
+                    bool isDeleted = SafeGetBool(reader, 6);
+                    int? assignedTo = reader[7] as int?;
+
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
+                    updateList.Add(up);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return updateList;
+        }
+
+        public static List<Update> GetUpdatesWithVersion(int currentPK)
+        {
+            string selectStatement = "SELECT * FROM [Update] " +
+              "WHERE isDeleted =0 AND VersionPK = @pk ORDER BY Expected_Date DESC";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@pk", currentPK);
 
             List<Update> updateList = new List<Update>();
             try

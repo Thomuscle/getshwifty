@@ -35,6 +35,7 @@
             this.UpdatesGrid = new System.Windows.Forms.DataGridView();
             this.UpdtLbl = new System.Windows.Forms.Label();
             this.mainAddVersBtn = new System.Windows.Forms.Button();
+            this.currentVersionBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.UpdatesGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,12 +90,12 @@
             this.UpdatesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UpdatesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.UpdatesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UpdatesGrid.Location = new System.Drawing.Point(22, 47);
+            this.UpdatesGrid.Location = new System.Drawing.Point(22, 65);
             this.UpdatesGrid.MultiSelect = false;
             this.UpdatesGrid.Name = "UpdatesGrid";
             this.UpdatesGrid.ReadOnly = true;
             this.UpdatesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.UpdatesGrid.Size = new System.Drawing.Size(694, 257);
+            this.UpdatesGrid.Size = new System.Drawing.Size(694, 239);
             this.UpdatesGrid.TabIndex = 20;
             // 
             // UpdtLbl
@@ -118,11 +119,23 @@
             this.mainAddVersBtn.UseVisualStyleBackColor = true;
             this.mainAddVersBtn.Click += new System.EventHandler(this.mainAddVersBtn_Click);
             // 
+            // currentVersionBtn
+            // 
+            this.currentVersionBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.currentVersionBtn.Location = new System.Drawing.Point(22, 36);
+            this.currentVersionBtn.Name = "currentVersionBtn";
+            this.currentVersionBtn.Size = new System.Drawing.Size(134, 23);
+            this.currentVersionBtn.TabIndex = 26;
+            this.currentVersionBtn.Text = "All";
+            this.currentVersionBtn.UseVisualStyleBackColor = true;
+            this.currentVersionBtn.Click += new System.EventHandler(this.currentVersionBtn_Click);
+            // 
             // ExistingUpdates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 375);
+            this.Controls.Add(this.currentVersionBtn);
             this.Controls.Add(this.mainAddVersBtn);
             this.Controls.Add(this.mainMenuBtn5);
             this.Controls.Add(this.deleteBtn);
@@ -147,5 +160,6 @@
         private System.Windows.Forms.DataGridView UpdatesGrid;
         private System.Windows.Forms.Label UpdtLbl;
         private System.Windows.Forms.Button mainAddVersBtn;
+        private System.Windows.Forms.Button currentVersionBtn;
     }
 }

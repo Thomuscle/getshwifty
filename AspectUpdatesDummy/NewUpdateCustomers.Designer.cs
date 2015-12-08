@@ -33,6 +33,7 @@
             this.CustomersGrid = new System.Windows.Forms.DataGridView();
             this.submitBtn = new System.Windows.Forms.Button();
             this.mainMenuBtn2 = new System.Windows.Forms.Button();
+            this.selectButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(177, 269);
+            this.submitBtn.Location = new System.Drawing.Point(254, 269);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(127, 42);
             this.submitBtn.TabIndex = 18;
@@ -79,7 +80,7 @@
             // 
             // mainMenuBtn2
             // 
-            this.mainMenuBtn2.Location = new System.Drawing.Point(335, 269);
+            this.mainMenuBtn2.Location = new System.Drawing.Point(484, 269);
             this.mainMenuBtn2.Name = "mainMenuBtn2";
             this.mainMenuBtn2.Size = new System.Drawing.Size(127, 42);
             this.mainMenuBtn2.TabIndex = 17;
@@ -87,11 +88,22 @@
             this.mainMenuBtn2.UseVisualStyleBackColor = true;
             this.mainMenuBtn2.Click += new System.EventHandler(this.mainMenuBtn2_Click);
             // 
+            // selectButton
+            // 
+            this.selectButton.Location = new System.Drawing.Point(25, 269);
+            this.selectButton.Name = "selectButton";
+            this.selectButton.Size = new System.Drawing.Size(127, 42);
+            this.selectButton.TabIndex = 19;
+            this.selectButton.Text = "Select All";
+            this.selectButton.UseVisualStyleBackColor = true;
+            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
+            // 
             // NewUpdateCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.selectButton);
             this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.mainMenuBtn2);
             this.Controls.Add(this.CustomersGrid);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.DataGridView CustomersGrid;
         private System.Windows.Forms.Button submitBtn;
         private System.Windows.Forms.Button mainMenuBtn2;
+        private System.Windows.Forms.Button selectButton;
     }
 }
