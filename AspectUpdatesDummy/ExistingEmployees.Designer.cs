@@ -31,7 +31,6 @@
             this.mainAddEmpBtn = new System.Windows.Forms.Button();
             this.mainMenuBtn3 = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
-            this.editBtn = new System.Windows.Forms.Button();
             this.inspectBtn = new System.Windows.Forms.Button();
             this.EmployeesGrid = new System.Windows.Forms.DataGridView();
             this.CustLbl = new System.Windows.Forms.Label();
@@ -63,31 +62,22 @@
             // deleteBtn
             // 
             this.deleteBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.deleteBtn.Location = new System.Drawing.Point(46, 212);
+            this.deleteBtn.Location = new System.Drawing.Point(46, 198);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(134, 40);
             this.deleteBtn.TabIndex = 24;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = true;
-            // 
-            // editBtn
-            // 
-            this.editBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.editBtn.Location = new System.Drawing.Point(46, 166);
-            this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(134, 40);
-            this.editBtn.TabIndex = 23;
-            this.editBtn.Text = "Edit";
-            this.editBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // inspectBtn
             // 
             this.inspectBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.inspectBtn.Location = new System.Drawing.Point(46, 120);
+            this.inspectBtn.Location = new System.Drawing.Point(46, 136);
             this.inspectBtn.Name = "inspectBtn";
             this.inspectBtn.Size = new System.Drawing.Size(134, 40);
             this.inspectBtn.TabIndex = 22;
-            this.inspectBtn.Text = "Inspect";
+            this.inspectBtn.Text = "Inspect/Edit";
             this.inspectBtn.UseVisualStyleBackColor = true;
             this.inspectBtn.Click += new System.EventHandler(this.inspectBtn_Click);
             // 
@@ -125,7 +115,6 @@
             this.Controls.Add(this.mainAddEmpBtn);
             this.Controls.Add(this.mainMenuBtn3);
             this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.editBtn);
             this.Controls.Add(this.inspectBtn);
             this.Controls.Add(this.EmployeesGrid);
             this.Controls.Add(this.CustLbl);
@@ -142,7 +131,6 @@
         private System.Windows.Forms.Button mainAddEmpBtn;
         private System.Windows.Forms.Button mainMenuBtn3;
         private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.Button editBtn;
         private System.Windows.Forms.Button inspectBtn;
         private System.Windows.Forms.DataGridView EmployeesGrid;
         private System.Windows.Forms.Label CustLbl;

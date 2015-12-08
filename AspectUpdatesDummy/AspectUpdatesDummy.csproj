@@ -67,6 +67,12 @@
     <Compile Include="EditCustomer.Designer.cs">
       <DependentUpon>EditCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditEmployeeUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEmployeeUpdate.Designer.cs">
+      <DependentUpon>EditEmployeeUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,12 @@
     </Compile>
     <Compile Include="InspectCustomer.Designer.cs">
       <DependentUpon>InspectCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InspectEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InspectEmployee.Designer.cs">
+      <DependentUpon>InspectEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="InspectUpdate.cs">
       <SubType>Form</SubType>
@@ -181,6 +193,9 @@
     <EmbeddedResource Include="EditCustomer.resx">
       <DependentUpon>EditCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditEmployeeUpdate.resx">
+      <DependentUpon>EditEmployeeUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditUpdate.resx">
       <DependentUpon>EditUpdate.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InspectCustomer.resx">
       <DependentUpon>InspectCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InspectEmployee.resx">
+      <DependentUpon>InspectEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InspectUpdate.resx">
       <DependentUpon>InspectUpdate.cs</DependentUpon>

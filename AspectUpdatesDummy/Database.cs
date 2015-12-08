@@ -680,6 +680,90 @@ namespace AspectUpdatesDummy
             return updateList;
         }
 
+        public static List<Update> GetAllUpdatesAssignedTo(int employeePK)
+        {
+            string selectStatement = "SELECT * FROM [Update] " +
+                         "WHERE isDeleted =0 AND AssignedTo = @employeePK ORDER BY Expected_Date DESC";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@employeePK", employeePK);
+
+            List<Update> updateList = new List<Update>();
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    int pk = reader.GetInt32(0);
+                    int versionPK = reader.GetInt32(1);
+                    int customerPK = reader.GetInt32(2);
+                    DateTime? expectedDate = reader[3] as DateTime?;
+                    DateTime? actualDate = reader[4] as DateTime?;
+                    String comment = Convert.ToString(reader.GetValue(5));
+                    bool isDeleted = reader.GetBoolean(6);
+                    int? assignedTo = reader[7] as int?;
+
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
+                    updateList.Add(up);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return updateList;
+        }
+
+        public static List<Update> GetIncompleteUpdatesAssignedTo(int employeePK)
+        {
+            string selectStatement = "SELECT * FROM [Update] " +
+                         "WHERE isDeleted =0 AND AssignedTo = @employeePK AND Actual_Date IS NULL ORDER BY Expected_Date DESC";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            selectCommand.Parameters.AddWithValue("@employeePK", employeePK);
+
+            List<Update> updateList = new List<Update>();
+            try
+            {
+                connection.Open();
+                var reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    int pk = reader.GetInt32(0);
+                    int versionPK = reader.GetInt32(1);
+                    int customerPK = reader.GetInt32(2);
+                    DateTime? expectedDate = reader[3] as DateTime?;
+                    DateTime? actualDate = reader[4] as DateTime?;
+                    String comment = Convert.ToString(reader.GetValue(5));
+                    bool isDeleted = reader.GetBoolean(6);
+                    int? assignedTo = reader[7] as int?;
+
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
+                    updateList.Add(up);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return updateList;
+        }
+
         public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, int assigned)
         {
             string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, AssignedTo = @assigned" +
@@ -865,6 +949,58 @@ namespace AspectUpdatesDummy
             }
 
             return return_code;
+        }
+
+        public static void deleteEmployee(int employeePK)
+        {
+            string updateStatement = "UPDATE Employee SET isDeleted= @delete WHERE PK= @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@pk", employeePK);
+
+            bool delete = true;
+            updateCommand.Parameters.AddWithValue("@delete", delete);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+                removeEmployeeFromUpdates(employeePK);
+            }
+        }
+
+        public static void removeEmployeeFromUpdates(int employeePK)
+        {
+            string updateStatement = "UPDATE [Update] SET AssignedTo = NULL WHERE AssignedTo = @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@pk", employeePK);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }
