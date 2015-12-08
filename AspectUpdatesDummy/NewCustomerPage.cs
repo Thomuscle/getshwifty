@@ -25,6 +25,11 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csID = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csType = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csReleaseDate = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csBlue = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csRed = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csApp = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csService = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csDescription = new DataGridViewTextBoxColumn();
 
             csID.DataPropertyName = "ID"; 
             csID.HeaderText = "Version ID";
@@ -43,6 +48,31 @@ namespace AspectUpdatesDummy
             csPK.HeaderText = "PK";
             csPK.Visible = false;
             versionGrid.Columns.Add(csPK);
+
+            csBlue.Name = "Blue";
+            csBlue.DataPropertyName = "Blue";
+            csBlue.Visible = false;
+            versionGrid.Columns.Add(csBlue);
+
+            csDescription.Name = "Description";
+            csDescription.DataPropertyName = "Description";
+            csDescription.Visible = false;
+            versionGrid.Columns.Add(csDescription);
+
+            csRed.Name = "Red";
+            csRed.DataPropertyName = "Red";
+            csRed.Visible = false;
+            versionGrid.Columns.Add(csRed);
+
+            csApp.Name = "App";
+            csApp.DataPropertyName = "App";
+            csApp.Visible = false;
+            versionGrid.Columns.Add(csApp);
+
+            csService.Name = "Service";
+            csService.DataPropertyName = "Service";
+            csService.Visible = false;
+            versionGrid.Columns.Add(csService);
 
         }
 
@@ -65,14 +95,17 @@ namespace AspectUpdatesDummy
         {
             string name = nameTxtBx.Text;
             string details = descriptionTxtBx.Text;
+            string plcAddress = plcTB.Text;
+            string contacts = contactsTB.Text;
+            string logonDetails = logonTB.Text;
             if (versionGrid.Rows.Count != 0)
             {
                 int versionPK = (int)versionGrid.SelectedRows[0].Cells["PK"].Value;
-                Database.InsertCustomer(name, details, versionPK);
+                Database.InsertCustomer(name, details, plcAddress, contacts, logonDetails, versionPK);
             }
             else
             {
-                Database.InsertCustomer(name, details);
+                Database.InsertCustomer(name, details, plcAddress, contacts, logonDetails);
             }
             MessageBox.Show("Completed!");
 

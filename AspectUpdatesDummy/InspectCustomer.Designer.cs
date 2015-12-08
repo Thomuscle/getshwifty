@@ -34,12 +34,18 @@
             this.versionLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.versionsLbl = new System.Windows.Forms.Label();
+            this.contactsTB = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.logonTB = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.plcTB = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // backBtn
             // 
             this.backBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.backBtn.Location = new System.Drawing.Point(464, 267);
+            this.backBtn.Location = new System.Drawing.Point(495, 515);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(134, 40);
             this.backBtn.TabIndex = 34;
@@ -50,11 +56,11 @@
             // detailsTextBox
             // 
             this.detailsTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.detailsTextBox.Location = new System.Drawing.Point(139, 124);
+            this.detailsTextBox.Location = new System.Drawing.Point(40, 144);
             this.detailsTextBox.Multiline = true;
             this.detailsTextBox.Name = "detailsTextBox";
             this.detailsTextBox.ReadOnly = true;
-            this.detailsTextBox.Size = new System.Drawing.Size(440, 77);
+            this.detailsTextBox.Size = new System.Drawing.Size(298, 77);
             this.detailsTextBox.TabIndex = 33;
             // 
             // descrLabel
@@ -73,7 +79,7 @@
             this.versionLabel.AutoSize = true;
             this.versionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.versionLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.versionLabel.Location = new System.Drawing.Point(37, 232);
+            this.versionLabel.Location = new System.Drawing.Point(339, 83);
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(136, 18);
             this.versionLabel.TabIndex = 31;
@@ -95,17 +101,86 @@
             this.versionsLbl.AutoSize = true;
             this.versionsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.versionsLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.versionsLbl.Location = new System.Drawing.Point(239, 24);
+            this.versionsLbl.Location = new System.Drawing.Point(254, 26);
             this.versionsLbl.Name = "versionsLbl";
             this.versionsLbl.Size = new System.Drawing.Size(151, 20);
             this.versionsLbl.TabIndex = 29;
             this.versionsLbl.Text = "Inspect Customer";
             // 
+            // contactsTB
+            // 
+            this.contactsTB.BackColor = System.Drawing.SystemColors.Control;
+            this.contactsTB.Location = new System.Drawing.Point(40, 266);
+            this.contactsTB.Multiline = true;
+            this.contactsTB.Name = "contactsTB";
+            this.contactsTB.ReadOnly = true;
+            this.contactsTB.Size = new System.Drawing.Size(449, 106);
+            this.contactsTB.TabIndex = 36;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(37, 241);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 18);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Contacts:";
+            // 
+            // logonTB
+            // 
+            this.logonTB.BackColor = System.Drawing.SystemColors.Control;
+            this.logonTB.Location = new System.Drawing.Point(40, 411);
+            this.logonTB.Multiline = true;
+            this.logonTB.Name = "logonTB";
+            this.logonTB.ReadOnly = true;
+            this.logonTB.Size = new System.Drawing.Size(449, 144);
+            this.logonTB.TabIndex = 38;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point(37, 390);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 18);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Logon Details:";
+            // 
+            // plcTB
+            // 
+            this.plcTB.BackColor = System.Drawing.SystemColors.Control;
+            this.plcTB.Location = new System.Drawing.Point(344, 144);
+            this.plcTB.Multiline = true;
+            this.plcTB.Name = "plcTB";
+            this.plcTB.ReadOnly = true;
+            this.plcTB.Size = new System.Drawing.Size(285, 77);
+            this.plcTB.TabIndex = 39;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(339, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 18);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "PLC Address:";
+            // 
             // InspectCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 330);
+            this.ClientSize = new System.Drawing.Size(670, 567);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.plcTB);
+            this.Controls.Add(this.logonTB);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.contactsTB);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.detailsTextBox);
             this.Controls.Add(this.descrLabel);
@@ -127,5 +202,11 @@
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label versionsLbl;
+        private System.Windows.Forms.TextBox contactsTB;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox logonTB;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox plcTB;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -28,11 +28,14 @@ namespace AspectUpdatesDummy
             customersPage.Show();
         }
 
-        public void setFields(string name, string details, string version)
+        public void setFields(string name, string details, string version, string plc, string contacts, string logon)
         {
             nameLabel.Text = "Name: " + name;
             detailsTextBox.Text = details;
             versionLabel.Text = "Current Version: " + version;
+            plcTB.Text = plc;
+            contactsTB.Text = contacts;
+            logonTB.Text = logon;
 
         }
     }

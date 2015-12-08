@@ -180,6 +180,7 @@
             // 
             this.versionGrid.AllowUserToAddRows = false;
             this.versionGrid.AllowUserToDeleteRows = false;
+            this.versionGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.versionGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.versionGrid.Location = new System.Drawing.Point(282, 75);
             this.versionGrid.MultiSelect = false;

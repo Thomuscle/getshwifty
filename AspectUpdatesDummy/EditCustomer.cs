@@ -28,17 +28,20 @@ namespace AspectUpdatesDummy
             customersPage.Show();
         }
 
-        public void setFields(string name, string details, string versionID, int currentPK)
+        public void setFields(string name, string details, string versionID, int currentPK, string plc, string contacts, string logon)
         {
             nameTxtBx.Text = name;
             versionTextBox.Text = versionID;
             detailsTxtBx.Text = details;
+            plcTB.Text = plc;
+            contactsTB.Text = contacts;
+            logonTB.Text = logon;
             this.currentPK = currentPK;
         }
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
-            Database.UpdateCustomer(currentPK, nameTxtBx.Text, detailsTxtBx.Text);
+            Database.UpdateCustomer(currentPK, nameTxtBx.Text, detailsTxtBx.Text, plcTB.Text, contactsTB.Text, logonTB.Text);
             
             MessageBox.Show("Completed!");
 

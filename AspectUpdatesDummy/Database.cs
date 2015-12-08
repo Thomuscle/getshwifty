@@ -25,14 +25,14 @@ namespace AspectUpdatesDummy
         //VERSION METHODS:
         //
 
-        public static int InsertVersion(string id, string description, int type, string release_Date)
+        public static int InsertVersion(string id, string description, int type, string release_Date, bool blueAspect, bool redAspect, bool webApp, bool webService)
         {
             int return_code = 0;
 
 
             string insertStatement = "INSERT INTO Version " +
-                "(ID, Description, Type, Release_Date) " +
-                "VALUES (@id, @description, @type, @release_Date)";
+                "(ID, Description, Type, Release_Date, includeBlueAspect, includeRedAspect, includeWebApp, includeWebService) " +
+                "VALUES (@id, @description, @type, @release_Date, @blue, @red, @app, @service)";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
@@ -41,6 +41,10 @@ namespace AspectUpdatesDummy
             insertCommand.Parameters.AddWithValue("@description", description);
             insertCommand.Parameters.AddWithValue("@type", type);
             insertCommand.Parameters.AddWithValue("@release_Date", Convert.ToDateTime(release_Date));
+            insertCommand.Parameters.AddWithValue("@blue", blueAspect);
+            insertCommand.Parameters.AddWithValue("@red", redAspect);
+            insertCommand.Parameters.AddWithValue("@app", webApp);
+            insertCommand.Parameters.AddWithValue("@service", webService);
 
             try
             {
@@ -77,13 +81,13 @@ namespace AspectUpdatesDummy
                 {
                     int pk = reader.GetInt32(0);
                     String id = reader.GetString(1);
-                    String description = reader.GetString(2);
-                    int type = reader.GetInt32(3);
-                    DateTime release_date = reader.GetDateTime(4);
-                    bool b = reader.GetBoolean(6);
-                    bool r = reader.GetBoolean(7);
-                    bool a = reader.GetBoolean(8);
-                    bool s = reader.GetBoolean(9);
+                    String description = SafeGetString(reader, 2);
+                    int type = SafeGetInt(reader, 3);
+                    DateTime release_date = SafeGetDate(reader, 4);
+                    bool b = SafeGetBool(reader, 6);
+                    bool r = SafeGetBool(reader, 7);
+                    bool a = SafeGetBool(reader, 8);
+                    bool s = SafeGetBool(reader, 9);
 
                     Version vers = new Version(pk, id, description, type, release_date, false, b, r, a, s);
                     versionList.Add(vers);
@@ -201,13 +205,13 @@ namespace AspectUpdatesDummy
         //CUSTOMER METHODS:
         //
 
-        public static int InsertCustomer(string name, string details, int versionPK)
+        public static int InsertCustomer(string name, string details, string plc, string contacts, string logon, int versionPK)
         {
             int return_code = 0;
 
             string insertStatement = "INSERT INTO Customer " +
-                "(Name, Details, VersionPK) " +
-                "VALUES (@name, @details, @versionPK)";
+                "(Name, Details, VersionPK, plcAddress, Contacts, LogonDetail) " +
+                "VALUES (@name, @details, @versionPK, @plc, @contacts, @logon)";
             
             SqlConnection connection = Database.GetConnection();
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
@@ -215,6 +219,9 @@ namespace AspectUpdatesDummy
             insertCommand.Parameters.AddWithValue("@name", name);
             insertCommand.Parameters.AddWithValue("@details", details);
             insertCommand.Parameters.AddWithValue("@versionPK", versionPK);
+            insertCommand.Parameters.AddWithValue("@plc", plc);
+            insertCommand.Parameters.AddWithValue("@contacts", contacts);
+            insertCommand.Parameters.AddWithValue("@logon", logon);
             
            
 
@@ -236,19 +243,22 @@ namespace AspectUpdatesDummy
             return return_code;
         }
 
-        public static int InsertCustomer(string name, string details)
+        public static int InsertCustomer(string name, string details, string plc, string contacts, string logon)
         {
             int return_code = 0;
             
             string insertStatement = "INSERT INTO Customer " +
-                "(Name, Details) " +
-                "VALUES (@name, @details)";
+                "(Name, Details, plcAddress, Contacts, LogonDetail) " +
+                "VALUES (@name, @details, @plc, @contacts, @logon)";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
 
             insertCommand.Parameters.AddWithValue("@name", name);
             insertCommand.Parameters.AddWithValue("@details", details);
+            insertCommand.Parameters.AddWithValue("@plc", plc);
+            insertCommand.Parameters.AddWithValue("@contacts", contacts);
+            insertCommand.Parameters.AddWithValue("@logon", logon);
 
             try
             {
@@ -285,7 +295,7 @@ namespace AspectUpdatesDummy
                 {
                     int pk = reader.GetInt32(0);
                     String name = reader.GetString(1);
-                    String details = reader.GetString(2);
+                    String details = SafeGetString(reader, 2);
                     int? versionPK;
 
                     if (reader.GetValue(3) == DBNull.Value)
@@ -297,9 +307,9 @@ namespace AspectUpdatesDummy
                         versionPK = reader.GetInt32(3);
                     }
 
-                    String plc = reader.GetString(5);
-                    String contacts = reader.GetString(6);
-                    String logon = reader.GetString(7);
+                    String plc = SafeGetString(reader, 5);
+                    String contacts = SafeGetString(reader, 6);
+                    String logon = SafeGetString(reader, 7);
 
                     Customer cust = new Customer(pk, name, details, plc, contacts,logon, versionPK, false);
                     customerList.Add(cust);
@@ -334,7 +344,7 @@ namespace AspectUpdatesDummy
                 {
                     int pk = reader.GetInt32(0);
                     String name = reader.GetString(1);
-                    String details = reader.GetString(2);
+                    String details = SafeGetString(reader, 2);
                     int? versionPK;
                     string versionID;
                     if (reader.GetValue(3) == DBNull.Value || reader.GetValue(3) == null)
@@ -348,9 +358,9 @@ namespace AspectUpdatesDummy
                         versionID = reader.GetString(4);
                     }
 
-                    String plc = reader.GetString(5);
-                    String contacts = reader.GetString(6);
-                    String logon = reader.GetString(7);
+                    String plc = SafeGetString(reader, 5);
+                    String contacts = SafeGetString(reader, 6);
+                    String logon = SafeGetString(reader, 7);
                    
                     Customer cust = new Customer(pk, name, details, plc, contacts, logon, versionPK, versionID, false);
                     customerList.Add(cust);
@@ -386,11 +396,11 @@ namespace AspectUpdatesDummy
                 {
                     int pk = reader.GetInt32(0);
                     String name = reader.GetString(1);
-                    String details = reader.GetString(2);
-                    int versionPK = reader.GetInt32(3);
-                    String plc = reader.GetString(5);
-                    String contacts = reader.GetString(6);
-                    String logon = reader.GetString(7);
+                    String details = SafeGetString(reader, 2);
+                    int versionPK = SafeGetInt(reader, 3);
+                    String plc = SafeGetString(reader, 5);
+                    String contacts = SafeGetString(reader, 6);
+                    String logon = SafeGetString(reader, 7);
 
                     Customer cust = new Customer(pk, name, details, plc, contacts, logon, versionPK, "", false);
                     customerList.Add(cust);
@@ -482,10 +492,10 @@ namespace AspectUpdatesDummy
 
         }
 
-        public static void UpdateCustomer(int customerPK, string name, string details)
+        public static void UpdateCustomer(int customerPK, string name, string details, string plc, string contacts, string logon)
         {
-            string updateStatement = "UPDATE Customer SET Name= @name, Details = @details" +
-               "  WHERE PK= @pk";
+            string updateStatement = "UPDATE Customer SET Name= @name, Details = @details," +
+               " plcAddress = @plc, Contacts = @contacts, LogonDetail = @logon WHERE PK= @pk";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
@@ -493,6 +503,9 @@ namespace AspectUpdatesDummy
             updateCommand.Parameters.AddWithValue("@name", name);
             updateCommand.Parameters.AddWithValue("@pk", customerPK);
             updateCommand.Parameters.AddWithValue("@details", details);
+            updateCommand.Parameters.AddWithValue("@plc", plc);
+            updateCommand.Parameters.AddWithValue("@contacts", contacts);
+            updateCommand.Parameters.AddWithValue("@logon", logon);
 
             try
             {
@@ -554,7 +567,7 @@ namespace AspectUpdatesDummy
                 var reader = selectCommand.ExecuteReader();
                 while (reader.Read())
                 {
-                    name = reader.GetString(0);
+                    name = SafeGetString(reader, 0);
                 }
             }
             catch (SqlException ex)
@@ -681,8 +694,8 @@ namespace AspectUpdatesDummy
                     int customerPK = reader.GetInt32(2);
                     DateTime? expectedDate = reader[3] as DateTime?;
                     DateTime? actualDate = reader[4] as DateTime?;
-                    String comment = Convert.ToString(reader.GetValue(5));
-                    bool isDeleted = reader.GetBoolean(6);
+                    String comment = SafeGetString(reader, 5);
+                    bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
 
                     Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
@@ -723,8 +736,8 @@ namespace AspectUpdatesDummy
                     int customerPK = reader.GetInt32(2);
                     DateTime? expectedDate = reader[3] as DateTime?;
                     DateTime? actualDate = reader[4] as DateTime?;
-                    String comment = Convert.ToString(reader.GetValue(5));
-                    bool isDeleted = reader.GetBoolean(6);
+                    String comment = SafeGetString(reader, 5);
+                    bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
 
                     Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
@@ -765,8 +778,8 @@ namespace AspectUpdatesDummy
                     int customerPK = reader.GetInt32(2);
                     DateTime? expectedDate = reader[3] as DateTime?;
                     DateTime? actualDate = reader[4] as DateTime?;
-                    String comment = Convert.ToString(reader.GetValue(5));
-                    bool isDeleted = reader.GetBoolean(6);
+                    String comment = SafeGetString(reader, 5);
+                    bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
 
                     Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
@@ -891,7 +904,7 @@ namespace AspectUpdatesDummy
                 while (reader.Read())
                 {
                     int pk = reader.GetInt32(0);
-                    String name = reader.GetString(1);
+                    String name = SafeGetString(reader, 1);
 
                     Employee employee = new Employee(pk, name, false);
                     employeeList.Add(employee);
@@ -926,7 +939,7 @@ namespace AspectUpdatesDummy
                 var reader = selectCommand.ExecuteReader();
                 while (reader.Read())
                 {
-                    name = reader.GetString(0);
+                    name = SafeGetString(reader, 0);
                 }
             }
             catch (SqlException ex)
@@ -1022,6 +1035,41 @@ namespace AspectUpdatesDummy
             {
                 connection.Close();
             }
+        }
+
+        //
+        //SAFE READERS
+        //
+        public static string SafeGetString(this SqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetString(colIndex);
+            else
+                return string.Empty;
+        }
+
+        public static int SafeGetInt(this SqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetInt32(colIndex);
+            else
+                return 0;
+        }
+
+        public static DateTime SafeGetDate(this SqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetDateTime(colIndex);
+            else
+                return DateTime.MinValue;
+        }
+
+        public static bool SafeGetBool(this SqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetBoolean(colIndex);
+            else
+                return false;
         }
     }
 }

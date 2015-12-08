@@ -32,6 +32,9 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csVersionPK = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csVersionID = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csDetails = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csPLC = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csContacts = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csLogonDetail = new DataGridViewTextBoxColumn();
 
             csName.Name = "Name";
             csName.DataPropertyName = "Name";
@@ -60,6 +63,24 @@ namespace AspectUpdatesDummy
             csDetails.Visible = false;
             CustomersGrid.Columns.Add(csDetails);
 
+            csPLC.Name = "PLC";
+            csPLC.DataPropertyName = "PLC";
+            csPLC.HeaderText = "PLC";
+            csPLC.Visible = false;
+            CustomersGrid.Columns.Add(csPLC);
+
+            csContacts.Name = "Contacts";
+            csContacts.DataPropertyName = "Contacts";
+            csContacts.HeaderText = "Contacts";
+            csContacts.Visible = false;
+            CustomersGrid.Columns.Add(csContacts);
+
+            csLogonDetail.Name = "LogonDetail";
+            csLogonDetail.DataPropertyName = "LogonDetails";
+            csLogonDetail.HeaderText = "Logon Details";
+            csLogonDetail.Visible = false;
+            CustomersGrid.Columns.Add(csLogonDetail);
+
         }
 
         private void mainMenuBtn3_Click(object sender, EventArgs e)
@@ -80,10 +101,11 @@ namespace AspectUpdatesDummy
             int versionPK = Convert.ToInt32(CustomersGrid.SelectedRows[0].Cells["VersionPK"].Value);
             int pk = Convert.ToInt32(CustomersGrid.SelectedRows[0].Cells["PK"].Value);
             string versionID = CustomersGrid.SelectedRows[0].Cells["VersionID"].Value.ToString();
-
-            //string versionID = Database.getVersionID(versionPK);
+            string plc = CustomersGrid.SelectedRows[0].Cells["PLC"].Value.ToString();
+            string contacts = CustomersGrid.SelectedRows[0].Cells["Contacts"].Value.ToString();
+            string logon = CustomersGrid.SelectedRows[0].Cells["LogonDetail"].Value.ToString();
             
-            editCustomer.setFields(name, details, versionID, pk);
+            editCustomer.setFields(name, details, versionID, pk, plc, contacts, logon);
 
             editCustomer.Show();
             this.Hide();
@@ -94,10 +116,13 @@ namespace AspectUpdatesDummy
             string name = CustomersGrid.SelectedRows[0].Cells["Name"].Value.ToString();
             string details = CustomersGrid.SelectedRows[0].Cells["Details"].Value.ToString();
             int versionPK = Convert.ToInt32(CustomersGrid.SelectedRows[0].Cells["VersionPK"].Value);
+            string plc = CustomersGrid.SelectedRows[0].Cells["PLC"].Value.ToString();
+            string contacts = CustomersGrid.SelectedRows[0].Cells["Contacts"].Value.ToString();
+            string logon = CustomersGrid.SelectedRows[0].Cells["LogonDetail"].Value.ToString();
 
             string versionID = Database.getVersionID(versionPK);
 
-            inspectCustomer.setFields(name, details, versionID);
+            inspectCustomer.setFields(name, details, versionID, plc, contacts, logon);
 
             inspectCustomer.Show();
             this.Hide();

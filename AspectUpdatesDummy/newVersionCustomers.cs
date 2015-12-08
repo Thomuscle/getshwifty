@@ -29,6 +29,10 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csVersionPK = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csVersionID = new DataGridViewTextBoxColumn();
             DataGridViewCheckBoxColumn csSelected = new DataGridViewCheckBoxColumn();
+            DataGridViewTextBoxColumn csPLC = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csContacts = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csLogonDetail = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csDetail = new DataGridViewTextBoxColumn();
 
             csSelected.HeaderText = "Selected";
             CustomersGrid.Columns.Add(csSelected);
@@ -43,6 +47,7 @@ namespace AspectUpdatesDummy
 
             csVersionPK.DataPropertyName = "VersionPK";
             csVersionPK.HeaderText = "Version PK";
+            csVersionPK.Visible = false;
             CustomersGrid.Columns.Add(csVersionPK);
 
             csPK.DataPropertyName = "PK";
@@ -50,6 +55,28 @@ namespace AspectUpdatesDummy
             csPK.Name = "PK";
             csPK.Visible = false;
             CustomersGrid.Columns.Add(csPK);
+
+            csDetail.DataPropertyName = "Details";
+            csDetail.Visible = false;
+            CustomersGrid.Columns.Add(csDetail);
+
+            csPLC.Name = "PLC";
+            csPLC.DataPropertyName = "PLC";
+            csPLC.HeaderText = "PLC";
+            csPLC.Visible = false;
+            CustomersGrid.Columns.Add(csPLC);
+
+            csContacts.Name = "Contacts";
+            csContacts.DataPropertyName = "Contacts";
+            csContacts.HeaderText = "Contacts";
+            csContacts.Visible = false;
+            CustomersGrid.Columns.Add(csContacts);
+
+            csLogonDetail.Name = "LogonDetail";
+            csLogonDetail.DataPropertyName = "LogonDetails";
+            csLogonDetail.HeaderText = "Logon Details";
+            csLogonDetail.Visible = false;
+            CustomersGrid.Columns.Add(csLogonDetail);
 
             foreach (DataGridViewColumn dc in CustomersGrid.Columns)
             {

@@ -34,6 +34,9 @@ namespace AspectUpdatesDummy
             DataGridViewCheckBoxColumn csSelected = new DataGridViewCheckBoxColumn();
             DataGridViewTextBoxColumn csDetails = new DataGridViewTextBoxColumn();
             DataGridViewComboBoxColumn csAssigned = new DataGridViewComboBoxColumn();
+            DataGridViewTextBoxColumn csPLC = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csContacts = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csLogonDetail = new DataGridViewTextBoxColumn();
             
 
             csSelected.HeaderText = "Selected";
@@ -71,6 +74,24 @@ namespace AspectUpdatesDummy
             csDetails.DataPropertyName = "Details";
             csDetails.Visible = false;
             CustomersGrid.Columns.Add(csDetails);
+
+            csPLC.Name = "PLC";
+            csPLC.DataPropertyName = "PLC";
+            csPLC.HeaderText = "PLC";
+            csPLC.Visible = false;
+            CustomersGrid.Columns.Add(csPLC);
+
+            csContacts.Name = "Contacts";
+            csContacts.DataPropertyName = "Contacts";
+            csContacts.HeaderText = "Contacts";
+            csContacts.Visible = false;
+            CustomersGrid.Columns.Add(csContacts);
+
+            csLogonDetail.Name = "LogonDetail";
+            csLogonDetail.DataPropertyName = "LogonDetails";
+            csLogonDetail.HeaderText = "Logon Details";
+            csLogonDetail.Visible = false;
+            CustomersGrid.Columns.Add(csLogonDetail);
 
             foreach (DataGridViewColumn dc in CustomersGrid.Columns)
             {
