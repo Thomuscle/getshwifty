@@ -34,6 +34,7 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csLogonDetail = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csDetail = new DataGridViewTextBoxColumn();
 
+            csSelected.Name = "Selected";
             csSelected.HeaderText = "Selected";
             CustomersGrid.Columns.Add(csSelected);
 
@@ -131,6 +132,28 @@ namespace AspectUpdatesDummy
         {
             get { return versionPK; }
             set { versionPK = value; }
+        }
+
+        private void selectButton_Click(object sender, EventArgs e)
+        {
+            if (selectButton.Text.Equals("Select All"))
+            {
+                foreach (DataGridViewRow row in CustomersGrid.Rows)
+                {
+                    // This will check the cell.
+                    row.Cells["Selected"].Value = true;
+                }
+                selectButton.Text = "Deselect All";
+            }
+            else
+            {
+                foreach (DataGridViewRow row in CustomersGrid.Rows)
+                {
+                    // This will check the cell.
+                    row.Cells["Selected"].Value = null;
+                }
+                selectButton.Text = "Select All";
+            }
         }
 
     }

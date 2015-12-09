@@ -139,7 +139,7 @@ namespace AspectUpdatesDummy
                         if (actualDate != null)
                         {
                             Database.UpdateCustomer(Convert.ToInt32(row.Cells["PK"].Value.ToString()), versionPK);
-                            //Remove update from employee's tasks.
+                            
                         }
 
                         int employeePK = Convert.ToInt32(row.Cells["AssignedTo"].Value);
@@ -171,7 +171,7 @@ namespace AspectUpdatesDummy
                 foreach (DataGridViewRow row in CustomersGrid.Rows)
                 {
                     // This will check the cell.
-                    row.Cells["Selected"].Value = "true";
+                    row.Cells["Selected"].Value = true;
                 }
                 selectButton.Text = "Deselect All";
             }

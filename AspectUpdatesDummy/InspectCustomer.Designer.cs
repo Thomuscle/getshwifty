@@ -45,7 +45,7 @@
             // backBtn
             // 
             this.backBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.backBtn.Location = new System.Drawing.Point(495, 515);
+            this.backBtn.Location = new System.Drawing.Point(513, 752);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(134, 40);
             this.backBtn.TabIndex = 34;
@@ -114,7 +114,7 @@
             this.contactsTB.Multiline = true;
             this.contactsTB.Name = "contactsTB";
             this.contactsTB.ReadOnly = true;
-            this.contactsTB.Size = new System.Drawing.Size(449, 106);
+            this.contactsTB.Size = new System.Drawing.Size(449, 140);
             this.contactsTB.TabIndex = 36;
             // 
             // label1
@@ -131,11 +131,11 @@
             // logonTB
             // 
             this.logonTB.BackColor = System.Drawing.SystemColors.Control;
-            this.logonTB.Location = new System.Drawing.Point(40, 411);
+            this.logonTB.Location = new System.Drawing.Point(40, 441);
             this.logonTB.Multiline = true;
             this.logonTB.Name = "logonTB";
             this.logonTB.ReadOnly = true;
-            this.logonTB.Size = new System.Drawing.Size(449, 144);
+            this.logonTB.Size = new System.Drawing.Size(449, 351);
             this.logonTB.TabIndex = 38;
             // 
             // label2
@@ -143,7 +143,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(37, 390);
+            this.label2.Location = new System.Drawing.Point(37, 420);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 18);
             this.label2.TabIndex = 37;
@@ -174,7 +174,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 567);
+            this.ClientSize = new System.Drawing.Size(670, 804);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.plcTB);
             this.Controls.Add(this.logonTB);

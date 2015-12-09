@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.actualTimePicker = new System.Windows.Forms.DateTimePicker();
             this.actualDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.selectButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,11 +109,22 @@
             this.actualDatePicker.Size = new System.Drawing.Size(150, 20);
             this.actualDatePicker.TabIndex = 24;
             // 
+            // selectButton
+            // 
+            this.selectButton.Location = new System.Drawing.Point(435, 215);
+            this.selectButton.Name = "selectButton";
+            this.selectButton.Size = new System.Drawing.Size(127, 27);
+            this.selectButton.TabIndex = 27;
+            this.selectButton.Text = "Select All";
+            this.selectButton.UseVisualStyleBackColor = true;
+            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
+            // 
             // NewVersionCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.selectButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.actualTimePicker);
             this.Controls.Add(this.actualDatePicker);
@@ -137,5 +149,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker actualTimePicker;
         private System.Windows.Forms.DateTimePicker actualDatePicker;
+        private System.Windows.Forms.Button selectButton;
     }
 }

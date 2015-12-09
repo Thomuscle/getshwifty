@@ -10,9 +10,11 @@ namespace AspectUpdatesDummy
 {
     public static class Database
     {
-        public static string connStr =  @"Data Source = (LocalDB)\V11.0;"
-             + @" AttachDbFilename=""C:\Users\shaun\Documents\Visual Studio 2013\Projects\AspectUpdatesDummy\AspectUpdatesDummy\VersionDatabase1.mdf"";"
-             + @" Integrated Security=True";
+       // public static string connStr =  @"Server=\\Mustang_07_VM\SQLExpress;"
+          //   + @" AttachDbFilename=""C:\Aspect Productivity Technology\AspectPL\Database\AspectVersionDatabase.mdf"";"
+          //   + @" Integrated Security=True; User Id=Shaun; Password=Windows10;";
+
+        public static string connStr = @"Server=MUSTANG_07_VM\SQLEXPRESS; Database=AspectVersionDatabase; User Id=aspect; Password=aspect6;";
 
         public static SqlConnection GetConnection()
         {
@@ -170,6 +172,11 @@ namespace AspectUpdatesDummy
 
         public static string getVersionID(int? versionPK)
         {
+            if (versionPK == null)
+            {
+                return "";
+            }
+            
             string selectStatement = "SELECT ID FROM Version WHERE PK = @pk";
 
             SqlConnection connection = Database.GetConnection();
