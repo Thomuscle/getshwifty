@@ -17,6 +17,7 @@ namespace AspectUpdatesDummy
         InspectUpdate inspectUpdate;
         EditUpdate editUpdate;
         NewUpdatePage newUpdatePage;
+        DataGridViewCheckBoxColumn csDone;
 
         public ExistingUpdates(MainMenu m)
         {
@@ -34,10 +35,17 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csVersionID = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csEmployee = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn csVersionExpDate = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn csVersionActDate = new DataGridViewTextBoxColumn();
             DataGridViewCheckBoxColumn csDeleted = new DataGridViewCheckBoxColumn();
             DataGridViewTextBoxColumn csComment = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn csContactedDate = new DataGridViewTextBoxColumn();
             DataGridViewCheckBoxColumn csContacted = new DataGridViewCheckBoxColumn();
+            DataGridViewTextBoxColumn csVersionActDate = new DataGridViewTextBoxColumn();
+            csDone = new DataGridViewCheckBoxColumn();
+
+            csPK.Name = "PK";
+            csPK.DataPropertyName = "PK";
+            csPK.Visible = false;
+            UpdatesGrid.Columns.Add(csPK);
 
             csCustomerPK.Name = "CustomerPK";
             csCustomerPK.DataPropertyName = "CustomerPK";
@@ -66,16 +74,6 @@ namespace AspectUpdatesDummy
             csVersionExpDate.HeaderText = "Expected Date";
             UpdatesGrid.Columns.Add(csVersionExpDate);
 
-            csVersionActDate.Name = "ActualDate";
-            csVersionActDate.DataPropertyName = "ActualDate";
-            csVersionActDate.HeaderText = "Actual Date";
-            UpdatesGrid.Columns.Add(csVersionActDate);
-
-            csPK.Name = "PK";
-            csPK.DataPropertyName = "PK";
-            csPK.Visible = false;
-            UpdatesGrid.Columns.Add(csPK);
-
             csComment.Name = "Comment";
             csComment.DataPropertyName = "Comment";
             csComment.Visible = false;
@@ -93,10 +91,37 @@ namespace AspectUpdatesDummy
             csEmployee.Visible = false;
             UpdatesGrid.Columns.Add(csEmployee);
 
+            csContactedDate.Name = "ContactedDate";
+            csContactedDate.DataPropertyName = "ContactedDate";
+            csContactedDate.HeaderText = "Contacted Date";
+            UpdatesGrid.Columns.Add(csContactedDate);
+
             csContacted.Name = "Contacted";
             csContacted.HeaderText = "Has Been Contacted";
             csContacted.DataPropertyName = "Contacted";
             UpdatesGrid.Columns.Add(csContacted);
+
+            csVersionActDate.Name = "ActualDate";
+            csVersionActDate.DataPropertyName = "ActualDate";
+            csVersionActDate.HeaderText = "Actual Date";
+            UpdatesGrid.Columns.Add(csVersionActDate);
+
+            csDone.Name = "isDone";
+            csDone.HeaderText = "Done";
+            csDone.DataPropertyName = "Done";
+            UpdatesGrid.Columns.Add(csDone);
+
+            foreach (DataGridViewColumn dc in UpdatesGrid.Columns)
+            {
+                if (dc.Index.Equals(10) || dc.Index.Equals(12))
+                {
+                    dc.ReadOnly = false;
+                }
+                else
+                {
+                    dc.ReadOnly = true;
+                }
+            }
 
         }
 
@@ -151,6 +176,7 @@ namespace AspectUpdatesDummy
             DateTime expectedDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ExpectedDate"].Value);
             DateTime? actualDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ActualDate"].Value);
             bool contacted = (bool)UpdatesGrid.SelectedRows[0].Cells["Contacted"].Value;
+            bool done = (bool)UpdatesGrid.SelectedRows[0].Cells["isDone"].Value;
             int employeePK;
             if (UpdatesGrid.SelectedRows[0].Cells["AssignedTo"].Value == null)
             {
@@ -161,18 +187,11 @@ namespace AspectUpdatesDummy
                 employeePK = (int)UpdatesGrid.SelectedRows[0].Cells["AssignedTo"].Value;
             }
 
-            if (actualDate == DateTime.MinValue)
-            {
-
-                editUpdate.setFields(versionPK, customerPK, expectedDate, comment, pk, employeePK, contacted);
+                editUpdate.setFields(versionPK, customerPK, expectedDate, comment, pk, employeePK, contacted, done);
 
                 editUpdate.Show();
                 this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Sorry. Cannot edit an update that has been completed.");
-            }
+           
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -213,6 +232,33 @@ namespace AspectUpdatesDummy
             {
                 UpdatesGrid.DataSource = Database.GetUpdateList();
                 currentVersionBtn.Text = "All";
+            }
+        }
+
+        private void UpdatesGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 11 && e.RowIndex != -1)
+            {
+                Database.changeUpdateDone(Convert.ToInt32(UpdatesGrid.Rows[e.RowIndex].Cells[0].Value), Convert.ToBoolean(UpdatesGrid.Rows[e.RowIndex].Cells[11].Value));
+                UpdatesGrid.DataSource = Database.GetUpdateList();
+            }
+            if (e.ColumnIndex == 9 && e.RowIndex != -1)
+            {
+                Database.changeUpdateContacted(Convert.ToInt32(UpdatesGrid.Rows[e.RowIndex].Cells[0].Value), Convert.ToBoolean(UpdatesGrid.Rows[e.RowIndex].Cells[9].Value));
+                UpdatesGrid.DataSource = Database.GetUpdateList();
+            }
+        }
+
+        private void UpdatesGrid_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // End of edition on each click on column of checkbox
+            if (e.ColumnIndex == 11 && e.RowIndex != -1)
+            {
+                UpdatesGrid.EndEdit();
+            }
+            if (e.ColumnIndex == 9 && e.RowIndex != -1)
+            {
+                UpdatesGrid.EndEdit();
             }
         }
     }

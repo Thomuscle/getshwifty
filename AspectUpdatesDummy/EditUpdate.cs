@@ -17,6 +17,8 @@ namespace AspectUpdatesDummy
         int currentPK;
         int currentCustomer;
         int currentVersion;
+        bool wasContacted;
+        bool wasDone;
 
         public EditUpdate(ExistingUpdates eu)
         {
@@ -34,18 +36,23 @@ namespace AspectUpdatesDummy
         {
             DateTime expectedDate = Convert.ToDateTime(expectedDatePicker.Value.ToShortDateString() + ' ' + expectedTimePicker.Value.ToShortTimeString());
             DateTime actualDate = Convert.ToDateTime(actualDatePicker.Value.ToShortDateString() + ' ' + actualTimePicker.Value.ToShortTimeString());
-            bool contacted = contactedCB.Checked;
             int employee = Convert.ToInt32(employeeComboBox.SelectedValue);
+            
+           
 
-            if (useActual.Checked)
-            {
-               Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, actualDate, employee, contacted);
-               Database.UpdateCustomer(currentCustomer, currentVersion);
-            }
-            else
-            {
-                Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, employee, contacted);
-            }
+                bool contacted = contactedCB.Checked;
+                
+                if (useActual.Checked)
+                {
+                    Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, actualDate, employee, contacted, wasContacted, true, wasDone);
+                    Database.UpdateCustomer(currentCustomer, currentVersion);
+                }
+                else
+                {
+                    Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, employee, contacted, wasContacted, false);
+                }
+            
+           
             
             MessageBox.Show("Completed!");
 
@@ -56,11 +63,22 @@ namespace AspectUpdatesDummy
             updatesPage.Show();
         }
 
-        public void setFields(int versionPK, int customerPK, DateTime expectedDate, string comment, int pk, int employeePK, bool? contacted)
+        public void setFields(int versionPK, int customerPK, DateTime expectedDate, string comment, int pk, int employeePK, bool? contacted, bool done)
         {
             currentPK = pk;
             currentCustomer = customerPK;
             currentVersion = versionPK;
+
+            useActual.Checked = done;
+
+            if (done)
+            {
+                wasDone = true;
+            }
+            else
+            {
+                wasDone = false;
+            }
             
             string versionID = Database.getVersionID(versionPK);
 
@@ -84,19 +102,33 @@ namespace AspectUpdatesDummy
                 expectedDatePicker.Text = expectedDate.ToShortDateString();
                 expectedTimePicker.Text = expectedDate.ToLongTimeString();
 
-                actualDatePicker.Text = expectedDate.ToShortDateString();
-                actualTimePicker.Text = expectedDate.ToLongTimeString();
+                actualDatePicker.Text = DateTime.Now.ToShortDateString();
+                actualTimePicker.Text = DateTime.Now.ToLongTimeString();
             }
 
             if (contacted == true)
             {
                 contactedCB.Checked = true;
+                this.wasContacted = true;
             }
             else
             {
                 contactedCB.Checked = false;
+                this.wasContacted = false;
             }
 
+        }
+
+        private void useActual_CheckedChanged(object sender, EventArgs e)
+        {
+            actualDatePicker.Text = DateTime.Now.ToShortDateString();
+            actualTimePicker.Text = DateTime.Now.ToLongTimeString();
+            wasDone = false;
+        }
+
+        private void contactedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            wasContacted = false;
         } 
     }
 }

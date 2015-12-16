@@ -15,10 +15,12 @@ namespace AspectUpdatesDummy
         private bool isDeleted;
         private DateTime? expectedDate;
         private DateTime? actualDate;
+        private DateTime? contactedDate;
         private int? assignedTo;
         private bool contacted;
+        private bool done;
 
-        public Update(int pk, int versionPK, int customerPK, DateTime? expectedDate, DateTime? actualDate, string comment, bool deleted, int? assignedTo, bool? contacted)
+        public Update(int pk, int versionPK, int customerPK, DateTime? expectedDate, DateTime? actualDate, string comment, bool deleted, int? assignedTo, bool? contacted, DateTime? contactedDate, bool? done)
         {
             this.pk = pk;
             this.customerPK = customerPK;
@@ -28,6 +30,7 @@ namespace AspectUpdatesDummy
             this.versionPK = versionPK;
             isDeleted = deleted;
             this.assignedTo = assignedTo;
+            this.contactedDate = contactedDate;
             if (contacted == null)
             {
                 this.contacted = false;
@@ -35,6 +38,15 @@ namespace AspectUpdatesDummy
             else
             {
                 this.contacted = (bool)contacted;
+            }
+
+            if (done == null)
+            {
+                this.done = false;
+            }
+            else
+            {
+                this.done = (bool)done;
             }
             
 
@@ -64,11 +76,7 @@ namespace AspectUpdatesDummy
             set { this.expectedDate = value; }
         }
 
-        public DateTime? ActualDate
-        {
-            get { return this.actualDate; }
-            set { this.actualDate = value; }
-        }
+      
 
         public int CustomerPK
         {
@@ -102,6 +110,24 @@ namespace AspectUpdatesDummy
         {
             get { return this.contacted; }
             set { this.contacted = value; }
+        }
+
+        public DateTime? ActualDate
+        {
+            get { return this.actualDate; }
+            set { this.actualDate = value; }
+        }
+
+        public bool Done
+        {
+            get { return this.done;  }
+            set { this.done = value; }
+        }
+
+        public DateTime? ContactedDate
+        {
+            get { return this.contactedDate; }
+            set { this.contactedDate = value; }
         }
     }
 }

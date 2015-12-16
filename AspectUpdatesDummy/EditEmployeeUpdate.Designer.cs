@@ -88,10 +88,11 @@
             this.useActual.AutoSize = true;
             this.useActual.Location = new System.Drawing.Point(328, 251);
             this.useActual.Name = "useActual";
-            this.useActual.Size = new System.Drawing.Size(151, 17);
+            this.useActual.Size = new System.Drawing.Size(100, 17);
             this.useActual.TabIndex = 69;
-            this.useActual.Text = "Use Actual Date and Time";
+            this.useActual.Text = "Update is Done";
             this.useActual.UseVisualStyleBackColor = true;
+            this.useActual.CheckedChanged += new System.EventHandler(this.useActual_CheckedChanged);
             // 
             // actualTimePicker
             // 
@@ -216,6 +217,7 @@
             this.contactedCB.TabIndex = 74;
             this.contactedCB.Text = "Customer has been contacted";
             this.contactedCB.UseVisualStyleBackColor = true;
+            this.contactedCB.CheckedChanged += new System.EventHandler(this.contactedCB_CheckedChanged);
             // 
             // EditEmployeeUpdate
             // 

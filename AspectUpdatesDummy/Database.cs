@@ -743,8 +743,10 @@ namespace AspectUpdatesDummy
                     bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
                     bool? contacted = reader[8] as bool?;
+                    DateTime? contactedDate = reader[9] as DateTime?;
+                    bool isDone = SafeGetBool(reader, 10);
 
-                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted);
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted, contactedDate, isDone);
                     updateList.Add(up);
                 }
             }
@@ -786,8 +788,10 @@ namespace AspectUpdatesDummy
                     bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
                     bool? contacted = reader[8] as bool?;
+                    DateTime? contactedDate = reader[9] as DateTime?;
+                    bool isDone = SafeGetBool(reader, 10);
 
-                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted);
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted, contactedDate, isDone);
                     updateList.Add(up);
                 }
             }
@@ -829,8 +833,10 @@ namespace AspectUpdatesDummy
                     bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
                     bool? contacted = reader[8] as bool?;
+                    DateTime? contactedDate = reader[9] as DateTime?;
+                    bool isDone = SafeGetBool(reader, 10);
 
-                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted);
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted, contactedDate, isDone);
                     updateList.Add(up);
                 }
             }
@@ -872,8 +878,10 @@ namespace AspectUpdatesDummy
                     bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
                     bool? contacted = reader[8] as bool?;
+                    DateTime? contactedDate = reader[9] as DateTime?;
+                    bool isDone = SafeGetBool(reader, 10);
 
-                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted);
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted, contactedDate, isDone);
                     updateList.Add(up);
                 }
             }
@@ -889,19 +897,39 @@ namespace AspectUpdatesDummy
             return updateList;
         }
 
-        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, int assigned, bool contacted)
+        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, int assigned, bool contacted, bool wasContacted, bool done)
         {
-            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, AssignedTo = @assigned, hasBeenContacted = @contacted" +
-               "  WHERE PK= @pk";
+            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Actual_Date = @actualDate, Comment = @comments, AssignedTo = @assigned, hasBeenContacted = @contacted, isDone = @done";
+
+            if (!wasContacted) { 
+                updateStatement = updateStatement + ", Contacted_Date = @contactedDate";
+            }
+
+            updateStatement = updateStatement +  "  WHERE PK= @pk";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
 
             updateCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
+            updateCommand.Parameters.AddWithValue("@actualDate", DBNull.Value);
             updateCommand.Parameters.AddWithValue("@pk", pk);
             updateCommand.Parameters.AddWithValue("@comments", comments);
             updateCommand.Parameters.AddWithValue("@assigned", assigned);
             updateCommand.Parameters.AddWithValue("@contacted", contacted);
+            updateCommand.Parameters.AddWithValue("@done", done);
+
+            if (!wasContacted)
+            {
+                if (contacted)
+                {
+                    updateCommand.Parameters.AddWithValue("@contactedDate", DateTime.Now);
+                }
+                else
+                {
+                    updateCommand.Parameters.AddWithValue("@contactedDate", DBNull.Value);
+                }
+
+            }
 
             try
             {
@@ -919,20 +947,56 @@ namespace AspectUpdatesDummy
             }
         }
 
-        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, DateTime actualDate, int assigned, bool contacted)
+        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, DateTime actualDate, int assigned, bool contacted, bool wasContacted, bool done, bool wasDone)
         {
-            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, Actual_Date= @actualDate, AssignedTo = @assigned, hasBeenContacted = @contacted" +
-               "  WHERE PK= @pk";
+            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, AssignedTo = @assigned, hasBeenContacted = @contacted, isDone = @done";
+
+            if (!wasDone)
+            {
+                updateStatement = updateStatement + ", Actual_Date= @actualDate";
+            }
+
+            if (!wasContacted)
+            {
+                updateStatement = updateStatement + ", Contacted_Date = @contactedDate";
+            }
+
+            updateStatement = updateStatement +  "  WHERE PK= @pk";
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
 
             updateCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
-            updateCommand.Parameters.AddWithValue("@actualDate", actualDate);
+
+            if (!wasDone)
+            {
+                updateCommand.Parameters.AddWithValue("@actualDate", actualDate);
+            }
+            else
+            {
+                updateCommand.Parameters.AddWithValue("@actualDate", DBNull.Value);
+            }
+            
             updateCommand.Parameters.AddWithValue("@pk", pk);
             updateCommand.Parameters.AddWithValue("@comments", comments);
             updateCommand.Parameters.AddWithValue("@assigned", assigned);
             updateCommand.Parameters.AddWithValue("@contacted", contacted);
+            updateCommand.Parameters.AddWithValue("@done", done);
+
+
+            if (!wasContacted)
+            {
+                if (contacted)
+                {
+                    updateCommand.Parameters.AddWithValue("@contactedDate", DateTime.Now);
+                }
+                else
+                {
+                    updateCommand.Parameters.AddWithValue("@contactedDate", DBNull.Value);
+                }
+
+            }
+
 
             try
             {
@@ -960,6 +1024,76 @@ namespace AspectUpdatesDummy
 
             bool delete = true;
             updateCommand.Parameters.AddWithValue("@delete", delete);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static void changeUpdateDone(int pk, bool isDone)
+        {
+            string updateStatement = "UPDATE [Update] SET isDone = @done, Actual_Date = @date WHERE PK = @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@done", isDone);
+            updateCommand.Parameters.AddWithValue("@pk", pk);
+
+            if (isDone)
+            {
+                updateCommand.Parameters.AddWithValue("@date", DateTime.Now);
+            }
+            else
+            {
+                updateCommand.Parameters.AddWithValue("@date", DBNull.Value);
+            }
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static void changeUpdateContacted(int pk, bool isContacted)
+        {
+            string updateStatement = "UPDATE [Update] SET hasBeenContacted = @isContacted, Contacted_Date = @date WHERE PK = @pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@isContacted", isContacted);
+            updateCommand.Parameters.AddWithValue("@pk", pk);
+
+            if (isContacted)
+            {
+                updateCommand.Parameters.AddWithValue("@date", DateTime.Now);
+            }
+            else
+            {
+                updateCommand.Parameters.AddWithValue("@date", DBNull.Value);
+            }
 
             try
             {
@@ -1112,6 +1246,32 @@ namespace AspectUpdatesDummy
 
             SqlConnection connection = Database.GetConnection();
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@pk", employeePK);
+
+            try
+            {
+                connection.Open();
+                updateCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static void updateEmployee(int employeePK, string name)
+        {
+            string updateStatement = "UPDATE Employee SET Name=@name WHERE PK=@pk";
+
+            SqlConnection connection = Database.GetConnection();
+            SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
+
+            updateCommand.Parameters.AddWithValue("@name", name);
             updateCommand.Parameters.AddWithValue("@pk", employeePK);
 
             try

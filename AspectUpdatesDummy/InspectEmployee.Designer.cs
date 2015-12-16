@@ -36,6 +36,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.nameTB = new System.Windows.Forms.TextBox();
+            this.changeBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.UpdatesGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,7 +96,7 @@
             this.versionsLbl.AutoSize = true;
             this.versionsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.versionsLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.versionsLbl.Location = new System.Drawing.Point(239, 24);
+            this.versionsLbl.Location = new System.Drawing.Point(270, 24);
             this.versionsLbl.Name = "versionsLbl";
             this.versionsLbl.Size = new System.Drawing.Size(152, 20);
             this.versionsLbl.TabIndex = 29;
@@ -130,11 +132,31 @@
             this.label2.TabIndex = 36;
             this.label2.Text = "Toggle All/Incomplete Updates";
             // 
+            // nameTB
+            // 
+            this.nameTB.Location = new System.Drawing.Point(105, 73);
+            this.nameTB.Name = "nameTB";
+            this.nameTB.Size = new System.Drawing.Size(172, 20);
+            this.nameTB.TabIndex = 37;
+            // 
+            // changeBtn
+            // 
+            this.changeBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.changeBtn.Location = new System.Drawing.Point(283, 68);
+            this.changeBtn.Name = "changeBtn";
+            this.changeBtn.Size = new System.Drawing.Size(88, 29);
+            this.changeBtn.TabIndex = 38;
+            this.changeBtn.Text = "Change";
+            this.changeBtn.UseVisualStyleBackColor = true;
+            this.changeBtn.Click += new System.EventHandler(this.changeBtn_Click);
+            // 
             // InspectEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 330);
+            this.Controls.Add(this.changeBtn);
+            this.Controls.Add(this.nameTB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -161,5 +183,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox nameTB;
+        private System.Windows.Forms.Button changeBtn;
     }
 }

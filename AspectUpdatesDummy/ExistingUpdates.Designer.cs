@@ -104,10 +104,11 @@
             this.UpdatesGrid.Location = new System.Drawing.Point(40, 68);
             this.UpdatesGrid.MultiSelect = false;
             this.UpdatesGrid.Name = "UpdatesGrid";
-            this.UpdatesGrid.ReadOnly = true;
             this.UpdatesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.UpdatesGrid.Size = new System.Drawing.Size(660, 228);
             this.UpdatesGrid.TabIndex = 20;
+            this.UpdatesGrid.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.UpdatesGrid_CellMouseUp);
+            this.UpdatesGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.UpdatesGrid_CellValueChanged);
             // 
             // UpdtLbl
             // 
