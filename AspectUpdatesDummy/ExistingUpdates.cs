@@ -241,11 +241,13 @@ namespace AspectUpdatesDummy
             {
                 Database.changeUpdateDone(Convert.ToInt32(UpdatesGrid.Rows[e.RowIndex].Cells[0].Value), Convert.ToBoolean(UpdatesGrid.Rows[e.RowIndex].Cells[11].Value));
                 UpdatesGrid.DataSource = Database.GetUpdateList();
+                UpdatesGrid.Rows[e.RowIndex].Selected = true;
             }
             if (e.ColumnIndex == 9 && e.RowIndex != -1)
             {
                 Database.changeUpdateContacted(Convert.ToInt32(UpdatesGrid.Rows[e.RowIndex].Cells[0].Value), Convert.ToBoolean(UpdatesGrid.Rows[e.RowIndex].Cells[9].Value));
                 UpdatesGrid.DataSource = Database.GetUpdateList();
+                UpdatesGrid.Rows[e.RowIndex].Selected = true;
             }
         }
 
