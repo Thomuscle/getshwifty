@@ -37,6 +37,7 @@ namespace AspectUpdatesDummy
             DataGridViewTextBoxColumn csVersionActDate = new DataGridViewTextBoxColumn();
             DataGridViewCheckBoxColumn csDeleted = new DataGridViewCheckBoxColumn();
             DataGridViewTextBoxColumn csComment = new DataGridViewTextBoxColumn();
+            DataGridViewCheckBoxColumn csContacted = new DataGridViewCheckBoxColumn();
 
             csCustomerPK.Name = "CustomerPK";
             csCustomerPK.DataPropertyName = "CustomerPK";
@@ -92,6 +93,11 @@ namespace AspectUpdatesDummy
             csEmployee.Visible = false;
             UpdatesGrid.Columns.Add(csEmployee);
 
+            csContacted.Name = "Contacted";
+            csContacted.HeaderText = "Has Been Contacted";
+            csContacted.DataPropertyName = "Contacted";
+            UpdatesGrid.Columns.Add(csContacted);
+
         }
 
         private void mainMenuBtn5_Click(object sender, EventArgs e)
@@ -119,6 +125,7 @@ namespace AspectUpdatesDummy
             int pk = (int)UpdatesGrid.SelectedRows[0].Cells["PK"].Value;
             DateTime expectedDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ExpectedDate"].Value);
             DateTime? actualDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ActualDate"].Value);
+            bool contacted = (bool)UpdatesGrid.SelectedRows[0].Cells["Contacted"].Value;
             int employeePK;
             if (UpdatesGrid.SelectedRows[0].Cells["AssignedTo"].Value == null)
             {
@@ -129,7 +136,7 @@ namespace AspectUpdatesDummy
                 employeePK = (int)UpdatesGrid.SelectedRows[0].Cells["AssignedTo"].Value;
             }
             
-            inspectUpdate.setFields(versionPK, customerPK, expectedDate, actualDate, comment, employeePK);
+            inspectUpdate.setFields(versionPK, customerPK, expectedDate, actualDate, comment, employeePK, contacted);
 
             inspectUpdate.Show();
             this.Hide();
@@ -143,6 +150,7 @@ namespace AspectUpdatesDummy
             int pk = (int)UpdatesGrid.SelectedRows[0].Cells["PK"].Value;
             DateTime expectedDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ExpectedDate"].Value);
             DateTime? actualDate = Convert.ToDateTime(UpdatesGrid.SelectedRows[0].Cells["ActualDate"].Value);
+            bool contacted = (bool)UpdatesGrid.SelectedRows[0].Cells["Contacted"].Value;
             int employeePK;
             if (UpdatesGrid.SelectedRows[0].Cells["AssignedTo"].Value == null)
             {
@@ -156,7 +164,7 @@ namespace AspectUpdatesDummy
             if (actualDate == DateTime.MinValue)
             {
 
-                editUpdate.setFields(versionPK, customerPK, expectedDate, comment, pk, employeePK);
+                editUpdate.setFields(versionPK, customerPK, expectedDate, comment, pk, employeePK, contacted);
 
                 editUpdate.Show();
                 this.Hide();

@@ -655,7 +655,7 @@ namespace AspectUpdatesDummy
             return return_code;
         }
 
-        public static int AddUpdate(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate, string comment, int assigned)
+        public static int AddUpdate(int versionPK, int customerPK, DateTime? expectedDate, DateTime? actualDate, string comment, int assigned)
         {
             int return_code = 0;
 
@@ -668,7 +668,6 @@ namespace AspectUpdatesDummy
 
             insertCommand.Parameters.AddWithValue("@versionPK", versionPK);
             insertCommand.Parameters.AddWithValue("@customerPK", customerPK);
-            insertCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
             insertCommand.Parameters.AddWithValue("@comment", comment);
 
             if (assigned == 0)
@@ -690,7 +689,16 @@ namespace AspectUpdatesDummy
             {
                 insertCommand.Parameters.AddWithValue("@actualDate", actualDate);
             }
-            
+
+
+            if (expectedDate == null)
+            {
+                insertCommand.Parameters.AddWithValue("@expectedDate", DBNull.Value);
+            }
+            else
+            {
+                insertCommand.Parameters.AddWithValue("@expectedDate", expectedDate);
+            }
 
 
             try
@@ -734,8 +742,9 @@ namespace AspectUpdatesDummy
                     String comment = SafeGetString(reader, 5);
                     bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
+                    bool? contacted = reader[8] as bool?;
 
-                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted);
                     updateList.Add(up);
                 }
             }
@@ -776,8 +785,9 @@ namespace AspectUpdatesDummy
                     String comment = SafeGetString(reader, 5);
                     bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
+                    bool? contacted = reader[8] as bool?;
 
-                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted);
                     updateList.Add(up);
                 }
             }
@@ -818,8 +828,9 @@ namespace AspectUpdatesDummy
                     String comment = SafeGetString(reader, 5);
                     bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
+                    bool? contacted = reader[8] as bool?;
 
-                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted);
                     updateList.Add(up);
                 }
             }
@@ -860,8 +871,9 @@ namespace AspectUpdatesDummy
                     String comment = SafeGetString(reader, 5);
                     bool isDeleted = SafeGetBool(reader, 6);
                     int? assignedTo = reader[7] as int?;
+                    bool? contacted = reader[8] as bool?;
 
-                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo);
+                    Update up = new Update(pk, versionPK, customerPK, expectedDate, actualDate, comment, isDeleted, assignedTo, contacted);
                     updateList.Add(up);
                 }
             }
@@ -877,9 +889,9 @@ namespace AspectUpdatesDummy
             return updateList;
         }
 
-        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, int assigned)
+        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, int assigned, bool contacted)
         {
-            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, AssignedTo = @assigned" +
+            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, AssignedTo = @assigned, hasBeenContacted = @contacted" +
                "  WHERE PK= @pk";
 
             SqlConnection connection = Database.GetConnection();
@@ -889,6 +901,7 @@ namespace AspectUpdatesDummy
             updateCommand.Parameters.AddWithValue("@pk", pk);
             updateCommand.Parameters.AddWithValue("@comments", comments);
             updateCommand.Parameters.AddWithValue("@assigned", assigned);
+            updateCommand.Parameters.AddWithValue("@contacted", contacted);
 
             try
             {
@@ -906,9 +919,9 @@ namespace AspectUpdatesDummy
             }
         }
 
-        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, DateTime actualDate, int assigned)
+        public static void UpdateUpdate(int pk, DateTime expectedDate, string comments, DateTime actualDate, int assigned, bool contacted)
         {
-            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, Actual_Date= @actualDate, AssignedTo = @assigned" +
+            string updateStatement = "UPDATE [Update] SET Expected_Date= @expectedDate, Comment = @comments, Actual_Date= @actualDate, AssignedTo = @assigned, hasBeenContacted = @contacted" +
                "  WHERE PK= @pk";
 
             SqlConnection connection = Database.GetConnection();
@@ -919,6 +932,7 @@ namespace AspectUpdatesDummy
             updateCommand.Parameters.AddWithValue("@pk", pk);
             updateCommand.Parameters.AddWithValue("@comments", comments);
             updateCommand.Parameters.AddWithValue("@assigned", assigned);
+            updateCommand.Parameters.AddWithValue("@contacted", contacted);
 
             try
             {

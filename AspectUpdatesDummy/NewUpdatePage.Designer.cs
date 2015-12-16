@@ -32,14 +32,7 @@
             this.newVersLbl = new System.Windows.Forms.Label();
             this.submitBtn = new System.Windows.Forms.Button();
             this.mainMenuBtn6 = new System.Windows.Forms.Button();
-            this.expectedDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.expectedTimePicker = new System.Windows.Forms.DateTimePicker();
             this.versionGrid = new System.Windows.Forms.DataGridView();
-            this.actualTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.actualDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.useActual = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.commentsTxtBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -87,23 +80,6 @@
             this.mainMenuBtn6.UseVisualStyleBackColor = true;
             this.mainMenuBtn6.Click += new System.EventHandler(this.mainMenuBtn6_Click);
             // 
-            // expectedDatePicker
-            // 
-            this.expectedDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.expectedDatePicker.Location = new System.Drawing.Point(35, 90);
-            this.expectedDatePicker.Name = "expectedDatePicker";
-            this.expectedDatePicker.Size = new System.Drawing.Size(150, 20);
-            this.expectedDatePicker.TabIndex = 16;
-            // 
-            // expectedTimePicker
-            // 
-            this.expectedTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.expectedTimePicker.Location = new System.Drawing.Point(190, 91);
-            this.expectedTimePicker.Name = "expectedTimePicker";
-            this.expectedTimePicker.ShowUpDown = true;
-            this.expectedTimePicker.Size = new System.Drawing.Size(111, 20);
-            this.expectedTimePicker.TabIndex = 17;
-            // 
             // versionGrid
             // 
             this.versionGrid.AllowUserToAddRows = false;
@@ -118,51 +94,6 @@
             this.versionGrid.Size = new System.Drawing.Size(281, 139);
             this.versionGrid.TabIndex = 18;
             // 
-            // actualTimePicker
-            // 
-            this.actualTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.actualTimePicker.Location = new System.Drawing.Point(190, 149);
-            this.actualTimePicker.Name = "actualTimePicker";
-            this.actualTimePicker.ShowUpDown = true;
-            this.actualTimePicker.Size = new System.Drawing.Size(111, 20);
-            this.actualTimePicker.TabIndex = 20;
-            // 
-            // actualDatePicker
-            // 
-            this.actualDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.actualDatePicker.Location = new System.Drawing.Point(35, 149);
-            this.actualDatePicker.Name = "actualDatePicker";
-            this.actualDatePicker.Size = new System.Drawing.Size(150, 20);
-            this.actualDatePicker.TabIndex = 19;
-            // 
-            // useActual
-            // 
-            this.useActual.AutoSize = true;
-            this.useActual.Location = new System.Drawing.Point(35, 175);
-            this.useActual.Name = "useActual";
-            this.useActual.Size = new System.Drawing.Size(151, 17);
-            this.useActual.TabIndex = 21;
-            this.useActual.Text = "Use Actual Date and Time";
-            this.useActual.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 13);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Expected Date and Time";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 133);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(266, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Actual Date and Time (Use if update has been applied)";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -174,16 +105,16 @@
             // 
             // commentsTxtBox
             // 
-            this.commentsTxtBox.Location = new System.Drawing.Point(35, 229);
+            this.commentsTxtBox.Location = new System.Drawing.Point(24, 90);
             this.commentsTxtBox.Multiline = true;
             this.commentsTxtBox.Name = "commentsTxtBox";
-            this.commentsTxtBox.Size = new System.Drawing.Size(262, 64);
+            this.commentsTxtBox.Size = new System.Drawing.Size(262, 139);
             this.commentsTxtBox.TabIndex = 25;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 216);
+            this.label4.Location = new System.Drawing.Point(21, 77);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 13);
             this.label4.TabIndex = 26;
@@ -197,14 +128,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.commentsTxtBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.useActual);
-            this.Controls.Add(this.actualTimePicker);
-            this.Controls.Add(this.actualDatePicker);
             this.Controls.Add(this.versionGrid);
-            this.Controls.Add(this.expectedTimePicker);
-            this.Controls.Add(this.expectedDatePicker);
             this.Controls.Add(this.submitBtn);
             this.Controls.Add(this.mainMenuBtn6);
             this.Controls.Add(this.subLbl);
@@ -223,14 +147,7 @@
         private System.Windows.Forms.Label newVersLbl;
         private System.Windows.Forms.Button submitBtn;
         private System.Windows.Forms.Button mainMenuBtn6;
-        private System.Windows.Forms.DateTimePicker expectedDatePicker;
-        private System.Windows.Forms.DateTimePicker expectedTimePicker;
         private System.Windows.Forms.DataGridView versionGrid;
-        private System.Windows.Forms.DateTimePicker actualTimePicker;
-        private System.Windows.Forms.DateTimePicker actualDatePicker;
-        private System.Windows.Forms.CheckBox useActual;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox commentsTxtBox;
         private System.Windows.Forms.Label label4;

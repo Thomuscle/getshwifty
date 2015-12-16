@@ -105,10 +105,10 @@ namespace AspectUpdatesDummy
                 {
                     if ((row.Cells[0].Value != null) && ((bool)((DataGridViewCheckBoxCell)row.Cells[0]).Value))
                     {
-                        int versionPK = Database.UpdateCustomer(Convert.ToInt32(row.Cells["PK"].Value.ToString()));
+                        versionPK = Database.getLatestVersion();
                         
                         DateTime date = Convert.ToDateTime(actualDatePicker.Value.ToShortDateString() + ' ' + actualTimePicker.Value.ToShortTimeString());
-                        Database.AddUpdate(versionPK, Convert.ToInt32(row.Cells["PK"].Value.ToString()), date, date, "", 0);
+                        Database.AddUpdate(versionPK, Convert.ToInt32(row.Cells["PK"].Value.ToString()), date, null, "", 0);
                     }
                 }
             }catch(Exception ex){

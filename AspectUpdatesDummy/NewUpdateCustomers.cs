@@ -17,7 +17,7 @@ namespace AspectUpdatesDummy
         ExistingUpdates mainMenu;
         int versionPK;
         DateTime? actualDate;
-        DateTime expectedDate;
+        DateTime? expectedDate;
         string comment;
 
         public NewUpdateCustomers(NewUpdatePage nup, ExistingUpdates m)
@@ -118,7 +118,7 @@ namespace AspectUpdatesDummy
             newUpdatePage.Show();
         }
 
-        public void GiveInfo(int versionPK, DateTime expectedDate, DateTime? actualDate, string comment)
+        public void GiveInfo(int versionPK, DateTime? expectedDate, DateTime? actualDate, string comment)
         {
             this.versionPK = versionPK;
             this.expectedDate = expectedDate;
@@ -136,11 +136,11 @@ namespace AspectUpdatesDummy
                     if ((row.Cells["Selected"].Value != null) && ((bool)((DataGridViewCheckBoxCell)row.Cells["Selected"]).Value))
                     {
 
-                        if (actualDate != null)
+                        /*if (actualDate != null)
                         {
                             Database.UpdateCustomer(Convert.ToInt32(row.Cells["PK"].Value.ToString()), versionPK);
                             
-                        }
+                        }*/
 
                         int employeePK = Convert.ToInt32(row.Cells["AssignedTo"].Value);
 

@@ -16,8 +16,9 @@ namespace AspectUpdatesDummy
         private DateTime? expectedDate;
         private DateTime? actualDate;
         private int? assignedTo;
+        private bool contacted;
 
-        public Update(int pk, int versionPK, int customerPK, DateTime? expectedDate, DateTime? actualDate, string comment, bool deleted, int? assignedTo)
+        public Update(int pk, int versionPK, int customerPK, DateTime? expectedDate, DateTime? actualDate, string comment, bool deleted, int? assignedTo, bool? contacted)
         {
             this.pk = pk;
             this.customerPK = customerPK;
@@ -27,6 +28,15 @@ namespace AspectUpdatesDummy
             this.versionPK = versionPK;
             isDeleted = deleted;
             this.assignedTo = assignedTo;
+            if (contacted == null)
+            {
+                this.contacted = false;
+            }
+            else
+            {
+                this.contacted = (bool)contacted;
+            }
+            
 
         }
 
@@ -86,6 +96,12 @@ namespace AspectUpdatesDummy
         {
             get { return this.assignedTo; }
             set { this.assignedTo = value; }
+        }
+
+        public bool Contacted
+        {
+            get { return this.contacted; }
+            set { this.contacted = value; }
         }
     }
 }

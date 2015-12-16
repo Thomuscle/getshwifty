@@ -66,11 +66,11 @@
             // 
             this.subLbl.AutoSize = true;
             this.subLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subLbl.Location = new System.Drawing.Point(146, 29);
+            this.subLbl.Location = new System.Drawing.Point(154, 29);
             this.subLbl.Name = "subLbl";
-            this.subLbl.Size = new System.Drawing.Size(346, 15);
+            this.subLbl.Size = new System.Drawing.Size(331, 15);
             this.subLbl.TabIndex = 12;
-            this.subLbl.Text = "Please select customers that have updated to this new version:";
+            this.subLbl.Text = "Please select customers that will update to this new version:";
             this.subLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // submitBtn
@@ -88,9 +88,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(74, 215);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 13);
+            this.label2.Size = new System.Drawing.Size(233, 13);
             this.label2.TabIndex = 26;
-            this.label2.Text = "Date and Time of Update Application:";
+            this.label2.Text = "Expected Date and Time of Update Application:";
             // 
             // actualTimePicker
             // 

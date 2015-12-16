@@ -37,6 +37,7 @@
             this.expLbl = new System.Windows.Forms.Label();
             this.actLbl = new System.Windows.Forms.Label();
             this.employeeLabel = new System.Windows.Forms.Label();
+            this.contactedLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // backBtn
@@ -137,11 +138,23 @@
             this.employeeLabel.TabIndex = 43;
             this.employeeLabel.Text = "Assigned To: ";
             // 
+            // contactedLbl
+            // 
+            this.contactedLbl.AutoSize = true;
+            this.contactedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contactedLbl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.contactedLbl.Location = new System.Drawing.Point(331, 246);
+            this.contactedLbl.Name = "contactedLbl";
+            this.contactedLbl.Size = new System.Drawing.Size(239, 18);
+            this.contactedLbl.TabIndex = 44;
+            this.contactedLbl.Text = "Customer has been contacted.";
+            // 
             // InspectUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 330);
+            this.Controls.Add(this.contactedLbl);
             this.Controls.Add(this.employeeLabel);
             this.Controls.Add(this.actLbl);
             this.Controls.Add(this.expLbl);
@@ -169,5 +182,6 @@
         private System.Windows.Forms.Label expLbl;
         private System.Windows.Forms.Label actLbl;
         private System.Windows.Forms.Label employeeLabel;
+        private System.Windows.Forms.Label contactedLbl;
     }
 }

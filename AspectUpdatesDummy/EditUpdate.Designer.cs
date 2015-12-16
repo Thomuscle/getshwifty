@@ -45,11 +45,12 @@
             this.expectedTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.employeeComboBox = new System.Windows.Forms.ComboBox();
+            this.contactedCB = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(331, 252);
+            this.submitBtn.Location = new System.Drawing.Point(328, 289);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(127, 42);
             this.submitBtn.TabIndex = 37;
@@ -59,7 +60,7 @@
             // 
             // backBtn
             // 
-            this.backBtn.Location = new System.Drawing.Point(489, 252);
+            this.backBtn.Location = new System.Drawing.Point(486, 289);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(127, 42);
             this.backBtn.TabIndex = 36;
@@ -115,7 +116,7 @@
             this.commentsTextBox.Location = new System.Drawing.Point(61, 191);
             this.commentsTextBox.Multiline = true;
             this.commentsTextBox.Name = "commentsTextBox";
-            this.commentsTextBox.Size = new System.Drawing.Size(223, 92);
+            this.commentsTextBox.Size = new System.Drawing.Size(223, 140);
             this.commentsTextBox.TabIndex = 46;
             // 
             // label1
@@ -130,7 +131,7 @@
             // expectedDatePicker
             // 
             this.expectedDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.expectedDatePicker.Location = new System.Drawing.Point(330, 130);
+            this.expectedDatePicker.Location = new System.Drawing.Point(327, 167);
             this.expectedDatePicker.Name = "expectedDatePicker";
             this.expectedDatePicker.Size = new System.Drawing.Size(150, 20);
             this.expectedDatePicker.TabIndex = 48;
@@ -138,7 +139,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(328, 172);
+            this.label2.Location = new System.Drawing.Point(325, 209);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(266, 13);
             this.label2.TabIndex = 54;
@@ -147,7 +148,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(328, 113);
+            this.label3.Location = new System.Drawing.Point(325, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 13);
             this.label3.TabIndex = 53;
@@ -156,7 +157,7 @@
             // useActual
             // 
             this.useActual.AutoSize = true;
-            this.useActual.Location = new System.Drawing.Point(331, 214);
+            this.useActual.Location = new System.Drawing.Point(328, 251);
             this.useActual.Name = "useActual";
             this.useActual.Size = new System.Drawing.Size(151, 17);
             this.useActual.TabIndex = 52;
@@ -166,7 +167,7 @@
             // actualTimePicker
             // 
             this.actualTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.actualTimePicker.Location = new System.Drawing.Point(486, 188);
+            this.actualTimePicker.Location = new System.Drawing.Point(483, 225);
             this.actualTimePicker.Name = "actualTimePicker";
             this.actualTimePicker.ShowUpDown = true;
             this.actualTimePicker.Size = new System.Drawing.Size(111, 20);
@@ -175,7 +176,7 @@
             // actualDatePicker
             // 
             this.actualDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.actualDatePicker.Location = new System.Drawing.Point(331, 188);
+            this.actualDatePicker.Location = new System.Drawing.Point(328, 225);
             this.actualDatePicker.Name = "actualDatePicker";
             this.actualDatePicker.Size = new System.Drawing.Size(150, 20);
             this.actualDatePicker.TabIndex = 50;
@@ -183,7 +184,7 @@
             // expectedTimePicker
             // 
             this.expectedTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.expectedTimePicker.Location = new System.Drawing.Point(486, 130);
+            this.expectedTimePicker.Location = new System.Drawing.Point(483, 167);
             this.expectedTimePicker.Name = "expectedTimePicker";
             this.expectedTimePicker.ShowUpDown = true;
             this.expectedTimePicker.Size = new System.Drawing.Size(111, 20);
@@ -192,7 +193,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(327, 83);
+            this.label4.Location = new System.Drawing.Point(324, 120);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 55;
@@ -201,16 +202,27 @@
             // employeeComboBox
             // 
             this.employeeComboBox.FormattingEnabled = true;
-            this.employeeComboBox.Location = new System.Drawing.Point(399, 79);
+            this.employeeComboBox.Location = new System.Drawing.Point(396, 116);
             this.employeeComboBox.Name = "employeeComboBox";
             this.employeeComboBox.Size = new System.Drawing.Size(195, 21);
             this.employeeComboBox.TabIndex = 56;
+            // 
+            // contactedCB
+            // 
+            this.contactedCB.AutoSize = true;
+            this.contactedCB.Location = new System.Drawing.Point(61, 149);
+            this.contactedCB.Name = "contactedCB";
+            this.contactedCB.Size = new System.Drawing.Size(168, 17);
+            this.contactedCB.TabIndex = 57;
+            this.contactedCB.Text = "Customer has been contacted";
+            this.contactedCB.UseVisualStyleBackColor = true;
             // 
             // EditUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 330);
+            this.ClientSize = new System.Drawing.Size(634, 357);
+            this.Controls.Add(this.contactedCB);
             this.Controls.Add(this.employeeComboBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -254,5 +266,6 @@
         private System.Windows.Forms.DateTimePicker expectedTimePicker;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox employeeComboBox;
+        private System.Windows.Forms.CheckBox contactedCB;
     }
 }

@@ -21,7 +21,7 @@ namespace AspectUpdatesDummy
             updatesPage = eu;
         }
 
-        public void setFields(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate, string comment, int assignedTo)
+        public void setFields(int versionPK, int customerPK, DateTime expectedDate, DateTime? actualDate, string comment, int assignedTo, bool? contacted)
         {
             string versionID = Database.getVersionID(versionPK);
 
@@ -50,7 +50,15 @@ namespace AspectUpdatesDummy
             {
                 actLbl.Text = "Actual Date: " + actualDate;
             }
-            
+
+            if (contacted == true)
+            {
+                contactedLbl.Text = "Customer has been contacted.";
+            }
+            else
+            {
+                contactedLbl.Text = "Customer has not been contacted.";
+            }
 
         }
 

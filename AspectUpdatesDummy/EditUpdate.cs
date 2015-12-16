@@ -34,16 +34,17 @@ namespace AspectUpdatesDummy
         {
             DateTime expectedDate = Convert.ToDateTime(expectedDatePicker.Value.ToShortDateString() + ' ' + expectedTimePicker.Value.ToShortTimeString());
             DateTime actualDate = Convert.ToDateTime(actualDatePicker.Value.ToShortDateString() + ' ' + actualTimePicker.Value.ToShortTimeString());
+            bool contacted = contactedCB.Checked;
             int employee = Convert.ToInt32(employeeComboBox.SelectedValue);
 
             if (useActual.Checked)
             {
-               Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, actualDate, employee);
+               Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, actualDate, employee, contacted);
                Database.UpdateCustomer(currentCustomer, currentVersion);
             }
             else
             {
-                Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, employee);
+                Database.UpdateUpdate(currentPK, expectedDate, commentsTextBox.Text, employee, contacted);
             }
             
             MessageBox.Show("Completed!");
@@ -55,7 +56,7 @@ namespace AspectUpdatesDummy
             updatesPage.Show();
         }
 
-        public void setFields(int versionPK, int customerPK, DateTime expectedDate, string comment, int pk, int employeePK)
+        public void setFields(int versionPK, int customerPK, DateTime expectedDate, string comment, int pk, int employeePK, bool? contacted)
         {
             currentPK = pk;
             currentCustomer = customerPK;
@@ -85,6 +86,15 @@ namespace AspectUpdatesDummy
 
                 actualDatePicker.Text = expectedDate.ToShortDateString();
                 actualTimePicker.Text = expectedDate.ToLongTimeString();
+            }
+
+            if (contacted == true)
+            {
+                contactedCB.Checked = true;
+            }
+            else
+            {
+                contactedCB.Checked = false;
             }
 
         } 
